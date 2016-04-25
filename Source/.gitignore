@@ -1,0 +1,10 @@
+/packages
+
+/StudentManage.Common/bin
+/StudentManage.Common/obj
+/StudentManage.DistributedService/bin
+/StudentManage.DistributedService/obj
+/StudentManage.Domain/bin
+/StudentManage.Domain/obj
+/StudentManage.Services/bin
+/StudentManage.Services/obj

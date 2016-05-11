@@ -17,6 +17,7 @@ namespace ManagerStudentLib.Data
             {
                 //user = JsonConvert.DeserializeObject<User>(GetJsonData("/rest/username/password"));
                 //Mockup a json data 
+				//test
                 var jsonUser = "{ \"Username\" : \"Admin\" , \"Role\" : 5,  \"Token\" : \"ABC\"}";
                 user = JsonConvert.DeserializeObject<User>(jsonUser);
             }

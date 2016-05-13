@@ -7,15 +7,20 @@ namespace StudentManage.DistributedService.Controllers
 {
     public class UserController : BaseApiController
     {
+        private IUserService UserService;
+
+        public UserController(IUserService userService)
+        {
+            this.UserService = userService;
+        }
+
         [HttpPost]
         [Route("api/Login")]
         public UserDto Login(UserDto userDto)
         {
             try
             {
-                var userService = new UserService();
-
-                var result = userService.Login(userDto.UserName, userDto.Password);
+                var result = UserService.Login(userDto.UserName, userDto.Password);
 
                 return result;
             }

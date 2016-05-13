@@ -14,6 +14,7 @@ namespace StudentManage.Domain.DbContext
         public StudentManageDbContext()
             : base("DefaultConnection")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentManageDbContext, Migrations.Configuration>());
         }
 
         public DbSet<User> Users { get; set; }
@@ -22,9 +23,24 @@ namespace StudentManage.Domain.DbContext
 
         public DbSet<Role> Role { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            // Fluent API EF: https://msdn.microsoft.com/en-us/data/jj591617.aspx
+            // Custom code first convention https://msdn.microsoft.com/en-us/data/jj819164
+
+            modelBuilder.Entity<User>()
+                .HasRequired<User>(u => u.CreatedByUser)
+                .WithMany();
+
+            modelBuilder.Entity<User>()
+                .HasRequired<User>(u => u.ModifiedByUser)
+                .WithMany();
+
+            modelBuilder.Entity<User>()
+                .HasRequired<Role>(u => u.Role)
+                .WithMany();
+        }
     }
 }

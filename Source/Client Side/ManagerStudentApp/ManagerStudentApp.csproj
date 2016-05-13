@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C077243A-8395-4415-BC12-591ED6B94C2C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ManagerStudentApp</RootNamespace>
+    <AssemblyName>ManagerStudentApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GUI\AppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AppForm.Designer.cs">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TabControls\TabPageControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\TabControls\TabControlsHelper.cs" />
+    <Compile Include="GUI\TreeControls\TreeNodeControl.cs" />
+    <Compile Include="GUI\TreeControls\TreeControlsHelper.cs" />
+    <Compile Include="GUI\UserControls\AddReportSemsterUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddReportSemsterUserControl.Designer.cs">
+      <DependentUpon>AddReportSemsterUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddReportSubjectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddReportSubjectUserControl.Designer.cs">
+      <DependentUpon>AddReportSubjectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\SettingUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\SettingUserControl.Designer.cs">
+      <DependentUpon>SettingUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangePasswordUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangePasswordUserControl.Designer.cs">
+      <DependentUpon>ChangePasswordUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListReportUserControl.Designer.cs">
+      <DependentUpon>ListReportUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListScoreUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListScoreUserControl.Designer.cs">
+      <DependentUpon>ListScoreUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddScoreUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddScoreUserControl.Designer.cs">
+      <DependentUpon>AddScoreUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListSubjectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListSubjectUserControl.Designer.cs">
+      <DependentUpon>ListSubjectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddSubjectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddSubjectUserControl.Designer.cs">
+      <DependentUpon>AddSubjectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListClassUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListClassUserControl.Designer.cs">
+      <DependentUpon>ListClassUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddClassUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddClassUserControl.Designer.cs">
+      <DependentUpon>AddClassUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListStudentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListStudentUserControl.Designer.cs">
+      <DependentUpon>ListStudentUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddStudentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddStudentUserControl.Designer.cs">
+      <DependentUpon>AddStudentUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListAccountUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ListAccountUserControl.Designer.cs">
+      <DependentUpon>ListAccountUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddAccountUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\AddAccountUserControl.Designer.cs">
+      <DependentUpon>AddAccountUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeMailUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeMailUserControl.Designer.cs">
+      <DependentUpon>ChangeMailUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\UserControlFactory.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\AppForm.resx">
+      <DependentUpon>AppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\AddClassUserControl.resx">
+      <DependentUpon>AddClassUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\AddReportSubjectUserControl.resx">
+      <DependentUpon>AddReportSubjectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\AddScoreUserControl.resx">
+      <DependentUpon>AddScoreUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\AddStudentUserControl.resx">
+      <DependentUpon>AddStudentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListStudentUserControl.resx">
+      <DependentUpon>ListStudentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\userInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\score.png" />
+    <Content Include="Resources\Icons\class.png" />
+    <Content Include="Resources\Icons\account.png" />
+    <Content Include="Resources\Icons\settings.png" />
+    <Content Include="Resources\Icons\subject.png" />
+    <Content Include="Resources\Icons\adduser.png" />
+    <Content Include="Resources\Icons\report.png" />
+    <Content Include="Resources\Icons\list.png" />
+    <Content Include="Resources\Icons\plus.png" />
+    <Content Include="Resources\Icons\student.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ManagerStudentLib\ManagerStudentLib.csproj">
+      <Project>{f5f3e1ce-cd18-416f-b550-4d3b9c105ca4}</Project>
+      <Name>ManagerStudentLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

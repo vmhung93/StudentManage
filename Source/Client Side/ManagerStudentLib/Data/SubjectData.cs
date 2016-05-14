@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ManagerStudentLib.Data
 {
-    public class SubjectData : AbstractData
+    public class SubjectData
     {
         public static Diem GetDiem()
         {

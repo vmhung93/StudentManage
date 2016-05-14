@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManagerStudentApp.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,12 @@ namespace ManagerStudentApp
                 mainForm.ShowDialog();
                 this.Close();
             } 
+        }
+
+        private void configToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var configForm = new ConfigForm();
+            configForm.ShowDialog();
         }
 
     }

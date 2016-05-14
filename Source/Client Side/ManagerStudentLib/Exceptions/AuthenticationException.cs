@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ManagerStudentApp.Exceptions
 {
-    public class AuthenticationException : DataGetException
+    public class AuthenticationException : Exception
     {
-        public DataGetException DataGetEx { get; set; }
+        public DataGetException DataGetException { get; set; }
         public AuthenticationException(DataGetException ex)
         {
-            DataGetEx = ex;
+            DataGetException = ex;
         }
     }
 }

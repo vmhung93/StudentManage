@@ -11,7 +11,7 @@ namespace ManagerStudentLib.Models
 {
     public class User
     {
-        public string Username { get; set; }
+        public string FullName { get; set; }
         [JsonProperty("Role")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserRole Role { get; set; }

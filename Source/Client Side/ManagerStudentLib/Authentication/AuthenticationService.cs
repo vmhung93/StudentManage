@@ -22,8 +22,7 @@ namespace ManagerStudentLib.Authentication
 
     public class AuthenticationService
     {
-        //after the authentication working this member will be private
-        public User currentUser { get; set; }
+        private User currentUser;
         private static AuthenticationService instance;
         //singleton
         public static AuthenticationService GetInstance()

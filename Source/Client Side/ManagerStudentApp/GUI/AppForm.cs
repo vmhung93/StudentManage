@@ -1,4 +1,5 @@
-﻿using ManagerStudentApp.GUI.TabControls;
+﻿using ManagerStudentApp.GUI;
+using ManagerStudentApp.GUI.TabControls;
 using ManagerStudentApp.GUI.TreeControls;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,12 @@ namespace ManagerStudentApp
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void configToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var configForm = new ConfigForm();
+            configForm.ShowDialog();
         }
 
     }

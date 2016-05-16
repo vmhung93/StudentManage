@@ -1,9 +1,9 @@
 ﻿using StudentManage.Common;
 using System;
 
-namespace StudentManage.Domain.Domain
+namespace StudentManage.Services.AppicationContract
 {
-    public class UserInfo : DomainBase
+    public class UserInfoDto : BaseDto
     {
         public string Name { get; set; }
 

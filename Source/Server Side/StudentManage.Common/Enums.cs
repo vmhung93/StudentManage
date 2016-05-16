@@ -6,9 +6,9 @@
     /// </summary>
     public enum Status
     {
-        InActive = 0,
-        Active = 1,
-        Deleted = -1
+        Active = 0,
+        InActive = -1,
+        Deleted = -2
     }
 
     /// <summary>

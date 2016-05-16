@@ -13,7 +13,7 @@ namespace StudentManage.Domain.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201605131839058_InitiateDatabase"; }
+            get { return "201605161036197_InitiateDatabase"; }
         }
         
         string IMigrationMetadata.Source

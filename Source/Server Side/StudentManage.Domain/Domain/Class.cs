@@ -3,26 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentManage.Domain.Domain
 {
-    public class User : DomainBase, ITraceable
+    public class Class : DomainBase, ITraceable
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UserCode { get; set; }
+        public int Code { get; set; }
 
-        public string UserName { get; set; }
+        public string Name { get; set; }
 
-        public string Password { get; set; }
+        public Guid GradeId { get; set; }
 
-        public Guid AccessToken { get; set; }
+        [ForeignKey("GradeId")]
+        public virtual Grade Grade { get; set; }
 
-        public Guid RoleId { get; set; }
+        public Guid HomeroomTeacherId { get; set; }
 
-        [ForeignKey("RoleId")]
-        public virtual Role Role { get; set; }
-
-        public Guid UserInfoId { get; set; }
-
-        [ForeignKey("UserInfoId")]
-        public virtual UserInfo UserInfo { get; set; }
+        [ForeignKey("HomeroomTeacherId")]
+        public virtual User HomeroomTeacher { get; set; }
 
         public DateTime CreatedDate { get; set; }
 

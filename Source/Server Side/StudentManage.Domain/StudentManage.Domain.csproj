@@ -60,12 +60,17 @@
     <Compile Include="Domain\Scores.cs" />
     <Compile Include="Domain\ScoreType.cs" />
     <Compile Include="Domain\Semester.cs" />
+    <Compile Include="Domain\StudentInClass.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\DomainBase.cs" />
     <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="Migrations\201605161036197_InitiateDatabase.cs" />
     <Compile Include="Migrations\201605161036197_InitiateDatabase.Designer.cs">
       <DependentUpon>201605161036197_InitiateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605161202073_AddStudentInClass.cs" />
+    <Compile Include="Migrations\201605161202073_AddStudentInClass.Designer.cs">
+      <DependentUpon>201605161202073_AddStudentInClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +88,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605161036197_InitiateDatabase.resx">
       <DependentUpon>201605161036197_InitiateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161202073_AddStudentInClass.resx">
+      <DependentUpon>201605161202073_AddStudentInClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,7 @@ namespace StudentManage.Domain.Migrations
     using Domain;
     using System;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<StudentManage.Domain.DbContext.StudentManageDbContext>
     {
@@ -17,14 +18,20 @@ namespace StudentManage.Domain.Migrations
             //  This method will be called after migrating to the latest version.
 
             // Seed default role
-            var saRole = new Role()
+
+            if (context.Role.FirstOrDefault(r => r.Name.Contains("Administration") && r.Level == RoleLevel.Adminstrator) == null)
             {
-                Name = "Administration",
-                Level = RoleLevel.Adminstrator,
-                Status = Status.Active,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now
-            };
+                var saRole = new Role()
+                {
+                    Name = "Administration",
+                    Level = RoleLevel.Adminstrator,
+                    Status = Status.Active,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now
+                };
+
+                context.Role.Add(saRole);
+            }
 
             context.Role.AddOrUpdate(
                 r => r.Name,

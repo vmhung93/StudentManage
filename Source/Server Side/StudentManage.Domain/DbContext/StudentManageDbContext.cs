@@ -8,7 +8,7 @@ namespace StudentManage.Domain.DbContext
         public StudentManageDbContext()
             : base("name=DefaultConnection")
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentManageDbContext, Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentManageDbContext, Migrations.Configuration>());
         }
 
         public DbSet<Class> Class { get; set; }
@@ -27,6 +27,8 @@ namespace StudentManage.Domain.DbContext
         public DbSet<ScoreType> ScoreType { get; set; }
 
         public DbSet<Semester> Semester { get; set; }
+
+        public DbSet<StudentInClass> StudentInClass { get; set; }
 
         public DbSet<User> Users { get; set; }
 

@@ -6,7 +6,7 @@ namespace StudentManage.Domain.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<StudentManage.Domain.DbContext.StudentManageDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<StudentManage.Domain.DbContext.StudentManageDbContext>
     {
         public Configuration()
         {
@@ -17,42 +17,53 @@ namespace StudentManage.Domain.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            // Seed default role
+            #region ROLE
+
+            // Super admin
+            var saRole = new Role()
+            {
+                Name = "Administration",
+                Level = RoleLevel.Adminstrator,
+                Status = Status.Active,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
+            };
 
             if (context.Role.FirstOrDefault(r => r.Name.Contains("Administration") && r.Level == RoleLevel.Adminstrator) == null)
             {
-                var saRole = new Role()
-                {
-                    Name = "Administration",
-                    Level = RoleLevel.Adminstrator,
-                    Status = Status.Active,
-                    CreatedDate = DateTime.Now,
-                    ModifiedDate = DateTime.Now
-                };
-
                 context.Role.Add(saRole);
             }
 
-            context.Role.AddOrUpdate(
-                r => r.Name,
-                saRole,
-                new Role()
+            // Principal
+            if (context.Role.FirstOrDefault(r => r.Name.Contains("Principal") && r.Level == RoleLevel.Principal) == null)
+            {
+                context.Role.Add(new Role()
                 {
                     Name = "Principal",
                     Level = RoleLevel.Principal,
                     Status = Status.Active,
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now
-                },
-                new Role()
+                });
+            }
+
+            // Student
+            if (context.Role.FirstOrDefault(r => r.Name.Contains("Student") && r.Level == RoleLevel.Student) == null)
+            {
+                context.Role.Add(new Role()
                 {
                     Name = "Student",
                     Level = RoleLevel.Student,
                     Status = Status.Active,
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now
-                },
-                new Role()
+                });
+            }
+
+            // Teacher
+            if (context.Role.FirstOrDefault(r => r.Name.Contains("Teacher") && r.Level == RoleLevel.Teacher) == null)
+            {
+                context.Role.Add(new Role()
                 {
                     Name = "Teacher",
                     Level = RoleLevel.Teacher,
@@ -60,12 +71,16 @@ namespace StudentManage.Domain.Migrations
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now
                 });
-
+            }
             context.SaveChanges();
+
+            #endregion ROLE
+
+            #region USER INFO
 
             var saUserInfo = new UserInfo()
             {
-                Adress = "Address SA",
+                Adress = "Address",
                 DateOfBirth = new DateTime(1993, 1, 1),
                 Email = "sa@studentmanage.com",
                 Gender = Gender.Male,
@@ -73,15 +88,23 @@ namespace StudentManage.Domain.Migrations
                 Status = Status.Active
             };
 
-            context.UserInfo.AddOrUpdate(ui => ui.Email, saUserInfo);
-            context.SaveChanges();
+            if (context.UserInfo.FirstOrDefault(r => r.Email.Contains("sa@studentmanage.com")) == null)
+            {
+                context.UserInfo.Add(saUserInfo);
+                context.SaveChanges();
+            }
 
-            // Seed default super admin
-            context.Users.AddOrUpdate(
-                u => new { u.UserName, u.RoleId },
+            #endregion USER INFO
+
+            #region USER
+
+            if (context.Users.FirstOrDefault(u => u.UserName.Contains("Super Addmin") && u.RoleId == saRole.Id) == null)
+            {
+                // Seed default super admin
+                context.Users.Add(
                 new User()
                 {
-                    UserName = "sa",
+                    UserName = "Super Addmin",
                     UserInfoId = saUserInfo.Id,
                     AccessToken = Guid.NewGuid(),
                     CreatedDate = DateTime.Now,
@@ -91,7 +114,10 @@ namespace StudentManage.Domain.Migrations
                     Password = "123x@X"
                 });
 
-            context.SaveChanges();
+                context.SaveChanges();
+            }
+
+            #endregion USER
         }
     }
 }

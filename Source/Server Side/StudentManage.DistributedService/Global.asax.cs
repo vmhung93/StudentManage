@@ -17,6 +17,14 @@ namespace StudentManage.DistributedService
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configure(UnityRegister.Register);
+
+            // Initiate Database
+            InitiatedDatabase();
+        }
+
+        protected void InitiatedDatabase()
+        {
+            Services.Services.DatabaseService.InitDatabase();
         }
     }
 }

@@ -22,9 +22,9 @@ namespace StudentManage.DistributedService
             InitiatedDatabase();
         }
 
-        protected void InitiatedDatabase()
+        private void InitiatedDatabase()
         {
-            Services.Services.DatabaseService.InitDatabase();
+            StudentManage.Services.Services.DatabaseService.InitDatabase();
         }
     }
 }

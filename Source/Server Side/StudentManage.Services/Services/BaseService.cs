@@ -21,6 +21,10 @@ namespace StudentManage.Services.Services
             // Role
             Mapper.CreateMap<Role, RoleDto>();
             Mapper.CreateMap<RoleDto, Role>();
+
+            // Grade
+            Mapper.CreateMap<Grade, GradeDto>();
+            Mapper.CreateMap<GradeDto, Grade>();
         }
     }
 }

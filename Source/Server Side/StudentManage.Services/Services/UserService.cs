@@ -89,6 +89,11 @@ namespace StudentManage.Services.Services
             return new UserDto();
         }
 
+        /// <summary>
+        /// Update user info
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns></returns>
         public bool UpdateUserInfo(UserDto userDto)
         {
             bool result = false;

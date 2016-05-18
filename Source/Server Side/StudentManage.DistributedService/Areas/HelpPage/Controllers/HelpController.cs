@@ -1,8 +1,8 @@
+using StudentManage.DistributedService.Areas.HelpPage.ModelDescriptions;
+using StudentManage.DistributedService.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using StudentManage.DistributedService.Areas.HelpPage.ModelDescriptions;
-using StudentManage.DistributedService.Areas.HelpPage.Models;
 
 namespace StudentManage.DistributedService.Areas.HelpPage.Controllers
 {

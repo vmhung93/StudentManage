@@ -50,22 +50,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContext\StudentManageDbContext.cs" />
+    <Compile Include="Domain\Class.cs" />
+    <Compile Include="Domain\Coefficient.cs" />
+    <Compile Include="Domain\Courses.cs" />
+    <Compile Include="Domain\Grade.cs" />
+    <Compile Include="Domain\ITraceable.cs" />
+    <Compile Include="Domain\PositionInClass.cs" />
     <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\Scores.cs" />
+    <Compile Include="Domain\ScoreType.cs" />
+    <Compile Include="Domain\Semester.cs" />
+    <Compile Include="Domain\StudentInClass.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\DomainBase.cs" />
     <Compile Include="Domain\UserInfo.cs" />
+    <Compile Include="Migrations\201605161036197_InitiateDatabase.cs" />
+    <Compile Include="Migrations\201605161036197_InitiateDatabase.Designer.cs">
+      <DependentUpon>201605161036197_InitiateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605161202073_AddStudentInClass.cs" />
+    <Compile Include="Migrations\201605161202073_AddStudentInClass.Designer.cs">
+      <DependentUpon>201605161202073_AddStudentInClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\StudentManage.Common\StudentManage.Common.csproj">
       <Project>{ce4dea00-c4ce-49f4-aad4-d782d1eaed77}</Project>
       <Name>StudentManage.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605161036197_InitiateDatabase.resx">
+      <DependentUpon>201605161036197_InitiateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161202073_AddStudentInClass.resx">
+      <DependentUpon>201605161202073_AddStudentInClass.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

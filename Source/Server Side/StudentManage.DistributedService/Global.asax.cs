@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using StudentManage.DistributedService.DI;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -18,6 +15,16 @@ namespace StudentManage.DistributedService
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configure(UnityRegister.Register);
+
+            // Initiate Database
+            InitiatedDatabase();
+        }
+
+        private void InitiatedDatabase()
+        {
+            StudentManage.Services.Services.DatabaseService.InitDatabase();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace StudentManage.Services.Services
         bool Delete(Guid gradeId);
     }
 
-    public class GradeService : IGradeService
+    public class GradeService : BaseService, IGradeService
     {
         /// <summary>
         /// Create new grade
@@ -76,7 +76,7 @@ namespace StudentManage.Services.Services
                 // Update status from active to deleted
                 grade.Status = Common.Status.Deleted;
 
-                // Save change to dbContext
+                // Save change
                 dbContext.SaveChanges();
 
                 result = true;
@@ -152,6 +152,9 @@ namespace StudentManage.Services.Services
 
                 gradeEntity.Name = gradeDto.Name;
                 gradeEntity.ModifiedDate = DateTime.Now;
+
+                // Save change
+                dbContext.SaveChanges();
 
                 result = true;
             }

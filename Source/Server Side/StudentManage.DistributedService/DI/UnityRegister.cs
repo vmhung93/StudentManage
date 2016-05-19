@@ -17,6 +17,7 @@ namespace StudentManage.DistributedService.DI
             // Ex: container.RegisterType<IDbContext, DbContext>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IGradeService, GradeService>();
 
             config.DependencyResolver = new UnityResolver(container);
         }

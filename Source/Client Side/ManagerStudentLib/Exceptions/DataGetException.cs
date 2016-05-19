@@ -8,15 +8,16 @@ namespace ManagerStudentApp.Exceptions
 {
     public class DataGetException : Exception
     {
-        protected string status { get; set; }
-
+        public string Status { get; set; }
+        public string DataGetMessage { get; set; }
         public DataGetException()
         {
 
         }
-        public DataGetException(string status)
+        public DataGetException(string status, string message)
         {
-            this.status = status;
+            this.Status = status;
+            this.DataGetMessage = message;
         }
     }
 }

@@ -3,13 +3,23 @@
     public static class ResponseMessages
     {
         // User
-        public static string CreateUserSuccessfully = "User was created successfully";
+        public static string CreateDataSuccessfully = "Data was created successfully";
 
-        public static string CreateUserUnsuccessfully = "User was created unsuccessfully";
+        public static string CreateDataUnsuccessfully = "Data was created unsuccessfully";
 
         public static string UpdateUnsuccessful = "Update data unsuccessful";
 
         public static string UpdateSuccessful = "Update data successful";
+
+        public static string GetDataUnsuccessful = "Get data unsuccessful";
+
+        public static string GetDataSuccessful = "Get data successful";
+
+        public static string DeleteUnsuccessful = "Delete data unsuccessful";
+
+        public static string DeleteSuccessful = "Delete data successful";
+
+        public static string NoRecord = "Don't have record in database";
 
         public static string LogoutSuccessfully = "Logout successfully";
 
@@ -35,16 +45,6 @@
 
         public static string OldPasswordIncorrect = "Old password incorrect";
 
-        public static string DisabledAccount = "Your account has been deactivated";
-
-        public static string NotActivatedYet = "Your account hasn't been activated";
-
-        public static string UpdateUserInfoSuccessfully = "User info was updated successfully";
-
         public static string PermissionDeclined = "You don't have permission to access this page";
-
-        public static string DeleteUnsuccessful = "Delete data unsuccessful";
-
-        public static string DeleteSuccessful = "Delete data successful";
     }
 }

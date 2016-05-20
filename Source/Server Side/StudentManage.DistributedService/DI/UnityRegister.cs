@@ -16,6 +16,17 @@ namespace StudentManage.DistributedService.DI
             // This is achieved by registering these components with a HierarchicalLifetimeManager.
             // Ex: container.RegisterType<IDbContext, DbContext>(new HierarchicalLifetimeManager());
 
+            container.RegisterType<IClassService, ClassService>();
+            container.RegisterType<ICoefficientService, CoefficientService>();
+            container.RegisterType<ICoursesService, CoursesService>();
+            container.RegisterType<IGradeService, GradeService>();
+            container.RegisterType<IPositionInClassService, PositionInClassService>();
+            container.RegisterType<IRoleService, RoleService>();
+            container.RegisterType<IScoresService, ScoresService>();
+            container.RegisterType<IScoreTypeService, ScoreTypeService>();
+            container.RegisterType<ISemesterService, SemesterService>();
+            container.RegisterType<IStudentInClassService, StudentInClassService>();
+            container.RegisterType<IUserInfoService, UserInfoService>();
             container.RegisterType<IUserService, UserService>();
 
             config.DependencyResolver = new UnityResolver(container);

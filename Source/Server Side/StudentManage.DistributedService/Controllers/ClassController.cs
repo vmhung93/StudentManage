@@ -40,7 +40,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateUserSuccessfully
+                        Message = ResponseMessages.CreateDataSuccessfully
                     });
                 }
 
@@ -67,7 +67,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="classDto"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/Class")]
+        [Route("api/Update")]
         public IHttpActionResult Update(ClassDto classDto)
         {
             try
@@ -110,16 +110,12 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="classDto"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Route("api/Class")]
-        public IHttpActionResult Delete(Guid classId)
+        [HttpGet]
+        [Route("api/DeleteClass/{classId}")]
+        public IHttpActionResult DeleteClass(Guid classId)
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
 
                 bool result = ClassService.Delete(classId);
 
@@ -154,9 +150,9 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="classDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Class")]
-        public IHttpActionResult GetAll()
+        public IHttpActionResult Get()
         {
             try
             {
@@ -200,8 +196,8 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="classDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Class")]
-        public IHttpActionResult GetById(Guid classId)
+        [Route("api/Class/{classId}")]
+        public IHttpActionResult Get(Guid classId)
         {
             try
             {

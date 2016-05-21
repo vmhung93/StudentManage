@@ -22,7 +22,7 @@ namespace StudentManage.Services.Services
 
         bool Delete(Guid gradeId);
     }
-    
+
     public class GradeService : BaseService, IGradeService
     {
         /// <summary>
@@ -38,13 +38,13 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Using Mapper to map from grade dto to grade entity
-                var gradeEntity = Mapper.Map<Grade>(gradeDto);
+                var userEntity = Mapper.Map<Grade>(gradeDto);
 
-                gradeEntity.CreatedDate = DateTime.Now;
-                gradeEntity.ModifiedDate = DateTime.Now;
+                userEntity.CreatedDate = DateTime.Now;
+                userEntity.ModifiedDate = DateTime.Now;
 
                 // Add grade to dbContext
-                dbContext.Grade.Add(gradeEntity);
+                dbContext.Grade.Add(userEntity);
                 dbContext.SaveChanges();
 
                 result = true;
@@ -76,7 +76,7 @@ namespace StudentManage.Services.Services
                 // Update status from active to deleted
                 grade.Status = Common.Status.Deleted;
 
-                // Save change to dbContext
+                // Save change
                 dbContext.SaveChanges();
 
                 result = true;
@@ -152,6 +152,9 @@ namespace StudentManage.Services.Services
 
                 gradeEntity.Name = gradeDto.Name;
                 gradeEntity.ModifiedDate = DateTime.Now;
+
+                // Save change
+                dbContext.SaveChanges();
 
                 result = true;
             }

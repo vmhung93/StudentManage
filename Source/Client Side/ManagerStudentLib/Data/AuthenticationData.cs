@@ -39,5 +39,11 @@ namespace ManagerStudentLib.Data
             }
             return user;
         }
+
+        public static string testData() {
+            string url = DataHelper.DATA_SOURCE + "/Values";
+            ResponseData response = DataHelper.Get(url);
+            return response.JsonData;
+        }
     }
 }

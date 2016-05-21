@@ -28,10 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.changeClassUserControl1 = new ManagerStudentApp.GUI.UserControls.ChangeClassUserControl();
+            this.SuspendLayout();
+            // 
+            // changeClassUserControl1
+            // 
+            this.changeClassUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.changeClassUserControl1.Name = "changeClassUserControl1";
+            this.changeClassUserControl1.Size = new System.Drawing.Size(616, 535);
+            this.changeClassUserControl1.TabIndex = 0;
+            // 
+            // ListClassUserControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.changeClassUserControl1);
+            this.Name = "ListClassUserControl";
+            this.Size = new System.Drawing.Size(614, 543);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private ChangeClassUserControl changeClassUserControl1;
     }
 }

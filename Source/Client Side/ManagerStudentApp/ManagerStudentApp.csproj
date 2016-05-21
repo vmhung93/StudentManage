@@ -82,6 +82,18 @@
     <Compile Include="GUI\UserControls\AddReportSubjectUserControl.Designer.cs">
       <DependentUpon>AddReportSubjectUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\ChangeClassUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeClassUserControl.Designer.cs">
+      <DependentUpon>ChangeClassUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeScoreUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeScoreUserControl.Designer.cs">
+      <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UserControls\ManageStudentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -201,6 +213,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\AddStudentUserControl.resx">
       <DependentUpon>AddStudentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangeClassUserControl.resx">
+      <DependentUpon>ChangeClassUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangeScoreUserControl.resx">
+      <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListClassUserControl.resx">
+      <DependentUpon>ListClassUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ListStudentUserControl.resx">
       <DependentUpon>ListStudentUserControl.cs</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using ManagerStudentLib.Data;
+﻿using ManagerStudentApp.Exceptions;
+using ManagerStudentLib.Data;
 using ManagerStudentLib.Models;
 using System;
 using System.Collections.Generic;
@@ -93,19 +94,29 @@ namespace ManagerStudentApp.GUI.UserControls
         private void btnThem_Click(object sender, EventArgs e)
         {
             string thongBao = KiemTraNhapLieu();
-            if (thongBao == "")
+            if (String.IsNullOrEmpty(thongBao))
             {
-                string json = StudentData.AddStudent(new Student()
+                //string json = StudentData.AddStudent(new Student()
+                //{
+                //    ID = 1,
+                //    HoTen = txtHoTen.Text,
+                //    NgaySinh = Convert.ToDateTime(txtNgaySinh.Text),
+                //    GioiTinh = GioiTinh,
+                //    DiaChi = txtDiaChi.Text,
+                //    Email = txtEmail.Text,
+                //    IdLop = 1,
+                //});
+                //MessageBox.Show(json);
+                try
                 {
-                    ID = 1,
-                    HoTen = txtHoTen.Text,
-                    NgaySinh = Convert.ToDateTime(txtNgaySinh.Text),
-                    GioiTinh = GioiTinh,
-                    DiaChi = txtDiaChi.Text,
-                    Email = txtEmail.Text,
-                    IdLop = 1,
-                });
-                MessageBox.Show(json);
+                    string data = AuthenticationData.testData();
+                    MessageBox.Show(data);
+                }
+                catch (DataGetException ex)
+                {
+                    MessageBox.Show(ex.Status + "\n" + ex.DataGetMessage);
+                }
+                
             }
             else
             {

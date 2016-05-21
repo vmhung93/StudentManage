@@ -82,6 +82,12 @@
     <Compile Include="GUI\UserControls\AddReportSubjectUserControl.Designer.cs">
       <DependentUpon>AddReportSubjectUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\ManageStudentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ManageStudentControl.Designer.cs">
+      <DependentUpon>ManageStudentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UserControls\SettingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,6 +172,12 @@
     <Compile Include="GUI\UserControls\ChangeMailUserControl.Designer.cs">
       <DependentUpon>ChangeMailUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\UpdateStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\UpdateStudent.Designer.cs">
+      <DependentUpon>UpdateStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UserControls\UserControlFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +204,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ListStudentUserControl.resx">
       <DependentUpon>ListStudentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ManageStudentControl.resx">
+      <DependentUpon>ManageStudentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\UpdateStudent.resx">
+      <DependentUpon>UpdateStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

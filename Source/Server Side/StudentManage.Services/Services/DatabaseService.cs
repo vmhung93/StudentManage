@@ -10,6 +10,9 @@ namespace StudentManage.Services.Services
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentManageDbContext, Domain.Migrations.Configuration>());
 
+            // Initiate database without run latest migration
+            //Database.SetInitializer<StudentManageDbContext>(new CreateDatabaseIfNotExists<StudentManageDbContext>());
+
             var configuration = new Domain.Migrations.Configuration();
             var migration = new System.Data.Entity.Migrations.DbMigrator(configuration);
             if (migration.GetPendingMigrations().Any())

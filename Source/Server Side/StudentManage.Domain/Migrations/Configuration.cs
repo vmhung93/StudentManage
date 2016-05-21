@@ -8,14 +8,27 @@ namespace StudentManage.Domain.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<StudentManage.Domain.DbContext.StudentManageDbContext>
     {
+        private bool hasPendingMigration = false;
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+
+            var migration = new DbMigrator(this);
+            if (migration.GetPendingMigrations().Any())
+            {
+                hasPendingMigration = true;
+            }
         }
 
         protected override void Seed(StudentManage.Domain.DbContext.StudentManageDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            // This method will be called after migrating to the latest version.
+            // If don't have any pending migration then return
+            if (!hasPendingMigration)
+            {
+                return;
+            }
 
             #region ROLE
 
@@ -98,13 +111,13 @@ namespace StudentManage.Domain.Migrations
 
             #region USER
 
-            if (context.Users.FirstOrDefault(u => u.UserName.Contains("Super Addmin") && u.RoleId == saRole.Id) == null)
+            if (context.Users.FirstOrDefault(u => u.UserName.Contains("Super Admin") && u.Role.Level == RoleLevel.Adminstrator) == null)
             {
                 // Seed default super admin
                 context.Users.Add(
                 new User()
                 {
-                    UserName = "Super Addmin",
+                    UserName = "Super Admin",
                     UserInfoId = saUserInfo.Id,
                     AccessToken = Guid.NewGuid(),
                     CreatedDate = DateTime.Now,

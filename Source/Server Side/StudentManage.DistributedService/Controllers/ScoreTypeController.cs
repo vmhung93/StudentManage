@@ -40,7 +40,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateUserSuccessfully
+                        Message = ResponseMessages.CreateDataSuccessfully
                     });
                 }
 

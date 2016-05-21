@@ -28,6 +28,7 @@ namespace StudentManage.DistributedService.DI
             container.RegisterType<IStudentInClassService, StudentInClassService>();
             container.RegisterType<IUserInfoService, UserInfoService>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IGradeService, GradeService>();
 
             config.DependencyResolver = new UnityResolver(container);
         }

@@ -40,7 +40,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateUserSuccessfully
+                        Message = ResponseMessages.CreateDataSuccessfully
                     });
                 }
 
@@ -110,8 +110,8 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="coefficientDto"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Route("api/Coefficient")]
+        [HttpGet]
+        [Route("api/Coefficient/{coefficientId}")]
         public IHttpActionResult Delete(Guid coefficientId)
         {
             try
@@ -154,9 +154,9 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="coefficientDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Coefficient")]
-        public IHttpActionResult GetAll()
+        public IHttpActionResult Get()
         {
             try
             {
@@ -199,9 +199,9 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="coefficientDto"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Route("api/Coefficient")]
-        public IHttpActionResult GetById(Guid coefficientId)
+        [HttpGet]
+        [Route("api/Coefficient/{coefficientId}")]
+        public IHttpActionResult Get(Guid coefficientId)
         {
             try
             {

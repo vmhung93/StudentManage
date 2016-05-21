@@ -19,5 +19,10 @@ namespace ManagerStudentApp.Exceptions
             this.Status = status;
             this.DataGetMessage = message;
         }
+
+        public DataGetException(string message)
+        {
+            DataGetMessage = message;
+        }
     }
 }

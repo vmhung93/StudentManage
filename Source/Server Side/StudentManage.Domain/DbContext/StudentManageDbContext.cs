@@ -54,10 +54,6 @@ namespace StudentManage.Domain.DbContext
                 .HasRequired<Role>(u => u.Role)
                 .WithMany();
 
-            modelBuilder.Entity<User>()
-                .HasRequired<Role>(u => u.Role)
-                .WithMany();
-
             // Class
             modelBuilder.Entity<Class>()
                .HasRequired<User>(c => c.CreatedByUser)

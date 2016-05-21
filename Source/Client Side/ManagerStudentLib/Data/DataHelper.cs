@@ -8,8 +8,11 @@ using ManagerStudentApp.Exceptions;
 using ManagerStudentLib.Properties;
 using ManagerStudentLib.Models;
 using Newtonsoft.Json;
+using System.Net;
+using System.IO;
 namespace ManagerStudentLib.Data
 {
+
     public class DataHelper
     {
         public static string DATA_SOURCE = "http://" + Settings.Default.HOST + "/" + Settings.Default.DOMAIN;
@@ -22,7 +25,7 @@ namespace ManagerStudentLib.Data
             Settings.Default.Save();
         }
 
-        public static string GetHost() 
+        public static string GetHost()
         {
             return Settings.Default.HOST;
         }
@@ -32,60 +35,69 @@ namespace ManagerStudentLib.Data
             return Settings.Default.DOMAIN;
         }
 
-        public static string GetJsonData(string url)
-        {
-            return GetJsonData(url, null);
-        }
-
-        public static ResponseData PostJsonData(string url, string jsonRequestData)
+        public static ResponseData Post(string url, string jsonRequestData)
         {
             return GetResponse(url, HttpMethod.Post, jsonRequestData);
         }
 
-        public static ResponseData PutJsonData(string url, string jsonRequestData)
+        public static ResponseData Put(string url, string jsonRequestData)
         {
             return GetResponse(url, HttpMethod.Put, jsonRequestData);
         }
-        
-        public static string GetJsonData(string url, string jsonRequestData)
+
+        public static ResponseData Get(string url, string jsonRequestData)
         {
-            string jsonResponseData = null;
-            ResponseData reponse = GetResponse(url, HttpMethod.Get, jsonRequestData);
-            if (reponse.Status == 200) {
-                jsonResponseData = reponse.JsonData;
-            }
-            else
-            {
-                throw new DataGetException(reponse.Status.ToString(), reponse.Message);
-            }
-         
-            return jsonResponseData;
+            return GetResponse(url, HttpMethod.Get, jsonRequestData);
         }
 
-        public static ResponseData GetResponse(string url, HttpMethod method, string jsonRequestData) {
-            Task<HttpResponseMessage> httpResponse = null;
-            using (var httpClient = new HttpClient())
+        public static ResponseData Get(string url)
+        {
+            return GetResponse(url, HttpMethod.Get, null);
+        }
+
+        public static ResponseData GetResponse(string url, HttpMethod method, string jsonRequestData)
+        {
+            try
             {
-                var request = new HttpRequestMessage() {
-                    RequestUri = new Uri(url),
-                    Method = method
-                };
-                request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("aplication/json"));
-                if (jsonRequestData != null) 
+                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+                request.MediaType = "application/json";
+                request.Method = method.Method;
+
+                if (jsonRequestData != null)
                 {
-                    request.Content = new StringContent(jsonRequestData, Encoding.Unicode, "aplication/json");
+                    using (var streamWriter = new StreamWriter(request.GetRequestStream(), Encoding.UTF8))
+                    {
+                        streamWriter.Write(jsonRequestData);
+                        streamWriter.Flush();
+                        streamWriter.Close();
+                    }
                 }
-                httpResponse = httpClient.SendAsync(request);
+                request.Timeout = 10000;
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+
+                    var status = response.StatusCode;
+                    if (status == System.Net.HttpStatusCode.OK)
+                    { // OK
+                        using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                        {
+                            String responseString = reader.ReadToEnd();
+                            return JsonConvert.DeserializeObject<ResponseData>(responseString);
+                        }
+                    }
+                    else
+                    {
+                        throw new DataGetException(status.ToString(), response.StatusDescription);
+                    }
+
+                }
             }
-            var status = httpResponse.Result.StatusCode;
-            if (status == System.Net.HttpStatusCode.OK)
-            { // OK
-                return JsonConvert.DeserializeObject<ResponseData>(httpResponse.Result.Content.ReadAsStringAsync().Result);
-            }
-            else
+            catch (Exception e)
             {
-                throw new DataGetException(status.ToString(), httpResponse.Exception.Message);
+                throw new DataGetException(e.Message);
+
             }
+
         }
     }
 }

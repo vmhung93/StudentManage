@@ -52,9 +52,10 @@
             this.columnHeader14,
             this.columnHeader15});
             this.listView4.GridLines = true;
-            this.listView4.Location = new System.Drawing.Point(59, 280);
+            this.listView4.Location = new System.Drawing.Point(19, 131);
+            this.listView4.Margin = new System.Windows.Forms.Padding(2);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(761, 354);
+            this.listView4.Size = new System.Drawing.Size(572, 288);
             this.listView4.TabIndex = 26;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
@@ -86,9 +87,10 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(257, 187);
+            this.button10.Location = new System.Drawing.Point(451, 59);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(175, 40);
+            this.button10.Size = new System.Drawing.Size(131, 32);
             this.button10.TabIndex = 25;
             this.button10.Text = "Tìm kiếm";
             this.button10.UseVisualStyleBackColor = true;
@@ -96,42 +98,47 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(171, 124);
+            this.comboBox1.Location = new System.Drawing.Point(329, 66);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 24);
+            this.comboBox1.Size = new System.Drawing.Size(102, 21);
             this.comboBox1.TabIndex = 24;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(54, 243);
+            this.label14.Location = new System.Drawing.Point(15, 100);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(133, 17);
+            this.label14.Size = new System.Drawing.Size(102, 13);
             this.label14.TabIndex = 23;
             this.label14.Text = "Danh sách học sinh";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(54, 124);
+            this.label15.Location = new System.Drawing.Point(276, 69);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 17);
+            this.label15.Size = new System.Drawing.Size(49, 13);
             this.label15.TabIndex = 20;
             this.label15.Text = "Chọn lớp";
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(171, 85);
+            this.textBox10.Location = new System.Drawing.Point(59, 66);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(261, 22);
+            this.textBox10.Size = new System.Drawing.Size(197, 20);
             this.textBox10.TabIndex = 22;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(54, 85);
+            this.label16.Location = new System.Drawing.Point(16, 69);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(50, 17);
+            this.label16.Size = new System.Drawing.Size(39, 13);
             this.label16.TabIndex = 21;
             this.label16.Text = "Họ tên";
             // 
@@ -139,15 +146,16 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label17.Location = new System.Drawing.Point(164, 24);
+            this.label17.Location = new System.Drawing.Point(193, 16);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(268, 39);
+            this.label17.Size = new System.Drawing.Size(214, 31);
             this.label17.TabIndex = 19;
             this.label17.Text = "Tra cứu học sinh";
             // 
             // ListStudentUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listView4);
             this.Controls.Add(this.button10);
@@ -157,8 +165,9 @@
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ListStudentUserControl";
-            this.Size = new System.Drawing.Size(918, 690);
+            this.Size = new System.Drawing.Size(614, 443);
             this.ResumeLayout(false);
             this.PerformLayout();
 

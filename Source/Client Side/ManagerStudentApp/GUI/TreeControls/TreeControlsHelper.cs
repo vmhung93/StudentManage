@@ -18,7 +18,7 @@ namespace ManagerStudentApp.GUI.TreeControls
         [Description("Thêm tài khoản")]             ADD_ACCOUNT,
         [Description("Danh sách các tài khoản")]    LIST_ACCOUNT,
         [Description("Thêm mới học sinh")]          ADD_STUDENT,
-        [Description("Tra cứu thông tin học sinh")] LIST_STUDENT,
+        [Description("Tra cứu thông tin học sinh")] MANAGE_STUDENT,
         [Description("Thành lập lớp")]              ADD_CLASS,
         [Description("Danh sách các lớp")]          LIST_CLASS,
         [Description("Thêm môn học")]               ADD_SUBJECT,
@@ -189,7 +189,7 @@ namespace ManagerStudentApp.GUI.TreeControls
         private  void BuildStudentTreeNode(Dictionary<TreeRootId, TreeNodeControl> dicNodes)
         {
             var studentNode = new TreeNodeControl("Học sinh", 3, 3, null);
-            var childNode = new TreeNodeControl(GetActionValue(ControlAction.LIST_STUDENT), 7, 7, studentNode).SetAction(ControlAction.LIST_STUDENT);
+            var childNode = new TreeNodeControl(GetActionValue(ControlAction.MANAGE_STUDENT), 7, 7, studentNode).SetAction(ControlAction.MANAGE_STUDENT);
             dicNodes.Add(TreeRootId.STUDENT, studentNode);
 
             var classNode = new TreeNodeControl("Lớp", 6, 6, null);

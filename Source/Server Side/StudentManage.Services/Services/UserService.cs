@@ -11,6 +11,8 @@ namespace StudentManage.Services.Services
     {
         UserDto Login(string userName, string password);
 
+        UserDto GetUserByToken(Guid token);
+
         bool Create(UserDto userDto);
 
         bool UpdateUserInfo(UserDto userDto);
@@ -20,6 +22,22 @@ namespace StudentManage.Services.Services
 
     public class UserService : BaseService, IUserService
     {
+        public UserDto GetUserByToken(Guid token)
+        {
+            //    // Create DBcontext object
+            //    using (var dbContext = new StudentManageDbContext())
+            //    {
+            //        dbContext.Users.Where(u => u.)
+
+            //        // Add user to dbContext
+            //        dbContext.Users.Add(userEntity);
+            //        dbContext.SaveChanges();
+
+            //        result = true;
+            //    }
+            return new UserDto();
+        }
+
         /// <summary>
         /// Create new user
         /// </summary>

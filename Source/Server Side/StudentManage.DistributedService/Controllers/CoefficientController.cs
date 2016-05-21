@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -110,18 +110,18 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="coefficientDto"></param>
         /// <returns></returns>
-        [HttpGet]
-        [Route("api/Coefficient/{coefficientId}")]
-        public IHttpActionResult Delete(Guid coefficientId)
+        [HttpPost]
+        [Route("api/DeleteCoefficient")]
+        public IHttpActionResult Delete(BaseDto coefficientDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (coefficientDto == null || coefficientDto.Id == null || coefficientDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = CoefficientService.Delete(coefficientId);
+                bool result = CoefficientService.Delete(coefficientDto.Id);
 
                 if (result)
                 {
@@ -173,7 +173,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -218,7 +218,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 

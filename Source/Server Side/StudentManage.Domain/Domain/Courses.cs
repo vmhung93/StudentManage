@@ -10,7 +10,7 @@ namespace StudentManage.Domain.Domain
 
         public string Name { get; set; }
 
-        public Guid DeanId { get; set; }
+        public Guid? DeanId { get; set; }
 
         [ForeignKey("DeanId")]
         public virtual User Dean { get; set; }

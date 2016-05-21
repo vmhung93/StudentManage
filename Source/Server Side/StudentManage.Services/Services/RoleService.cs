@@ -151,8 +151,9 @@ namespace StudentManage.Services.Services
                 }
 
                 roleEntity.Name = roleDto.Name;
+                roleEntity.Level = roleEntity.Level;
                 roleEntity.ModifiedDate = DateTime.Now;
-
+                dbContext.SaveChanges();
                 result = true;
             }
 

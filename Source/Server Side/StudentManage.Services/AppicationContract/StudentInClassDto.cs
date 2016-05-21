@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StudentManage.Services.AppicationContract
@@ -18,5 +19,19 @@ namespace StudentManage.Services.AppicationContract
         public Guid PositionId { get; set; }
         
         public PositionInClassDto Position { get; set; }
+    }
+
+    public class ClassWithStudentDto
+    {
+        public ClassDto Class { get; set; }
+
+        public List<Guid> StudentIds { get; set; }
+    }
+
+    public class ClassStudentInfoDto
+    {
+        public ClassDto Class { get; set; }
+
+        public List<UserDto> Students { get; set; }
     }
 }

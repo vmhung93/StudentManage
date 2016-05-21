@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -111,17 +111,17 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="coursesDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Courses")]
-        public IHttpActionResult Delete(Guid coursesId)
+        [Route("api/DeleteCourses")]
+        public IHttpActionResult Delete(BaseDto coursesDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (coursesDto == null || coursesDto.Id == null || coursesDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = CoursesService.Delete(coursesId);
+                bool result = CoursesService.Delete(coursesDto.Id);
 
                 if (result)
                 {
@@ -154,7 +154,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="coursesDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Courses")]
         public IHttpActionResult GetAll()
         {
@@ -173,7 +173,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -199,7 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="coursesDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Courses")]
         public IHttpActionResult GetById(Guid coursesId)
         {
@@ -218,7 +218,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 

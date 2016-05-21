@@ -108,7 +108,7 @@ namespace StudentManage.Services.Services
                 return semesters;
             }
         }
-
+        
         /// <summary>
         /// Get semester by semester id
         /// </summary>
@@ -153,6 +153,7 @@ namespace StudentManage.Services.Services
                 semesterEntity.Name = semesterDto.Name;
                 semesterEntity.ModifiedDate = DateTime.Now;
 
+                dbContext.SaveChanges();
                 result = true;
             }
 

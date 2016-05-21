@@ -153,6 +153,7 @@ namespace StudentManage.Services.Services
                 userInfoEntity.DateOfBirth = userInfoDto.DateOfBirth;
                 userInfoEntity.Gender = userInfoDto.Gender;
 
+                dbContext.SaveChanges();
                 result = true;
             }
 

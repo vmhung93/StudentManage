@@ -97,11 +97,6 @@ namespace StudentManage.Services.Services
                 var grades = new List<GradeDto>();
                 var gradeEntity = dbContext.Grade.ToList();
 
-                if (!gradeEntity.Any())
-                {
-                    return null;
-                }
-
                 // Mapper from list grade entity to grade dto
                 Mapper.Map<List<Grade>, List<GradeDto>>(gradeEntity, grades);
 

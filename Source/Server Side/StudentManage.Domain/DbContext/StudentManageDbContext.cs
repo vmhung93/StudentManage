@@ -8,7 +8,6 @@ namespace StudentManage.Domain.DbContext
         public StudentManageDbContext()
             : base("name=DefaultConnection")
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<StudentManageDbContext, Migrations.Configuration>());
         }
 
         public DbSet<Class> Class { get; set; }

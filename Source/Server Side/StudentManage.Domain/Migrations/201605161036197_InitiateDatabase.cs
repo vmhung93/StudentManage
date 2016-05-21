@@ -17,8 +17,8 @@ namespace StudentManage.Domain.Migrations
                     HomeroomTeacherId = c.Guid(nullable: false),
                     CreatedDate = c.DateTime(nullable: false),
                     ModifiedDate = c.DateTime(nullable: false),
-                    CreatedBy = c.Guid(nullable: false),
-                    ModifiedBy = c.Guid(nullable: false),
+                    CreatedBy = c.Guid(),
+                    ModifiedBy = c.Guid(),
                     Status = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id)

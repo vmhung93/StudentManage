@@ -10,7 +10,7 @@ namespace StudentManage.Domain.Domain
 
         public string Name { get; set; }
 
-        public Guid GradeId { get; set; }
+        public Guid? GradeId { get; set; }
 
         [ForeignKey("GradeId")]
         public virtual Grade Grade { get; set; }

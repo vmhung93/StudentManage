@@ -8,11 +8,15 @@ namespace StudentManage.Domain.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserCode { get; set; }
 
+        public string BadgeId { get; set; }
+
         public string UserName { get; set; }
 
         public string Password { get; set; }
 
         public Guid AccessToken { get; set; }
+
+        public DateTime ExpiredToken { get; set; }
 
         public Guid RoleId { get; set; }
 

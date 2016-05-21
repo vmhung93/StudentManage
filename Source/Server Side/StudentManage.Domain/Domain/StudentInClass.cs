@@ -17,7 +17,7 @@ namespace StudentManage.Domain.Domain
         [ForeignKey("ClassId")]
         public virtual Class Class { get; set; }
 
-        public Guid PositionId { get; set; }
+        public Guid? PositionId { get; set; }
 
         [ForeignKey("PositionId")]
         public virtual PositionInClass Position { get; set; }

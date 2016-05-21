@@ -214,6 +214,9 @@
     <EmbeddedResource Include="GUI\UserControls\AddStudentUserControl.resx">
       <DependentUpon>AddStudentUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\AddSubjectUserControl.resx">
+      <DependentUpon>AddSubjectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ChangeClassUserControl.resx">
       <DependentUpon>ChangeClassUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ListStudentUserControl.resx">
       <DependentUpon>ListStudentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListSubjectUserControl.resx">
+      <DependentUpon>ListSubjectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ManageStudentControl.resx">
       <DependentUpon>ManageStudentControl.cs</DependentUpon>

@@ -82,6 +82,24 @@
     <Compile Include="GUI\UserControls\AddReportSubjectUserControl.Designer.cs">
       <DependentUpon>AddReportSubjectUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\ChangeClassUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeClassUserControl.Designer.cs">
+      <DependentUpon>ChangeClassUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeScoreUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeScoreUserControl.Designer.cs">
+      <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControls\ManageStudentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ManageStudentControl.Designer.cs">
+      <DependentUpon>ManageStudentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UserControls\SettingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,6 +184,12 @@
     <Compile Include="GUI\UserControls\ChangeMailUserControl.Designer.cs">
       <DependentUpon>ChangeMailUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\DetailStudentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\DetailStudentUserControl.Designer.cs">
+      <DependentUpon>DetailStudentUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UserControls\UserControlFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TabControls\TabPageControl.resx">
+      <DependentUpon>TabPageControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\AddClassUserControl.resx">
       <DependentUpon>AddClassUserControl.cs</DependentUpon>
@@ -190,8 +217,32 @@
     <EmbeddedResource Include="GUI\UserControls\AddStudentUserControl.resx">
       <DependentUpon>AddStudentUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\AddSubjectUserControl.resx">
+      <DependentUpon>AddSubjectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangeClassUserControl.resx">
+      <DependentUpon>ChangeClassUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangeScoreUserControl.resx">
+      <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListClassUserControl.resx">
+      <DependentUpon>ListClassUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListScoreUserControl.resx">
+      <DependentUpon>ListScoreUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ListStudentUserControl.resx">
       <DependentUpon>ListStudentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListSubjectUserControl.resx">
+      <DependentUpon>ListSubjectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ManageStudentControl.resx">
+      <DependentUpon>ManageStudentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\DetailStudentUserControl.resx">
+      <DependentUpon>DetailStudentUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -28,10 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.listView4 = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label14 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // listView4
+            // 
+            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11});
+            this.listView4.GridLines = true;
+            this.listView4.Location = new System.Drawing.Point(41, 98);
+            this.listView4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView4.Name = "listView4";
+            this.listView4.Size = new System.Drawing.Size(517, 430);
+            this.listView4.TabIndex = 34;
+            this.listView4.UseCompatibleStateImageBehavior = false;
+            this.listView4.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "#";
+            this.columnHeader10.Width = 100;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Tên môn học";
+            this.columnHeader11.Width = 250;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(38, 79);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(134, 17);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Danh sách môn học";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label17.Location = new System.Drawing.Point(158, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(271, 39);
+            this.label17.TabIndex = 27;
+            this.label17.Text = "Tra cứu môn học";
+            // 
+            // ListSubjectUserControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listView4);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label17);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "ListSubjectUserControl";
+            this.Size = new System.Drawing.Size(601, 559);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label17;
     }
 }

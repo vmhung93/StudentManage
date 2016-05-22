@@ -44,14 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ClassData.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
     <Compile Include="Authentication\AuthenticationService.cs" />
     <Compile Include="Exceptions\DataGetException.cs" />
     <Compile Include="Data\DataHelper.cs" />
     <Compile Include="Data\AuthenticationData.cs" />
+    <Compile Include="Models\ClassModels.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\ResponseData.cs" />
+    <Compile Include="Models\AuthencatedInfo.cs" />
+    <Compile Include="Models\Score.cs" />
+    <Compile Include="Models\StudentNotInClass.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

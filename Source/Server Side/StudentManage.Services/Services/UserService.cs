@@ -49,6 +49,8 @@ namespace StudentManage.Services.Services
                 dbContext.Users.Add(userEntity);
                 dbContext.SaveChanges();
 
+                // Generate badge id
+
                 result = true;
             }
 

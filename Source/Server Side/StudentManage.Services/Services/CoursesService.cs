@@ -143,7 +143,7 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var coursesEntity = dbContext.Class.FirstOrDefault(g => g.Id == CoursesDto.Id);
+                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == CoursesDto.Id);
 
                 if (coursesEntity == null)
                 {
@@ -151,8 +151,11 @@ namespace StudentManage.Services.Services
                 }
 
                 coursesEntity.Name = CoursesDto.Name;
+                coursesEntity.DeanId = CoursesDto.DeanId;
+                coursesEntity.SemesterId = CoursesDto.SemesterId;
                 coursesEntity.ModifiedDate = DateTime.Now;
 
+                dbContext.SaveChanges();
                 result = true;
             }
 

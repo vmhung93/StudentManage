@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -111,17 +111,17 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="studentInClassDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/StudentInClass")]
-        public IHttpActionResult Delete(Guid studentInClassId)
+        [Route("api/DeleteStudentInClass")]
+        public IHttpActionResult Delete(BaseDto studentInClassDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (studentInClassDto == null || studentInClassDto.Id == null || studentInClassDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = StudentInClassService.Delete(studentInClassId);
+                bool result = StudentInClassService.Delete(studentInClassDto.Id);
 
                 if (result)
                 {
@@ -154,7 +154,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="studentInClassDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/StudentInClass")]
         public IHttpActionResult GetAll()
         {
@@ -172,7 +172,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = result
                     });
                 }
@@ -180,7 +180,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -199,7 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="studentInClassDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/StudentInClass")]
         public IHttpActionResult GetById(Guid studentInClassId)
         {
@@ -217,7 +217,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = result
                     });
                 }
@@ -225,7 +225,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -238,5 +238,100 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// Create new class
+        /// </summary>
+        /// <param name="classWithStudentDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/StudentInClass/CreateClassWithStudent")]
+        public IHttpActionResult CreateClassWithStudent(ClassWithStudentDto classWithStudentDto)
+        {
+            try
+            {
+                bool result = StudentInClassService.CreateClassWithStudent(classWithStudentDto);
+
+                if (result == true)
+                {
+                    var dataJSon = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.CreateDataSuccessfully
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.CreateDataUnsuccessfully
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// GetById class info
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/StudentInClass/GetClassStudentInfo/{classId}")]
+        public IHttpActionResult GetClassStudentInfo(Guid classId)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                ClassStudentInfoDto result = StudentInClassService.GetClassStudentInfo(classId);
+
+                if (result != null)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        ///// <summary>
+        ///// GetById class info
+        ///// </summary>
+        ///// <param name="classId"></param>
+        ///// <returns></returns>
+        //[HttpPost]
+        //[Route("api/StudentInClass/UpdateClassWithStudents")]
+        //public IHttpActionResult UpdateClassWithStudents(Guid classId)
+        //{ }
     }
 }

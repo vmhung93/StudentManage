@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -111,17 +111,17 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="scoreTypeDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/ScoreType")]
-        public IHttpActionResult Delete(Guid scoreTypeId)
+        [Route("api/DeleteScoreType")]
+        public IHttpActionResult Delete(BaseDto scoreTypeDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (scoreTypeDto == null || scoreTypeDto.Id == null || scoreTypeDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = ScoreTypeService.Delete(scoreTypeId);
+                bool result = ScoreTypeService.Delete(scoreTypeDto.Id);
 
                 if (result)
                 {
@@ -154,7 +154,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="scoreTypeDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/ScoreType")]
         public IHttpActionResult GetAll()
         {
@@ -172,7 +172,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = result
                     });
                 }
@@ -180,7 +180,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -199,7 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="scoreTypeDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/ScoreType")]
         public IHttpActionResult GetById(Guid scoreTypeId)
         {
@@ -217,7 +217,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = result
                     });
                 }
@@ -225,7 +225,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

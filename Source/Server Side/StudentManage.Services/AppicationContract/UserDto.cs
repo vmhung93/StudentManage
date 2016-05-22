@@ -6,11 +6,9 @@ namespace StudentManage.Services.AppicationContract
     public class UserDto : BaseDto
     {
         public int UserCode { get; set; }
-
-        [Required]
+        
         public string UserName { get; set; }
-
-        [Required]
+        
         public string Password { get; set; }
 
         public Guid AccessToken { get; set; }

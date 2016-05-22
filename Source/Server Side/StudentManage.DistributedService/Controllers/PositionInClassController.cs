@@ -111,17 +111,17 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="positionInClassDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/PositionInClass")]
-        public IHttpActionResult Delete(Guid positionInClassId)
+        [Route("api/DeletePositionInClass")]
+        public IHttpActionResult Delete(BaseDto positionInClassDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (positionInClassDto == null || positionInClassDto.Id == null || positionInClassDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = PositionInClassService.Delete(positionInClassId);
+                bool result = PositionInClassService.Delete(positionInClassDto.Id);
 
                 if (result)
                 {
@@ -154,7 +154,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="positionInClassDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/PositionInClass")]
         public IHttpActionResult GetAll()
         {
@@ -172,15 +172,15 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -199,7 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="positionInClassDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/PositionInClass")]
         public IHttpActionResult GetById(Guid positionInClassId)
         {
@@ -217,15 +217,15 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

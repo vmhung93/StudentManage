@@ -11,7 +11,7 @@ namespace ManagerStudentLib.Models
     {
         public int Status { get; set; }
         public string Message { get; set; }
-        [JsonProperty("data")]
+        [JsonProperty("Data")]
         public string JsonData { get; set; }
     }
 }

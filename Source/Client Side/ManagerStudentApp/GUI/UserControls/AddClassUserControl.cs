@@ -7,14 +7,192 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagerStudentLib.Models;
+using ManagerStudentLib.Data;
+using ManagerStudentApp.Exceptions;
 
 namespace ManagerStudentApp.GUI.UserControls
 {
     public partial class AddClassUserControl : UserControl
     {
+        private List<User> originalStudents = new List<User>();
+        private List<User> addedStudents = new List<User>();
+        private List<User> preAddStudents = new List<User>();
+        private List<User> teachers = new List<User>();
         public AddClassUserControl()
         {
             InitializeComponent();
+        }
+
+        private void AddClassUserControl_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            PreLoadAddClassInfo pre = ClassData.GetInfoForAddClass();
+            this.originalStudents = pre.Students;
+            this.teachers = pre.HomeroomTeacherdes;
+            ResetData();
+        }
+        private void ResetData()
+        {
+            this.preAddStudents.Clear();
+            this.addedStudents.Clear();
+            this.preAddStudents.AddRange(this.originalStudents);
+            LoadAddedStudents();
+            LoadPreStudents();
+            LoadTeacher();
+            LoadNumAddStudent();
+            this.txtTenLop.Focus();
+        }
+
+        private void LoadTeacher()
+        {
+            comboBoxGVCN.Items.Clear();
+
+            foreach (User teacher in this.teachers)
+            {
+                comboBoxGVCN.Items.Add(teacher.UserInfo.Name);
+            }
+            if (comboBoxGVCN.Items.Count > 0)
+            {
+                comboBoxGVCN.SelectedIndex = 0;
+            }
+        }
+
+        private void LoadPreStudents()
+        {
+            this.lvLop.Items.Clear();
+            foreach (User st in this.preAddStudents)
+            {
+                var item = new ListViewItem(new String[] { st.UserCode.ToString(), st.UserInfo.Name });
+                lvLop.Items.Add(item);
+            }
+        }
+
+        private void LoadAddedStudents()
+        {
+            this.lvLopSelect.Items.Clear();
+            foreach (User st in this.addedStudents)
+            {
+                var item = new ListViewItem(new String[] { st.UserCode.ToString(), st.UserInfo.Name });
+                lvLopSelect.Items.Add(item);
+            }
+        }
+
+        private void LoadNumAddStudent()
+        {
+            this.txtSiSo.Text = this.lvLopSelect.Items.Count.ToString();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (lvLop.SelectedIndices.Count > 0)
+            {
+                var listSelected = new List<User>();
+                foreach (int index in lvLop.SelectedIndices) {
+                    listSelected.Add(this.preAddStudents[index]);
+                }
+                foreach (User st in listSelected)
+                {
+                    this.preAddStudents.Remove(st);
+                }
+                this.addedStudents.AddRange(listSelected);
+                LoadPreStudents();
+                LoadAddedStudents();
+                LoadNumAddStudent();
+            }
+        }
+
+        private void btnAddAll_Click(object sender, EventArgs e)
+        {
+            if (lvLop.Items.Count > 0)
+            {
+                this.addedStudents.AddRange(this.preAddStudents);
+                this.preAddStudents.Clear();
+                LoadPreStudents();
+                LoadAddedStudents();
+                LoadNumAddStudent();
+            }
+        }
+
+        private void btnSubtract_Click(object sender, EventArgs e)
+        {
+            if (lvLopSelect.SelectedIndices.Count > 0)
+            {
+                var listSelected = new List<User>();
+                foreach (int index in lvLopSelect.SelectedIndices)
+                {
+                    listSelected.Add(this.addedStudents[index]);
+                }
+                foreach (User st in listSelected)
+                {
+                    this.addedStudents.Remove(st);
+                }
+                this.preAddStudents.AddRange(listSelected);
+                LoadPreStudents();
+                LoadAddedStudents();
+                LoadNumAddStudent();
+            }
+        }
+
+        private void btnSubtractAll_Click(object sender, EventArgs e)
+        {
+            if (lvLopSelect.Items.Count > 0)
+            {
+                this.preAddStudents.AddRange(this.addedStudents);
+                this.addedStudents.Clear();
+                LoadPreStudents();
+                LoadAddedStudents();
+                LoadNumAddStudent();
+            }
+        }
+
+        private void btnHoanTac_Click(object sender, EventArgs e)
+        {
+            ResetData();
+        }
+
+        private void btnLapLop_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(txtTenLop.Text))
+            {
+                MessageBox.Show(this, "Tên lớp không được trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }            
+            if (comboBoxGVCN.SelectedIndex < 0)
+            {
+                MessageBox.Show(this, "Chủ nhiệm không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            String teacherId = teachers[comboBoxGVCN.SelectedIndex].Id;
+            var studentIds = new List<string>();
+            foreach (User st in this.addedStudents) {
+                studentIds.Add(st.Id);
+            }
+            var classInfo = new ClassInfo()
+            {
+                Name = txtTenLop.Text,
+                HomeroomTeacherId = teacherId,
+                CreatedBy = "073f4124-df1d-e611-832c-14dda9bd8fb8"
+            };
+
+            ClassInfoWithStudentIds addClassInfo = new ClassInfoWithStudentIds()
+            {
+                Class = classInfo,
+                StudentIds = studentIds
+            };
+            try
+            {
+                MessageBox.Show(this, ClassData.AddClass(addClassInfo), "Thành công", MessageBoxButtons.OK, MessageBoxIcon.None);
+                LoadData();
+            } catch (DataGetException ex) {
+                MessageBox.Show(this, ex.DataGetMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
         }
     }
 }

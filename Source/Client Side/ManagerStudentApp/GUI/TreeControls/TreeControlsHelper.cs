@@ -20,6 +20,7 @@ namespace ManagerStudentApp.GUI.TreeControls
         [Description("Thêm mới học sinh")]          ADD_STUDENT,
         [Description("Tra cứu thông tin học sinh")] MANAGE_STUDENT,
         [Description("Thành lập lớp")]              ADD_CLASS,
+        [Description("Cập nhật lớp")]               CHANGE_CLASS,
         [Description("Danh sách các lớp")]          LIST_CLASS,
         [Description("Thêm môn học")]               ADD_SUBJECT,
         [Description("Danh sách các môn học")]      LIST_SUBJECT,
@@ -160,6 +161,7 @@ namespace ManagerStudentApp.GUI.TreeControls
             if (dicNodes.TryGetValue(TreeRootId.CLASS, out node))
             {
                 var childNode = new TreeNodeControl(GetActionValue(ControlAction.ADD_CLASS), 8, 8, node).SetAction(ControlAction.ADD_CLASS);
+                childNode = new TreeNodeControl(GetActionValue(ControlAction.CHANGE_CLASS), 8, 8, node).SetAction(ControlAction.CHANGE_CLASS);
             }
             if (dicNodes.TryGetValue(TreeRootId.SUBJECT, out node))
             {

@@ -124,6 +124,10 @@ namespace ManagerStudentApp.GUI.UserControls
             }
         }
 
+        private void AddStudentUserControl_Load(object sender, EventArgs e)
+        {
+        }
+
         //private void txtEmail_Validating(object sender, CancelEventArgs e)
         //{
         //    var regex = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";

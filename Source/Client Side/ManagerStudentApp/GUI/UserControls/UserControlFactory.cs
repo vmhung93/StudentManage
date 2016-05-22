@@ -31,10 +31,13 @@ namespace ManagerStudentApp.GUI.UserControls
                     userControl = new AddStudentUserControl();
                     break;
                 case ControlAction.MANAGE_STUDENT:
-                    userControl = new ManageStudentControl();
+                    userControl = new ListStudentUserControl();
                     break;
                 case ControlAction.ADD_CLASS:
                     userControl = new AddClassUserControl();
+                    break;
+                case ControlAction.CHANGE_CLASS:
+                    userControl = new ChangeClassUserControl();
                     break;
                 case ControlAction.LIST_CLASS:
                     userControl = new ListClassUserControl();

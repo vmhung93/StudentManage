@@ -202,6 +202,9 @@
     <EmbeddedResource Include="GUI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TabControls\TabPageControl.resx">
+      <DependentUpon>TabPageControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\AddClassUserControl.resx">
       <DependentUpon>AddClassUserControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -18,5 +18,12 @@ namespace ManagerStudentApp.GUI.TabControls
             this.Controls.Add(UserControls.UserControlFactory.GetUserControl(TreeNodeControl.GetAction()));
             this.AutoScroll = true;
         }
+
+        public void ResetControl()
+        {
+            this.Controls[0].Dispose();
+            this.Controls.Add(UserControls.UserControlFactory.GetUserControl(TreeNodeControl.GetAction()));
+        }
+
     }
 }

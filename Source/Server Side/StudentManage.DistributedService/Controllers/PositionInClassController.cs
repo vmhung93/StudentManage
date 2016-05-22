@@ -1,29 +1,30 @@
 ﻿using StudentManage.Common;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
+using System.Collections.Generic;
 using System;
 using System.Net;
 using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
-    public class GradeController : BaseApiController
+    public class PositionInClassController : BaseApiController
     {
-        private IGradeService GradeService;
+        private IPositionInClassService PositionInClassService;
 
-        public GradeController(IGradeService gradeService)
+        public PositionInClassController(IPositionInClassService positionInClassService)
         {
-            this.GradeService = gradeService;
+            this.PositionInClassService = positionInClassService;
         }
-        
+
         /// <summary>
-        /// Create new grade
+        /// Create new positionInClass
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Grade")]
-        public IHttpActionResult Create(GradeDto gradeDto)
+        [Route("api/PositionInClass")]
+        public IHttpActionResult Create(PositionInClassDto positionInClassDto)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = GradeService.Create(gradeDto);
+                bool result = PositionInClassService.Create(positionInClassDto);
 
                 if (result)
                 {
@@ -46,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.CreateDataUnsuccessfully
+                    Message = ResponseMessages.InternalServerError
                 });
             }
             catch (Exception ex)
@@ -61,13 +62,13 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Update grade info
+        /// Update positionInClass info
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/Grade")]
-        public IHttpActionResult UpdateGradeInfo(GradeDto gradeDto)
+        [Route("api/PositionInClass")]
+        public IHttpActionResult Update(PositionInClassDto positionInClassDto)
         {
             try
             {
@@ -76,7 +77,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = GradeService.Update(gradeDto);
+                bool result = PositionInClassService.Update(positionInClassDto);
 
                 if (result)
                 {
@@ -105,22 +106,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Delete grade by id
+        /// Delete positionInClass info
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/DeleteGrade")]
-        public IHttpActionResult Delete(BaseDto gradeDto)
+        [Route("api/DeletePositionInClass")]
+        public IHttpActionResult Delete(BaseDto positionInClassDto)
         {
             try
             {
-                if (gradeDto == null || gradeDto.Id == null || gradeDto.Id == Guid.Empty)
+                if (positionInClassDto == null || positionInClassDto.Id == null || positionInClassDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = GradeService.Delete(gradeDto.Id);
+                bool result = PositionInClassService.Delete(positionInClassDto.Id);
 
                 if (result)
                 {
@@ -149,31 +150,37 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Get all grade, don't filter by status
+        /// GetAll positionInClass info
         /// </summary>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Grade")]
-        public IHttpActionResult Get()
+        [Route("api/PositionInClass")]
+        public IHttpActionResult GetAll()
         {
             try
             {
-                var result = GradeService.GetAll();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
 
-                if (result.Count > 0)
+                List<PositionInClassDto> result = PositionInClassService.GetAll();
+
+                if (result.Count != 0)
                 {
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateDataSuccessfully,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -188,16 +195,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Get grade by id
+        /// GetById positionInClass info
         /// </summary>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Grade/{gradeId}")]
-        public IHttpActionResult Get(Guid gradeId)
+        [Route("api/PositionInClass")]
+        public IHttpActionResult GetById(Guid positionInClassId)
         {
             try
             {
-                var result = GradeService.GetById(gradeId);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                PositionInClassDto result = PositionInClassService.GetById(positionInClassId);
 
                 if (result != null)
                 {
@@ -211,8 +224,8 @@ namespace StudentManage.DistributedService.Controllers
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -225,6 +238,5 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
-
     }
 }

@@ -10,8 +10,7 @@ namespace StudentManage.Services.AppicationContract
     public class GradeDto : BaseDto
     {
         public int Code { get; set; }
-
-        [Required]
+        
         public string Name { get; set; }
 
         public DateTime CreatedDate { get; set; }

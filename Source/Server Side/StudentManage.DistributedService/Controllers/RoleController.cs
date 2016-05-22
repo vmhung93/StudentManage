@@ -1,29 +1,30 @@
 ﻿using StudentManage.Common;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
+using System.Collections.Generic;
 using System;
 using System.Net;
 using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
-    public class GradeController : BaseApiController
+    public class RoleController : BaseApiController
     {
-        private IGradeService GradeService;
+        private IRoleService RoleService;
 
-        public GradeController(IGradeService gradeService)
+        public RoleController(IRoleService roleService)
         {
-            this.GradeService = gradeService;
+            this.RoleService = roleService;
         }
-        
+
         /// <summary>
-        /// Create new grade
+        /// Create new role
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="roleDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Grade")]
-        public IHttpActionResult Create(GradeDto gradeDto)
+        [Route("api/Role")]
+        public IHttpActionResult Create(RoleDto roleDto)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = GradeService.Create(gradeDto);
+                bool result = RoleService.Create(roleDto);
 
                 if (result)
                 {
@@ -61,13 +62,13 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Update grade info
+        /// Update role info
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="roleDto"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/Grade")]
-        public IHttpActionResult UpdateGradeInfo(GradeDto gradeDto)
+        [Route("api/Role")]
+        public IHttpActionResult Update(RoleDto roleDto)
         {
             try
             {
@@ -76,7 +77,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = GradeService.Update(gradeDto);
+                bool result = RoleService.Update(roleDto);
 
                 if (result)
                 {
@@ -105,22 +106,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Delete grade by id
+        /// Delete role info
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="roleDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/DeleteGrade")]
-        public IHttpActionResult Delete(BaseDto gradeDto)
+        [Route("api/DeleteRole")]
+        public IHttpActionResult Delete(BaseDto roleDto)
         {
             try
             {
-                if (gradeDto == null || gradeDto.Id == null || gradeDto.Id == Guid.Empty)
+                if (roleDto == null || roleDto.Id == null || roleDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = GradeService.Delete(gradeDto.Id);
+                bool result = RoleService.Delete(roleDto.Id);
 
                 if (result)
                 {
@@ -149,31 +150,37 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Get all grade, don't filter by status
+        /// GetAll role info
         /// </summary>
+        /// <param name="roleDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Grade")]
-        public IHttpActionResult Get()
+        [Route("api/Role")]
+        public IHttpActionResult GetAll()
         {
             try
             {
-                var result = GradeService.GetAll();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
 
-                if (result.Count > 0)
+                List<RoleDto> result = RoleService.GetAll();
+
+                if (result.Count != 0)
                 {
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateDataSuccessfully,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -188,16 +195,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Get grade by id
+        /// GetById role info
         /// </summary>
+        /// <param name="roleDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Grade/{gradeId}")]
-        public IHttpActionResult Get(Guid gradeId)
+        [Route("api/Role")]
+        public IHttpActionResult GetById(Guid roleId)
         {
             try
             {
-                var result = GradeService.GetById(gradeId);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                RoleDto result = RoleService.GetById(roleId);
 
                 if (result != null)
                 {
@@ -211,8 +224,8 @@ namespace StudentManage.DistributedService.Controllers
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -225,6 +238,5 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
-
     }
 }

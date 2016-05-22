@@ -42,9 +42,14 @@ namespace StudentManage.Domain.Migrations
                 ModifiedDate = DateTime.Now
             };
 
-            if (context.Role.FirstOrDefault(r => r.Name.Contains("Administration") && r.Level == RoleLevel.Adminstrator) == null)
+            var saRoleEntity = context.Role.FirstOrDefault(r => r.Name.Contains("Administration") && r.Level == RoleLevel.Adminstrator);
+            if (saRoleEntity == null)
             {
                 context.Role.Add(saRole);
+            }
+            else
+            {
+                saRole = saRoleEntity;
             }
 
             // Principal

@@ -10,27 +10,27 @@ using System.Threading.Tasks;
 
 namespace StudentManage.Services.Services
 {
-    public interface IGradeService
+    public interface IPositionInClassService
     {
-        GradeDto GetById(Guid gradeId);
+        PositionInClassDto GetById(Guid positionInClassId);
 
-        List<GradeDto> GetAll();
+        List<PositionInClassDto> GetAll();
 
-        bool Create(GradeDto gradeDto);
+        bool Create(PositionInClassDto positionInClassDto);
 
-        bool Update(GradeDto gradeDto);
+        bool Update(PositionInClassDto positionInClassDto);
 
-        bool Delete(Guid gradeId);
+        bool Delete(Guid positionInClassId);
     }
-
-    public class GradeService : BaseService, IGradeService
+    
+    public class PositionInClassService : BaseService, IPositionInClassService
     {
         /// <summary>
         /// Create new grade
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
-        public bool Create(GradeDto gradeDto)
+        public bool Create(PositionInClassDto positionInClassDto)
         {
             bool result = false;
 
@@ -38,13 +38,13 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Using Mapper to map from grade dto to grade entity
-                var userEntity = Mapper.Map<Grade>(gradeDto);
+                var positionInClassEntity = Mapper.Map<PositionInClass>(positionInClassDto);
 
-                userEntity.CreatedDate = DateTime.Now;
-                userEntity.ModifiedDate = DateTime.Now;
+                positionInClassEntity.CreatedDate = DateTime.Now;
+                positionInClassEntity.ModifiedDate = DateTime.Now;
 
                 // Add grade to dbContext
-                dbContext.Grade.Add(userEntity);
+                dbContext.PositionInClass.Add(positionInClassEntity);
                 dbContext.SaveChanges();
 
                 result = true;
@@ -56,9 +56,9 @@ namespace StudentManage.Services.Services
         /// <summary>
         /// Update grade status is deleted
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="positionInClassId"></param>
         /// <returns></returns>
-        public bool Delete(Guid gradeId)
+        public bool Delete(Guid positionInClassId)
         {
             bool result = false;
 
@@ -66,17 +66,17 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var grade = dbContext.Grade.FirstOrDefault(g => g.Id == gradeId);
+                var coefficient = dbContext.PositionInClass.FirstOrDefault(g => g.Id == positionInClassId);
 
-                if (grade == null)
+                if (positionInClassId == null)
                 {
                     return false;
                 }
 
                 // Update status from active to deleted
-                grade.Status = Common.Status.Deleted;
+                coefficient.Status = Common.Status.Deleted;
 
-                // Save change
+                // Save change to dbContext
                 dbContext.SaveChanges();
 
                 result = true;
@@ -89,68 +89,70 @@ namespace StudentManage.Services.Services
         /// Get all grade
         /// </summary>
         /// <returns></returns>
-        public List<GradeDto> GetAll()
+        public List<PositionInClassDto> GetAll()
         {
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get all grade
-                var grades = new List<GradeDto>();
-                var gradeEntity = dbContext.Grade.ToList();
+                var positionInClasses = new List<PositionInClassDto>();
+                var positionInClassEntity = dbContext.PositionInClass.ToList();
+
+                if (!positionInClassEntity.Any())
+                {
+                    return null;
+                }
 
                 // Mapper from list grade entity to grade dto
-                Mapper.Map<List<Grade>, List<GradeDto>>(gradeEntity, grades);
+                Mapper.Map<List<PositionInClass>, List<PositionInClassDto>>(positionInClassEntity, positionInClasses);
 
-                return grades;
+                return positionInClasses;
             }
         }
 
         /// <summary>
         /// Get grade by grade id
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="positionInClassId"></param>
         /// <returns></returns>
-        public GradeDto GetById(Guid gradeId)
+        public PositionInClassDto GetById(Guid positionInClassId)
         {
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var gradeEntity = dbContext.Grade.FirstOrDefault(g => g.Id == gradeId);
+                var positionInClassEntity = dbContext.PositionInClass.FirstOrDefault(g => g.Id == positionInClassId);
 
-                if (gradeEntity == null)
+                if (positionInClassEntity == null)
                 {
                     return null;
                 }
 
-                var grade = Mapper.Map<GradeDto>(gradeEntity);
+                var coefficient = Mapper.Map<PositionInClassDto>(positionInClassEntity);
 
-                return grade;
+                return coefficient;
             }
         }
 
         /// <summary>
         /// Update grade info
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="positionInClassDto"></param>
         /// <returns></returns>
-        public bool Update(GradeDto gradeDto)
+        public bool Update(PositionInClassDto positionInClassDto)
         {
             bool result = false;
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var gradeEntity = dbContext.Grade.FirstOrDefault(g => g.Id == gradeDto.Id);
+                var positionInClassEntity = dbContext.PositionInClass.FirstOrDefault(g => g.Id == positionInClassDto.Id);
 
-                if (gradeEntity == null)
+                if (positionInClassEntity == null)
                 {
                     return false;
                 }
 
-                gradeEntity.Name = gradeDto.Name;
-                gradeEntity.ModifiedDate = DateTime.Now;
-
-                // Save change
+                positionInClassEntity.Name = positionInClassDto.Name;
+                positionInClassEntity.ModifiedDate = DateTime.Now;
                 dbContext.SaveChanges();
-
                 result = true;
             }
 

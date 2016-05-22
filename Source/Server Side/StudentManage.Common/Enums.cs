@@ -24,9 +24,10 @@
     {
         Adminstrator = 0,
 
-        Principal = 1,
+        Education_Staff = 1,
 
-        // Giáo vụ
+        Principal = 2,
+
         Teacher = 3,
 
         Student = 4

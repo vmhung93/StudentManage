@@ -10,27 +10,27 @@ using System.Threading.Tasks;
 
 namespace StudentManage.Services.Services
 {
-    public interface IGradeService
+    public interface ICoefficientService
     {
-        GradeDto GetById(Guid gradeId);
+        CoefficientDto GetById(Guid coefficientId);
 
-        List<GradeDto> GetAll();
+        List<CoefficientDto> GetAll();
 
-        bool Create(GradeDto gradeDto);
+        bool Create(CoefficientDto coefficientDto);
 
-        bool Update(GradeDto gradeDto);
+        bool Update(CoefficientDto coefficientDto);
 
-        bool Delete(Guid gradeId);
+        bool Delete(Guid coefficientId);
     }
-
-    public class GradeService : BaseService, IGradeService
+    
+    public class CoefficientService : BaseService, ICoefficientService
     {
         /// <summary>
         /// Create new grade
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="coefficientDto"></param>
         /// <returns></returns>
-        public bool Create(GradeDto gradeDto)
+        public bool Create(CoefficientDto coefficientDto)
         {
             bool result = false;
 
@@ -38,13 +38,13 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Using Mapper to map from grade dto to grade entity
-                var userEntity = Mapper.Map<Grade>(gradeDto);
+                var coefficientEntity = Mapper.Map<Class>(coefficientDto);
 
-                userEntity.CreatedDate = DateTime.Now;
-                userEntity.ModifiedDate = DateTime.Now;
+                coefficientEntity.CreatedDate = DateTime.Now;
+                coefficientEntity.ModifiedDate = DateTime.Now;
 
                 // Add grade to dbContext
-                dbContext.Grade.Add(userEntity);
+                dbContext.Class.Add(coefficientEntity);
                 dbContext.SaveChanges();
 
                 result = true;
@@ -56,9 +56,9 @@ namespace StudentManage.Services.Services
         /// <summary>
         /// Update grade status is deleted
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="coefficientId"></param>
         /// <returns></returns>
-        public bool Delete(Guid gradeId)
+        public bool Delete(Guid coefficientId)
         {
             bool result = false;
 
@@ -66,17 +66,17 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var grade = dbContext.Grade.FirstOrDefault(g => g.Id == gradeId);
+                var coefficient = dbContext.Coefficient.FirstOrDefault(g => g.Id == coefficientId);
 
-                if (grade == null)
+                if (coefficientId == null)
                 {
                     return false;
                 }
 
                 // Update status from active to deleted
-                grade.Status = Common.Status.Deleted;
+                coefficient.Status = Common.Status.Deleted;
 
-                // Save change
+                // Save change to dbContext
                 dbContext.SaveChanges();
 
                 result = true;
@@ -89,68 +89,70 @@ namespace StudentManage.Services.Services
         /// Get all grade
         /// </summary>
         /// <returns></returns>
-        public List<GradeDto> GetAll()
+        public List<CoefficientDto> GetAll()
         {
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get all grade
-                var grades = new List<GradeDto>();
-                var gradeEntity = dbContext.Grade.ToList();
+                var coefficientes = new List<CoefficientDto>();
+                var coefficientEntity = dbContext.Coefficient.ToList();
+
+                if (!coefficientEntity.Any())
+                {
+                    return null;
+                }
 
                 // Mapper from list grade entity to grade dto
-                Mapper.Map<List<Grade>, List<GradeDto>>(gradeEntity, grades);
+                Mapper.Map<List<Coefficient>, List<CoefficientDto>>(coefficientEntity, coefficientes);
 
-                return grades;
+                return coefficientes;
             }
         }
 
         /// <summary>
         /// Get grade by grade id
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="coefficientId"></param>
         /// <returns></returns>
-        public GradeDto GetById(Guid gradeId)
+        public CoefficientDto GetById(Guid coefficientId)
         {
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var gradeEntity = dbContext.Grade.FirstOrDefault(g => g.Id == gradeId);
+                var coefficientEntity = dbContext.Coefficient.FirstOrDefault(g => g.Id == coefficientId);
 
-                if (gradeEntity == null)
+                if (coefficientEntity == null)
                 {
                     return null;
                 }
 
-                var grade = Mapper.Map<GradeDto>(gradeEntity);
+                var coefficient = Mapper.Map<CoefficientDto>(coefficientEntity);
 
-                return grade;
+                return coefficient;
             }
         }
 
         /// <summary>
         /// Update grade info
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="coefficientDto"></param>
         /// <returns></returns>
-        public bool Update(GradeDto gradeDto)
+        public bool Update(CoefficientDto coefficientDto)
         {
             bool result = false;
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var gradeEntity = dbContext.Grade.FirstOrDefault(g => g.Id == gradeDto.Id);
+                var coefficientEntity = dbContext.Coefficient.FirstOrDefault(g => g.Id == coefficientDto.Id);
 
-                if (gradeEntity == null)
+                if (coefficientEntity == null)
                 {
                     return false;
                 }
 
-                gradeEntity.Name = gradeDto.Name;
-                gradeEntity.ModifiedDate = DateTime.Now;
-
-                // Save change
+                coefficientEntity.Name = coefficientDto.Name;
+                coefficientEntity.ModifiedDate = DateTime.Now;
                 dbContext.SaveChanges();
-
                 result = true;
             }
 

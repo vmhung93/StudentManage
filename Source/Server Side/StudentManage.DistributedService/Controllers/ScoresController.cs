@@ -1,29 +1,30 @@
 ﻿using StudentManage.Common;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
+using System.Collections.Generic;
 using System;
 using System.Net;
 using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
-    public class GradeController : BaseApiController
+    public class ScoresController : BaseApiController
     {
-        private IGradeService GradeService;
+        private IScoresService ScoresService;
 
-        public GradeController(IGradeService gradeService)
+        public ScoresController(IScoresService scoresService)
         {
-            this.GradeService = gradeService;
+            this.ScoresService = scoresService;
         }
-        
+
         /// <summary>
-        /// Create new grade
+        /// Create new scores
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Grade")]
-        public IHttpActionResult Create(GradeDto gradeDto)
+        [Route("api/Scores")]
+        public IHttpActionResult Create(ScoresDto scoresDto)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = GradeService.Create(gradeDto);
+                bool result = ScoresService.Create(scoresDto);
 
                 if (result)
                 {
@@ -61,13 +62,13 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Update grade info
+        /// Update scores info
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/Grade")]
-        public IHttpActionResult UpdateGradeInfo(GradeDto gradeDto)
+        [Route("api/Scores")]
+        public IHttpActionResult Update(ScoresDto scoresDto)
         {
             try
             {
@@ -76,7 +77,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = GradeService.Update(gradeDto);
+                bool result = ScoresService.Update(scoresDto);
 
                 if (result)
                 {
@@ -105,22 +106,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Delete grade by id
+        /// Delete scores info
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/DeleteGrade")]
-        public IHttpActionResult Delete(BaseDto gradeDto)
+        [Route("api/DeleteScores")]
+        public IHttpActionResult Delete(BaseDto scoresDto)
         {
             try
             {
-                if (gradeDto == null || gradeDto.Id == null || gradeDto.Id == Guid.Empty)
+                if (scoresDto == null || scoresDto.Id == null || scoresDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = GradeService.Delete(gradeDto.Id);
+                bool result = ScoresService.Delete(scoresDto.Id);
 
                 if (result)
                 {
@@ -149,31 +150,37 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Get all grade, don't filter by status
+        /// GetAll scores info
         /// </summary>
+        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Grade")]
-        public IHttpActionResult Get()
+        [Route("api/Scores")]
+        public IHttpActionResult GetAll()
         {
             try
             {
-                var result = GradeService.GetAll();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
 
-                if (result.Count > 0)
+                List<ScoresDto> result = ScoresService.GetAll();
+
+                if (result.Count != 0)
                 {
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateDataSuccessfully,
-                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = result
                     });
                 }
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -188,16 +195,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Get grade by id
+        /// GetById scores info
         /// </summary>
+        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Grade/{gradeId}")]
-        public IHttpActionResult Get(Guid gradeId)
+        [Route("api/Scores")]
+        public IHttpActionResult GetById(Guid scoresId)
         {
             try
             {
-                var result = GradeService.GetById(gradeId);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                ScoresDto result = ScoresService.GetById(scoresId);
 
                 if (result != null)
                 {
@@ -205,14 +218,14 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                        Data = result
                     });
                 }
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -225,6 +238,5 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
-
     }
 }

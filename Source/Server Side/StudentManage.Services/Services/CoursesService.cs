@@ -10,27 +10,27 @@ using System.Threading.Tasks;
 
 namespace StudentManage.Services.Services
 {
-    public interface IGradeService
+    public interface ICoursesService
     {
-        GradeDto GetById(Guid gradeId);
+        CoursesDto GetById(Guid coursesId);
 
-        List<GradeDto> GetAll();
+        List<CoursesDto> GetAll();
 
-        bool Create(GradeDto gradeDto);
+        bool Create(CoursesDto CoursesDto);
 
-        bool Update(GradeDto gradeDto);
+        bool Update(CoursesDto CoursesDto);
 
-        bool Delete(Guid gradeId);
+        bool Delete(Guid coursesId);
     }
-
-    public class GradeService : BaseService, IGradeService
+    
+    public class CoursesService : BaseService, ICoursesService
     {
         /// <summary>
         /// Create new grade
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="coursesDto"></param>
         /// <returns></returns>
-        public bool Create(GradeDto gradeDto)
+        public bool Create(CoursesDto coursesDto)
         {
             bool result = false;
 
@@ -38,13 +38,13 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Using Mapper to map from grade dto to grade entity
-                var userEntity = Mapper.Map<Grade>(gradeDto);
+                var coursesEntity = Mapper.Map<Courses>(coursesDto);
 
-                userEntity.CreatedDate = DateTime.Now;
-                userEntity.ModifiedDate = DateTime.Now;
+                coursesEntity.CreatedDate = DateTime.Now;
+                coursesEntity.ModifiedDate = DateTime.Now;
 
                 // Add grade to dbContext
-                dbContext.Grade.Add(userEntity);
+                dbContext.Courses.Add(coursesEntity);
                 dbContext.SaveChanges();
 
                 result = true;
@@ -56,9 +56,9 @@ namespace StudentManage.Services.Services
         /// <summary>
         /// Update grade status is deleted
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="coursesId"></param>
         /// <returns></returns>
-        public bool Delete(Guid gradeId)
+        public bool Delete(Guid coursesId)
         {
             bool result = false;
 
@@ -66,17 +66,17 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var grade = dbContext.Grade.FirstOrDefault(g => g.Id == gradeId);
+                var courses = dbContext.Courses.FirstOrDefault(g => g.Id == coursesId);
 
-                if (grade == null)
+                if (courses == null)
                 {
                     return false;
                 }
 
                 // Update status from active to deleted
-                grade.Status = Common.Status.Deleted;
+                courses.Status = Common.Status.Deleted;
 
-                // Save change
+                // Save change to dbContext
                 dbContext.SaveChanges();
 
                 result = true;
@@ -89,68 +89,73 @@ namespace StudentManage.Services.Services
         /// Get all grade
         /// </summary>
         /// <returns></returns>
-        public List<GradeDto> GetAll()
+        public List<CoursesDto> GetAll()
         {
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get all grade
-                var grades = new List<GradeDto>();
-                var gradeEntity = dbContext.Grade.ToList();
+                var courses = new List<CoursesDto>();
+                var coursesEntity = dbContext.Courses.ToList();
+
+                if (!coursesEntity.Any())
+                {
+                    return null;
+                }
 
                 // Mapper from list grade entity to grade dto
-                Mapper.Map<List<Grade>, List<GradeDto>>(gradeEntity, grades);
+                Mapper.Map<List<Courses>, List<CoursesDto>>(coursesEntity, courses);
 
-                return grades;
+                return courses;
             }
         }
 
         /// <summary>
         /// Get grade by grade id
         /// </summary>
-        /// <param name="gradeId"></param>
+        /// <param name="coursesId"></param>
         /// <returns></returns>
-        public GradeDto GetById(Guid gradeId)
+        public CoursesDto GetById(Guid coursesId)
         {
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var gradeEntity = dbContext.Grade.FirstOrDefault(g => g.Id == gradeId);
+                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == coursesId);
 
-                if (gradeEntity == null)
+                if (coursesEntity == null)
                 {
                     return null;
                 }
 
-                var grade = Mapper.Map<GradeDto>(gradeEntity);
+                var courses = Mapper.Map<CoursesDto>(coursesEntity);
 
-                return grade;
+                return courses;
             }
         }
 
         /// <summary>
         /// Update grade info
         /// </summary>
-        /// <param name="gradeDto"></param>
+        /// <param name="coursesDto"></param>
         /// <returns></returns>
-        public bool Update(GradeDto gradeDto)
+        public bool Update(CoursesDto CoursesDto)
         {
             bool result = false;
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var gradeEntity = dbContext.Grade.FirstOrDefault(g => g.Id == gradeDto.Id);
+                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == CoursesDto.Id);
 
-                if (gradeEntity == null)
+                if (coursesEntity == null)
                 {
                     return false;
                 }
 
-                gradeEntity.Name = gradeDto.Name;
-                gradeEntity.ModifiedDate = DateTime.Now;
+                coursesEntity.Name = CoursesDto.Name;
+                coursesEntity.DeanId = CoursesDto.DeanId;
+                coursesEntity.SemesterId = CoursesDto.SemesterId;
+                coursesEntity.ModifiedDate = DateTime.Now;
 
-                // Save change
                 dbContext.SaveChanges();
-
                 result = true;
             }
 

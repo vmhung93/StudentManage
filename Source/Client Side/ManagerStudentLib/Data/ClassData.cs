@@ -27,6 +27,14 @@ namespace ManagerStudentLib.Data
             return responseData.Message;
         }
 
+        public static string UpdateClass(UpdateClassInfoWithStudentIds classInfo)
+        {
+            string url = DataHelper.DATA_SOURCE + "/StudentInClass/CreateClassWithStudent";
+            string jsonData = JsonConvert.SerializeObject(classInfo);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            return responseData.Message;
+        }
+
         public static List<ClassInfo> GetListClasses()
         {
             string url = DataHelper.DATA_SOURCE + "/" + SUB_DOMAIN;
@@ -36,7 +44,7 @@ namespace ManagerStudentLib.Data
 
         public static ClassInfoWithStudents GetInfoClassWithStudents(string classId)
         {
-            string url = DataHelper.DATA_SOURCE + "/GetClassStudentInfo/" + classId;
+            string url = DataHelper.DATA_SOURCE + "/StudentInClass/GetClassStudentInfo/" + classId;
             ResponseData responseData = DataHelper.Get(url);
             return JsonConvert.DeserializeObject<ClassInfoWithStudents>(responseData.JsonData);
         }

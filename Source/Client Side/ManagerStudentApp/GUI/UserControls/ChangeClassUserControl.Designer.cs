@@ -45,15 +45,23 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.btnHuy = new System.Windows.Forms.Button();
-            this.btnLapLop = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnAddAll = new System.Windows.Forms.Button();
+            this.btnSubstract = new System.Windows.Forms.Button();
+            this.btnSubstractAll = new System.Windows.Forms.Button();
+            this.btnHoanTac = new System.Windows.Forms.Button();
+            this.btnCapNhatLop = new System.Windows.Forms.Button();
+            this.comboBoxLop = new System.Windows.Forms.ComboBox();
+            this.comboBoxGVCN = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTenLopHienTai = new System.Windows.Forms.TextBox();
+            this.txtTenGVHienTai = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtKhoiLopHienTai = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxKhoiLop = new System.Windows.Forms.ComboBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -71,24 +79,24 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 146);
+            this.label9.Location = new System.Drawing.Point(466, 74);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 17);
+            this.label9.Size = new System.Drawing.Size(82, 17);
             this.label9.TabIndex = 45;
-            this.label9.Text = "Tên lớp";
+            this.label9.Text = "Tên lớp mới";
             // 
             // txtTenLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(133, 146);
+            this.txtTenLop.Location = new System.Drawing.Point(589, 71);
             this.txtTenLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenLop.Name = "txtTenLop";
             this.txtTenLop.Size = new System.Drawing.Size(185, 22);
-            this.txtTenLop.TabIndex = 48;
+            this.txtTenLop.TabIndex = 4;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(364, 146);
+            this.label12.Location = new System.Drawing.Point(466, 159);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 17);
             this.label12.TabIndex = 44;
@@ -96,21 +104,23 @@
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(499, 146);
+            this.txtSiSo.Location = new System.Drawing.Point(670, 159);
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiSo.Name = "txtSiSo";
+            this.txtSiSo.ReadOnly = true;
             this.txtSiSo.Size = new System.Drawing.Size(104, 22);
             this.txtSiSo.TabIndex = 47;
             this.txtSiSo.Text = "1";
+            this.txtSiSo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 69);
+            this.label1.Location = new System.Drawing.Point(23, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 60;
-            this.label1.Text = "Lớp";
+            this.label1.Text = "Chọn lớp";
             // 
             // lvLop
             // 
@@ -147,7 +157,7 @@
             // 
             this.groupBox1.Controls.Add(this.lvLop);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox1.Location = new System.Drawing.Point(21, 233);
+            this.groupBox1.Location = new System.Drawing.Point(20, 189);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -159,11 +169,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 108);
+            this.label10.Location = new System.Drawing.Point(466, 131);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 17);
+            this.label10.Size = new System.Drawing.Size(73, 17);
             this.label10.TabIndex = 46;
-            this.label10.Text = "GVCV";
+            this.label10.Text = "GVCN mới";
             // 
             // lvLopSelect
             // 
@@ -177,7 +187,7 @@
             this.lvLopSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvLopSelect.Name = "lvLopSelect";
             this.lvLopSelect.Size = new System.Drawing.Size(337, 319);
-            this.lvLopSelect.TabIndex = 1;
+            this.lvLopSelect.TabIndex = 0;
             this.lvLopSelect.UseCompatibleStateImageBehavior = false;
             this.lvLopSelect.View = System.Windows.Forms.View.Details;
             // 
@@ -200,7 +210,7 @@
             // 
             this.groupBox2.Controls.Add(this.lvLopSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(432, 233);
+            this.groupBox2.Location = new System.Drawing.Point(431, 189);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -209,118 +219,213 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách đã chọn";
             // 
-            // label13
+            // btnAdd
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 193);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(133, 17);
-            this.label13.TabIndex = 52;
-            this.label13.Text = "Danh sách học sinh";
+            this.btnAdd.Location = new System.Drawing.Point(370, 236);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(56, 68);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = ">";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button4
+            // btnAddAll
             // 
-            this.button4.Location = new System.Drawing.Point(369, 278);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(56, 68);
-            this.button4.TabIndex = 56;
-            this.button4.Text = ">";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAddAll.Location = new System.Drawing.Point(370, 308);
+            this.btnAddAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddAll.Name = "btnAddAll";
+            this.btnAddAll.Size = new System.Drawing.Size(56, 68);
+            this.btnAddAll.TabIndex = 8;
+            this.btnAddAll.Text = ">>";
+            this.btnAddAll.UseVisualStyleBackColor = true;
+            this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
             // 
-            // button5
+            // btnSubstract
             // 
-            this.button5.Location = new System.Drawing.Point(371, 352);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(56, 68);
-            this.button5.TabIndex = 55;
-            this.button5.Text = ">>";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSubstract.Location = new System.Drawing.Point(370, 382);
+            this.btnSubstract.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubstract.Name = "btnSubstract";
+            this.btnSubstract.Size = new System.Drawing.Size(56, 68);
+            this.btnSubstract.TabIndex = 9;
+            this.btnSubstract.Text = "<";
+            this.btnSubstract.UseVisualStyleBackColor = true;
+            this.btnSubstract.Click += new System.EventHandler(this.btnSubstract_Click);
             // 
-            // button6
+            // btnSubstractAll
             // 
-            this.button6.Location = new System.Drawing.Point(371, 426);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(56, 68);
-            this.button6.TabIndex = 54;
-            this.button6.Text = "<";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSubstractAll.Location = new System.Drawing.Point(370, 456);
+            this.btnSubstractAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubstractAll.Name = "btnSubstractAll";
+            this.btnSubstractAll.Size = new System.Drawing.Size(56, 68);
+            this.btnSubstractAll.TabIndex = 10;
+            this.btnSubstractAll.Text = "<<";
+            this.btnSubstractAll.UseVisualStyleBackColor = true;
+            this.btnSubstractAll.Click += new System.EventHandler(this.btnSubstractAll_Click);
             // 
-            // button7
+            // btnHoanTac
             // 
-            this.button7.Location = new System.Drawing.Point(371, 500);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(56, 68);
-            this.button7.TabIndex = 53;
-            this.button7.Text = "<<";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnHoanTac.Location = new System.Drawing.Point(469, 533);
+            this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHoanTac.Name = "btnHoanTac";
+            this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
+            this.btnHoanTac.TabIndex = 12;
+            this.btnHoanTac.Text = "Hoàn tác";
+            this.btnHoanTac.UseVisualStyleBackColor = true;
+            this.btnHoanTac.Click += new System.EventHandler(this.btnHoanTac_Click);
             // 
-            // btnHuy
+            // btnCapNhatLop
             // 
-            this.btnHuy.Location = new System.Drawing.Point(469, 601);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(112, 39);
-            this.btnHuy.TabIndex = 58;
-            this.btnHuy.Text = "Huỷ";
-            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnCapNhatLop.Location = new System.Drawing.Point(596, 533);
+            this.btnCapNhatLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCapNhatLop.Name = "btnCapNhatLop";
+            this.btnCapNhatLop.Size = new System.Drawing.Size(175, 39);
+            this.btnCapNhatLop.TabIndex = 11;
+            this.btnCapNhatLop.Text = "Cập nhật";
+            this.btnCapNhatLop.UseVisualStyleBackColor = true;
+            this.btnCapNhatLop.Click += new System.EventHandler(this.btnCapNhatLop_Click);
             // 
-            // btnLapLop
+            // comboBoxLop
             // 
-            this.btnLapLop.Location = new System.Drawing.Point(596, 601);
-            this.btnLapLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLapLop.Name = "btnLapLop";
-            this.btnLapLop.Size = new System.Drawing.Size(175, 39);
-            this.btnLapLop.TabIndex = 57;
-            this.btnLapLop.Text = "Cập nhật";
-            this.btnLapLop.UseVisualStyleBackColor = true;
+            this.comboBoxLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLop.FormattingEnabled = true;
+            this.comboBoxLop.Location = new System.Drawing.Point(185, 69);
+            this.comboBoxLop.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLop.Name = "comboBoxLop";
+            this.comboBoxLop.Size = new System.Drawing.Size(178, 24);
+            this.comboBoxLop.TabIndex = 0;
+            this.comboBoxLop.SelectedIndexChanged += new System.EventHandler(this.comboBoxLop_SelectedIndexChanged);
             // 
-            // comboBox1
+            // comboBoxGVCN
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(133, 65);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
-            this.comboBox1.TabIndex = 59;
+            this.comboBoxGVCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGVCN.FormattingEnabled = true;
+            this.comboBoxGVCN.Location = new System.Drawing.Point(589, 128);
+            this.comboBoxGVCN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxGVCN.Name = "comboBoxGVCN";
+            this.comboBoxGVCN.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxGVCN.TabIndex = 6;
             // 
-            // comboBox2
+            // label3
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(133, 105);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 24);
-            this.comboBox2.TabIndex = 61;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 17);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "GVCN hiện tại";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 160);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Tên lớp hiện tại";
+            // 
+            // txtTenLopHienTai
+            // 
+            this.txtTenLopHienTai.Location = new System.Drawing.Point(185, 159);
+            this.txtTenLopHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTenLopHienTai.Name = "txtTenLopHienTai";
+            this.txtTenLopHienTai.ReadOnly = true;
+            this.txtTenLopHienTai.Size = new System.Drawing.Size(178, 22);
+            this.txtTenLopHienTai.TabIndex = 3;
+            // 
+            // txtTenGVHienTai
+            // 
+            this.txtTenGVHienTai.Location = new System.Drawing.Point(185, 130);
+            this.txtTenGVHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTenGVHienTai.Name = "txtTenGVHienTai";
+            this.txtTenGVHienTai.ReadOnly = true;
+            this.txtTenGVHienTai.Size = new System.Drawing.Size(178, 22);
+            this.txtTenGVHienTai.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 17);
+            this.label5.TabIndex = 46;
+            this.label5.Text = "Khối lớp hiện tại";
+            // 
+            // txtKhoiLopHienTai
+            // 
+            this.txtKhoiLopHienTai.Location = new System.Drawing.Point(185, 102);
+            this.txtKhoiLopHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtKhoiLopHienTai.Name = "txtKhoiLopHienTai";
+            this.txtKhoiLopHienTai.ReadOnly = true;
+            this.txtKhoiLopHienTai.Size = new System.Drawing.Size(178, 22);
+            this.txtKhoiLopHienTai.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(466, 103);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 17);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "Khối lớp mới";
+            // 
+            // comboBoxKhoiLop
+            // 
+            this.comboBoxKhoiLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxKhoiLop.FormattingEnabled = true;
+            this.comboBoxKhoiLop.Location = new System.Drawing.Point(589, 99);
+            this.comboBoxKhoiLop.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxKhoiLop.Name = "comboBoxKhoiLop";
+            this.comboBoxKhoiLop.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxKhoiLop.TabIndex = 5;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Firebrick;
+            this.btnDelete.Location = new System.Drawing.Point(20, 533);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(112, 39);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "Huỷ lớp";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // ChangeClassUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBoxKhoiLop);
+            this.Controls.Add(this.txtKhoiLopHienTai);
+            this.Controls.Add(this.txtTenGVHienTai);
+            this.Controls.Add(this.comboBoxGVCN);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxLop);
             this.Controls.Add(this.txtSiSo);
+            this.Controls.Add(this.txtTenLopHienTai);
             this.Controls.Add(this.label12);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTenLop);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnLapLop);
-            this.Controls.Add(this.btnHuy);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.btnCapNhatLop);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnHoanTac);
+            this.Controls.Add(this.btnSubstractAll);
+            this.Controls.Add(this.btnSubstract);
+            this.Controls.Add(this.btnAddAll);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChangeClassUserControl";
-            this.Size = new System.Drawing.Size(821, 658);
+            this.Size = new System.Drawing.Size(804, 611);
+            this.Load += new System.EventHandler(this.ChangeClassUserControl_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -347,15 +452,23 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Button btnLapLop;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnAddAll;
+        private System.Windows.Forms.Button btnSubstract;
+        private System.Windows.Forms.Button btnSubstractAll;
+        private System.Windows.Forms.Button btnHoanTac;
+        private System.Windows.Forms.Button btnCapNhatLop;
+        private System.Windows.Forms.ComboBox comboBoxLop;
+        private System.Windows.Forms.ComboBox comboBoxGVCN;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTenLopHienTai;
+        private System.Windows.Forms.TextBox txtTenGVHienTai;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtKhoiLopHienTai;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxKhoiLop;
+        private System.Windows.Forms.Button btnDelete;
 
     }
 }

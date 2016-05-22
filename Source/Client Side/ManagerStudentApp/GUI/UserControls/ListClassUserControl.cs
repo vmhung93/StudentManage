@@ -48,8 +48,9 @@ namespace ManagerStudentApp.GUI.UserControls
         private void LoadInfoClass()
         {
             if (currentClass != null) {
-                txtTenLop.Text = currentClass.Class.Name;
-                txtGVCN.Text = currentClass.Class.HomeroomTeacher.UserInfo.Name;
+                txtTenLopHienTai.Text = currentClass.Class.Name;
+                txtTenGVHienTai.Text = currentClass.Class.HomeroomTeacher.UserInfo.Name;
+                txtKhoiLop.Text = currentClass.Class.Grade.Name;
                 txtSiSo.Text = currentClass.Students.Count.ToString();
 
                 lvDsHocSinh.Items.Clear();
@@ -61,7 +62,6 @@ namespace ManagerStudentApp.GUI.UserControls
                     ++i;
                 }
             }
-            
         }
 
         private void comboBoxDsLop_SelectedIndexChanged(object sender, EventArgs e)

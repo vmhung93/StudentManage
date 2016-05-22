@@ -152,7 +152,7 @@ namespace StudentManage.Services.Services
 
                 positionInClassEntity.Name = positionInClassDto.Name;
                 positionInClassEntity.ModifiedDate = DateTime.Now;
-
+                dbContext.SaveChanges();
                 result = true;
             }
 

@@ -51,72 +51,74 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxGVCN = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxKhoiLop = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLapLop
             // 
-            this.btnLapLop.Location = new System.Drawing.Point(594, 509);
+            this.btnLapLop.Location = new System.Drawing.Point(599, 525);
             this.btnLapLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLapLop.Name = "btnLapLop";
             this.btnLapLop.Size = new System.Drawing.Size(175, 39);
-            this.btnLapLop.TabIndex = 5;
+            this.btnLapLop.TabIndex = 7;
             this.btnLapLop.Text = "Lập lớp";
             this.btnLapLop.UseVisualStyleBackColor = true;
             this.btnLapLop.Click += new System.EventHandler(this.btnLapLop_Click);
             // 
             // btnHoanTac
             // 
-            this.btnHoanTac.Location = new System.Drawing.Point(468, 509);
+            this.btnHoanTac.Location = new System.Drawing.Point(473, 525);
             this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
-            this.btnHoanTac.TabIndex = 6;
+            this.btnHoanTac.TabIndex = 8;
             this.btnHoanTac.Text = "Hoàn tác";
             this.btnHoanTac.UseVisualStyleBackColor = true;
             this.btnHoanTac.Click += new System.EventHandler(this.btnHoanTac_Click);
             // 
             // btnSubtractAll
             // 
-            this.btnSubtractAll.Location = new System.Drawing.Point(368, 420);
+            this.btnSubtractAll.Location = new System.Drawing.Point(370, 448);
             this.btnSubtractAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubtractAll.Name = "btnSubtractAll";
             this.btnSubtractAll.Size = new System.Drawing.Size(56, 68);
-            this.btnSubtractAll.TabIndex = 4;
+            this.btnSubtractAll.TabIndex = 6;
             this.btnSubtractAll.Text = "<<";
             this.btnSubtractAll.UseVisualStyleBackColor = true;
             this.btnSubtractAll.Click += new System.EventHandler(this.btnSubtractAll_Click);
             // 
             // btnSubtract
             // 
-            this.btnSubtract.Location = new System.Drawing.Point(368, 346);
+            this.btnSubtract.Location = new System.Drawing.Point(370, 374);
             this.btnSubtract.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubtract.Name = "btnSubtract";
             this.btnSubtract.Size = new System.Drawing.Size(56, 68);
-            this.btnSubtract.TabIndex = 3;
+            this.btnSubtract.TabIndex = 5;
             this.btnSubtract.Text = "<";
             this.btnSubtract.UseVisualStyleBackColor = true;
             this.btnSubtract.Click += new System.EventHandler(this.btnSubtract_Click);
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(368, 272);
+            this.btnAddAll.Location = new System.Drawing.Point(370, 300);
             this.btnAddAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(56, 68);
-            this.btnAddAll.TabIndex = 2;
+            this.btnAddAll.TabIndex = 4;
             this.btnAddAll.Text = ">>";
             this.btnAddAll.UseVisualStyleBackColor = true;
             this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(367, 198);
+            this.btnAdd.Location = new System.Drawing.Point(369, 226);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(56, 68);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = ">";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -125,7 +127,7 @@
             // 
             this.groupBox2.Controls.Add(this.lvLopSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(429, 153);
+            this.groupBox2.Location = new System.Drawing.Point(431, 181);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -170,7 +172,7 @@
             // 
             this.groupBox1.Controls.Add(this.lvLop);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox1.Location = new System.Drawing.Point(19, 153);
+            this.groupBox1.Location = new System.Drawing.Point(21, 181);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -213,7 +215,7 @@
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(714, 127);
+            this.txtSiSo.Location = new System.Drawing.Point(716, 155);
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiSo.Name = "txtSiSo";
             this.txtSiSo.ReadOnly = true;
@@ -225,7 +227,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(590, 130);
+            this.label12.Location = new System.Drawing.Point(592, 158);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 17);
             this.label12.TabIndex = 14;
@@ -274,12 +276,31 @@
             this.comboBoxGVCN.Location = new System.Drawing.Point(174, 117);
             this.comboBoxGVCN.Name = "comboBoxGVCN";
             this.comboBoxGVCN.Size = new System.Drawing.Size(185, 24);
-            this.comboBoxGVCN.TabIndex = 22;
+            this.comboBoxGVCN.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 151);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Khối lớp";
+            // 
+            // comboBoxKhoiLop
+            // 
+            this.comboBoxKhoiLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxKhoiLop.FormattingEnabled = true;
+            this.comboBoxKhoiLop.Location = new System.Drawing.Point(173, 148);
+            this.comboBoxKhoiLop.Name = "comboBoxKhoiLop";
+            this.comboBoxKhoiLop.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxKhoiLop.TabIndex = 2;
             // 
             // AddClassUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.comboBoxKhoiLop);
             this.Controls.Add(this.comboBoxGVCN);
             this.Controls.Add(this.btnLapLop);
             this.Controls.Add(this.btnHoanTac);
@@ -291,13 +312,14 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtSiSo);
             this.Controls.Add(this.label12);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTenLop);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label11);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddClassUserControl";
-            this.Size = new System.Drawing.Size(796, 578);
+            this.Size = new System.Drawing.Size(796, 602);
             this.Load += new System.EventHandler(this.AddClassUserControl_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -331,5 +353,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxGVCN;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxKhoiLop;
     }
 }

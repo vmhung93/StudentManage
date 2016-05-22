@@ -151,8 +151,10 @@ namespace StudentManage.Services.Services
                 }
 
                 scoresEntity.Score = scoresDto.Score;
+                scoresEntity.CourseId = scoresDto.CourseId;
+                scoresEntity.ScoreTypeId = scoresDto.ScoreTypeId;
                 scoresEntity.ModifiedDate = DateTime.Now;
-
+                dbContext.SaveChanges();
                 result = true;
             }
 

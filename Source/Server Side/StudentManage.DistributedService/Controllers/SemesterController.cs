@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -111,17 +111,17 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="semesterDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Semester")]
-        public IHttpActionResult Delete(Guid semesterId)
+        [Route("api/DeleteSemester")]
+        public IHttpActionResult Delete(BaseDto semesterDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (semesterDto == null || semesterDto.Id == null || semesterDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = SemesterService.Delete(semesterId);
+                bool result = SemesterService.Delete(semesterDto.Id);
 
                 if (result)
                 {
@@ -154,7 +154,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="semesterDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Semester")]
         public IHttpActionResult GetAll()
         {
@@ -172,7 +172,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = result
                     });
                 }
@@ -180,7 +180,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -199,8 +199,8 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="semesterDto"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Route("api/Semester")]
+        [HttpGet]
+        [Route("api/Semester/{semesterId}")]
         public IHttpActionResult GetById(Guid semesterId)
         {
             try
@@ -217,7 +217,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = result
                     });
                 }
@@ -225,7 +225,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

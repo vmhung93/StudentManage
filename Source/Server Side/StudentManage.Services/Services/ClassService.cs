@@ -21,8 +21,10 @@ namespace StudentManage.Services.Services
         bool Update(ClassDto classDto);
 
         bool Delete(Guid classId);
+
+        ClassInfoDto GetClassInfo();
     }
-    
+
     public class ClassService : BaseService, IClassService
     {
         /// <summary>
@@ -40,6 +42,8 @@ namespace StudentManage.Services.Services
                 // Using Mapper to map from grade dto to grade entity
                 var classEntity = Mapper.Map<Class>(classDto);
 
+
+                classEntity.HomeroomTeacherId = classDto.HomeroomTeacherId;
                 classEntity.CreatedDate = DateTime.Now;
                 classEntity.ModifiedDate = DateTime.Now;
 
@@ -152,11 +156,38 @@ namespace StudentManage.Services.Services
 
                 classEntity.Name = classDto.Name;
                 classEntity.ModifiedDate = DateTime.Now;
-
+                dbContext.SaveChanges();
                 result = true;
             }
 
             return result;
+        }
+
+
+        /// <summary>
+        /// Update grade info
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public ClassInfoDto GetClassInfo()
+        {
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get grade by id
+                var teacherUnavaliable = dbContext.Class.Select(c => c.HomeroomTeacherId).ToList();
+                var studentUnavaliable = dbContext.StudentInClass.Select(s => s.StudentId).ToList();
+
+                var teacherAvaliable = dbContext.Users.Where(u => !teacherUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Teacher).ToList();
+                var studentAvaliable = dbContext.Users.Where(u => !studentUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Student).ToList();
+
+                var result = new ClassInfoDto()
+                {
+                    HomeroomTeacherdes = Mapper.Map<List<UserDto>>(teacherAvaliable),
+                    Students = Mapper.Map<List<UserDto>>(studentAvaliable)
+                };
+
+                return result;
+            }
         }
     }
 }

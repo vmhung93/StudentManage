@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -67,7 +67,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="classDto"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/Update")]
+        [Route("api/Class")]
         public IHttpActionResult Update(ClassDto classDto)
         {
             try
@@ -110,14 +110,18 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="classDto"></param>
         /// <returns></returns>
-        [HttpGet]
-        [Route("api/DeleteClass/{classId}")]
-        public IHttpActionResult DeleteClass(Guid classId)
+        [HttpPost]
+        [Route("api/DeleteClass")]
+        public IHttpActionResult DeleteClass(BaseDto classDto)
         {
             try
             {
+                if (classDto == null || classDto.Id == null || classDto.Id == Guid.Empty)
+                {
+                    return BadRequest();
+                }
 
-                bool result = ClassService.Delete(classId);
+                bool result = ClassService.Delete(classDto.Id);
 
                 if (result)
                 {
@@ -168,15 +172,15 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -195,7 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="classDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Class/{classId}")]
         public IHttpActionResult Get(Guid classId)
         {
@@ -213,15 +217,56 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// Create new class
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/Class/GetInfoForCreateClass")]
+        public IHttpActionResult GetInfoForCreateClass()
+        {
+            try
+            {
+                var result = ClassService.GetClassInfo();
+
+                if (result != null)
+                {
+                    var dataJSon = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = dataJSon
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

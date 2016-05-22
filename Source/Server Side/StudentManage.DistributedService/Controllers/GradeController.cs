@@ -15,85 +15,7 @@ namespace StudentManage.DistributedService.Controllers
         {
             this.GradeService = gradeService;
         }
-
-        /// <summary>
-        /// Get all grade, don't filter by status
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("api/Grade")]
-        public IHttpActionResult Get()
-        {
-            try
-            {
-                var result = GradeService.GetAll();
-
-                if (result.Count > 0)
-                {
-                    return Json(new
-                    {
-                        Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.CreateDataSuccessfully,
-                        Data = result
-                    });
-                }
-
-                return Json(new
-                {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
-                });
-            }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    Status = HttpStatusCode.InternalServerError,
-                    Message = ResponseMessages.InternalServerError,
-                    Error = ex.ToString()
-                });
-            }
-        }
-
-        /// <summary>
-        /// Get grade by id
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("api/Grade/{gradeId}")]
-        public IHttpActionResult Get(Guid gradeId)
-        {
-            try
-            {
-                var result = GradeService.GetById(gradeId);
-
-                if (result != null)
-                {
-                    return Json(new
-                    {
-                        Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
-                    });
-                }
-
-                return Json(new
-                {
-                    Status = HttpStatusCode.OK,
-                    Message = ResponseMessages.NoRecord
-                });
-            }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    Status = HttpStatusCode.InternalServerError,
-                    Message = ResponseMessages.InternalServerError,
-                    Error = ex.ToString()
-                });
-            }
-        }
-
+        
         /// <summary>
         /// Create new grade
         /// </summary>
@@ -124,7 +46,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -225,5 +147,84 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// Get all grade, don't filter by status
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/Grade")]
+        public IHttpActionResult Get()
+        {
+            try
+            {
+                var result = GradeService.GetAll();
+
+                if (result.Count > 0)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.CreateDataSuccessfully,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.OK,
+                    Message = ResponseMessages.NoRecord
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// Get grade by id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/Grade/{gradeId}")]
+        public IHttpActionResult Get(Guid gradeId)
+        {
+            try
+            {
+                var result = GradeService.GetById(gradeId);
+
+                if (result != null)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.OK,
+                    Message = ResponseMessages.NoRecord
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
     }
 }

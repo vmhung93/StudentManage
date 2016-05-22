@@ -11,15 +11,23 @@ namespace ManagerStudentLib.Models
     {
         public List<User> HomeroomTeacherdes { get; set; }
         public List<User> Students { get; set; }
+        public List<Grade> grades { get; set; }
     }
 
     public class ClassInfo
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string GradeId { get; set; }
+        public Grade Grade { get; set; }
         public string HomeroomTeacherId { get; set; }
         public User HomeroomTeacher { get; set; }
         public string CreatedBy { get; set; }
+    }
+
+    public class Grade {
+        public string Id {get;set;}
+        public string Name {get;set;}
     }
 
     public class ClassInfoWithStudentIds
@@ -33,5 +41,12 @@ namespace ManagerStudentLib.Models
         public ClassInfo Class { get; set; }
         public List<User> Students { get; set; }
 
+    }
+
+    public class UpdateClassInfoWithStudentIds
+    {
+        public ClassInfo Class { get; set; }
+        public List<string> AddStudentIds { get; set; }
+        public List<string> SubstractStudentIds { get; set; }
     }
 }

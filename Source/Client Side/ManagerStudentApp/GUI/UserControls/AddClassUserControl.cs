@@ -19,6 +19,8 @@ namespace ManagerStudentApp.GUI.UserControls
         private List<User> addedStudents = new List<User>();
         private List<User> preAddStudents = new List<User>();
         private List<User> teachers = new List<User>();
+        private List<Grade> grades = new List<Grade>();
+
         public AddClassUserControl()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace ManagerStudentApp.GUI.UserControls
             PreLoadAddClassInfo pre = ClassData.GetInfoForAddClass();
             this.originalStudents = pre.Students;
             this.teachers = pre.HomeroomTeacherdes;
+            this.grades = pre.grades;
             ResetData();
         }
         private void ResetData()
@@ -45,6 +48,7 @@ namespace ManagerStudentApp.GUI.UserControls
             LoadPreStudents();
             LoadTeacher();
             LoadNumAddStudent();
+            LoadGrades();
             this.txtTenLop.Focus();
         }
 
@@ -62,6 +66,18 @@ namespace ManagerStudentApp.GUI.UserControls
             }
         }
 
+        private void LoadGrades()
+        {
+            comboBoxKhoiLop.Items.Clear();
+            foreach (Grade g in this.grades) 
+            {
+                comboBoxKhoiLop.Items.Add(g.Name);
+            }
+            if (comboBoxKhoiLop.Items.Count > 0)
+            {
+                comboBoxKhoiLop.SelectedIndex = 0;
+            }
+        }
         private void LoadPreStudents()
         {
             this.lvLop.Items.Clear();
@@ -167,7 +183,14 @@ namespace ManagerStudentApp.GUI.UserControls
                 MessageBox.Show(this, "Chủ nhiệm không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            String teacherId = teachers[comboBoxGVCN.SelectedIndex].Id;
+            if (comboBoxKhoiLop.SelectedIndex < 0)
+            {
+                MessageBox.Show(this, "Khối lớp không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var teacherId = teachers[comboBoxGVCN.SelectedIndex].Id;
+            var gradeId = grades[comboBoxKhoiLop.SelectedIndex].Id;
             var studentIds = new List<string>();
             foreach (User st in this.addedStudents) {
                 studentIds.Add(st.Id);
@@ -176,6 +199,7 @@ namespace ManagerStudentApp.GUI.UserControls
             {
                 Name = txtTenLop.Text,
                 HomeroomTeacherId = teacherId,
+                GradeId = gradeId,
                 CreatedBy = "073f4124-df1d-e611-832c-14dda9bd8fb8"
             };
 

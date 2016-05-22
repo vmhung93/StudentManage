@@ -36,13 +36,15 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.comboBoxDsLop = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtTenLop = new System.Windows.Forms.TextBox();
-            this.txtGVCN = new System.Windows.Forms.TextBox();
+            this.txtKhoiLop = new System.Windows.Forms.TextBox();
+            this.txtTenGVHienTai = new System.Windows.Forms.TextBox();
+            this.txtTenLopHienTai = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,23 +120,14 @@
             this.label2.TabIndex = 62;
             this.label2.Text = "Danh sách các lớp";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(36, 135);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 17);
-            this.label10.TabIndex = 65;
-            this.label10.Text = "GVCV";
-            // 
             // comboBoxDsLop
             // 
             this.comboBoxDsLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDsLop.FormattingEnabled = true;
-            this.comboBoxDsLop.Location = new System.Drawing.Point(148, 92);
+            this.comboBoxDsLop.Location = new System.Drawing.Point(200, 92);
             this.comboBoxDsLop.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxDsLop.Name = "comboBoxDsLop";
-            this.comboBoxDsLop.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxDsLop.Size = new System.Drawing.Size(178, 24);
             this.comboBoxDsLop.TabIndex = 77;
             this.comboBoxDsLop.SelectedIndexChanged += new System.EventHandler(this.comboBoxDsLop_SelectedIndexChanged);
             // 
@@ -147,15 +140,6 @@
             this.label1.TabIndex = 78;
             this.label1.Text = "Lớp";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(32, 173);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 17);
-            this.label9.TabIndex = 64;
-            this.label9.Text = "Tên lớp";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -165,38 +149,76 @@
             this.label12.TabIndex = 63;
             this.label12.Text = "Sỉ số hiện tại ";
             // 
-            // txtTenLop
+            // txtKhoiLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(148, 173);
-            this.txtTenLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.ReadOnly = true;
-            this.txtTenLop.Size = new System.Drawing.Size(185, 22);
-            this.txtTenLop.TabIndex = 67;
+            this.txtKhoiLop.Location = new System.Drawing.Point(200, 122);
+            this.txtKhoiLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtKhoiLop.Name = "txtKhoiLop";
+            this.txtKhoiLop.ReadOnly = true;
+            this.txtKhoiLop.Size = new System.Drawing.Size(178, 22);
+            this.txtKhoiLop.TabIndex = 79;
             // 
-            // txtGVCN
+            // txtTenGVHienTai
             // 
-            this.txtGVCN.Location = new System.Drawing.Point(148, 135);
-            this.txtGVCN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtGVCN.Name = "txtGVCN";
-            this.txtGVCN.ReadOnly = true;
-            this.txtGVCN.Size = new System.Drawing.Size(185, 22);
-            this.txtGVCN.TabIndex = 67;
+            this.txtTenGVHienTai.Location = new System.Drawing.Point(200, 150);
+            this.txtTenGVHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTenGVHienTai.Name = "txtTenGVHienTai";
+            this.txtTenGVHienTai.ReadOnly = true;
+            this.txtTenGVHienTai.Size = new System.Drawing.Size(178, 22);
+            this.txtTenGVHienTai.TabIndex = 80;
+            // 
+            // txtTenLopHienTai
+            // 
+            this.txtTenLopHienTai.Location = new System.Drawing.Point(200, 179);
+            this.txtTenLopHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTenLopHienTai.Name = "txtTenLopHienTai";
+            this.txtTenLopHienTai.ReadOnly = true;
+            this.txtTenLopHienTai.Size = new System.Drawing.Size(178, 22);
+            this.txtTenLopHienTai.TabIndex = 81;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(36, 180);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.TabIndex = 82;
+            this.label4.Text = "Tên lớp hiện tại";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(38, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 17);
+            this.label5.TabIndex = 83;
+            this.label5.Text = "Khối lớp hiện tại";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(38, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 17);
+            this.label3.TabIndex = 84;
+            this.label3.Text = "GVCN hiện tại";
             // 
             // ListClassUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtKhoiLop);
+            this.Controls.Add(this.txtTenGVHienTai);
+            this.Controls.Add(this.txtTenLopHienTai);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSiSo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.comboBoxDsLop);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtGVCN);
-            this.Controls.Add(this.txtTenLop);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListClassUserControl";
             this.Size = new System.Drawing.Size(819, 737);
@@ -216,14 +238,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBoxDsLop;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtTenLop;
-        private System.Windows.Forms.TextBox txtGVCN;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.TextBox txtKhoiLop;
+        private System.Windows.Forms.TextBox txtTenGVHienTai;
+        private System.Windows.Forms.TextBox txtTenLopHienTai;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
 
     }
 }

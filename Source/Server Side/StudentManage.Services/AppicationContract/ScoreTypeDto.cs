@@ -9,6 +9,6 @@ namespace StudentManage.Services.AppicationContract
 
         public Guid CoefficientId { get; set; }
         
-        public virtual CoefficientDto Coefficient { get; set; }
+        public CoefficientDto Coefficient { get; set; }
     }
 }

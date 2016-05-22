@@ -143,7 +143,7 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var coefficientEntity = dbContext.Class.FirstOrDefault(g => g.Id == coefficientDto.Id);
+                var coefficientEntity = dbContext.Coefficient.FirstOrDefault(g => g.Id == coefficientDto.Id);
 
                 if (coefficientEntity == null)
                 {
@@ -152,7 +152,7 @@ namespace StudentManage.Services.Services
 
                 coefficientEntity.Name = coefficientDto.Name;
                 coefficientEntity.ModifiedDate = DateTime.Now;
-
+                dbContext.SaveChanges();
                 result = true;
             }
 

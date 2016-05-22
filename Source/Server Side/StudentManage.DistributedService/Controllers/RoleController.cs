@@ -47,7 +47,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.InternalServerError
+                    Message = ResponseMessages.CreateDataUnsuccessfully
                 });
             }
             catch (Exception ex)
@@ -111,17 +111,17 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="roleDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Role")]
-        public IHttpActionResult Delete(Guid roleId)
+        [Route("api/DeleteRole")]
+        public IHttpActionResult Delete(BaseDto roleDto)
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (roleDto == null || roleDto.Id == null || roleDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = RoleService.Delete(roleId);
+                bool result = RoleService.Delete(roleDto.Id);
 
                 if (result)
                 {
@@ -154,7 +154,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="roleDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Role")]
         public IHttpActionResult GetAll()
         {
@@ -172,15 +172,15 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -199,7 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="roleDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/Role")]
         public IHttpActionResult GetById(Guid roleId)
         {
@@ -217,15 +217,15 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

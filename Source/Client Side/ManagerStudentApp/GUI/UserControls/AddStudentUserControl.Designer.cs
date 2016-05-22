@@ -288,6 +288,7 @@
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBoxLopChon;
         private System.Windows.Forms.Button btnBoChonLop;

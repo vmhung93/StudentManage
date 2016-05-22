@@ -29,7 +29,7 @@ namespace ManagerStudentLib.Data
 
         public static string UpdateClass(UpdateClassInfoWithStudentIds classInfo)
         {
-            string url = DataHelper.DATA_SOURCE + "/StudentInClass/CreateClassWithStudent";
+            string url = DataHelper.DATA_SOURCE + "/StudentInClass/UpdateClassWithStudents";
             string jsonData = JsonConvert.SerializeObject(classInfo);
             ResponseData responseData = DataHelper.Post(url, jsonData);
             return responseData.Message;

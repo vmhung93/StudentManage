@@ -65,7 +65,6 @@ namespace ManagerStudentApp.GUI.TabControls
                 }
             }
         }
-        
        
 
         public void SelectTab(TreeControls.ControlAction action) {
@@ -74,6 +73,7 @@ namespace ManagerStudentApp.GUI.TabControls
             {
                 if (!tabControl.TabPages.Contains(tabPage))
                 {
+                    tabPage.ResetControl();
                     tabControl.TabPages.Add(tabPage);
                 }
                 tabControl.SelectedTab = tabPage;

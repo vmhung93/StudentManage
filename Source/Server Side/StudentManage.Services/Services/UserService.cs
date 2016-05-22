@@ -9,35 +9,21 @@ namespace StudentManage.Services.Services
 {
     public interface IUserService
     {
-        UserDto Login(string userName, string password);
+        bool Create(UserDto userDto);
+
+        bool CheckTokenIsValid(Guid token);
+
+        bool Delete(Guid userId);
 
         UserDto GetUserByToken(Guid token);
 
-        bool Create(UserDto userDto);
+        UserDto Login(string userName, string password);
 
         bool UpdateUserInfo(UserDto userDto);
-
-        bool Delete(Guid userId);
     }
 
     public class UserService : BaseService, IUserService
     {
-        public UserDto GetUserByToken(Guid token)
-        {
-            //    // Create DBcontext object
-            //    using (var dbContext = new StudentManageDbContext())
-            //    {
-            //        dbContext.Users.Where(u => u.)
-
-            //        // Add user to dbContext
-            //        dbContext.Users.Add(userEntity);
-            //        dbContext.SaveChanges();
-
-            //        result = true;
-            //    }
-            return new UserDto();
-        }
-
         /// <summary>
         /// Create new user
         /// </summary>
@@ -70,6 +56,23 @@ namespace StudentManage.Services.Services
         }
 
         /// <summary>
+        /// Check token is valid or not
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public bool CheckTokenIsValid(Guid token)
+        {
+            // Create DBcontext object
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Check token is valid
+                bool isValid = dbContext.Users.Any(u => u.AccessToken == token && DateTime.Now.CompareTo(u.ExpiredToken) <= 0);
+
+                return isValid;
+            }
+        }
+
+        /// <summary>
         /// Update user status is deleted
         /// </summary>
         /// <param name="userId"></param>
@@ -97,6 +100,23 @@ namespace StudentManage.Services.Services
             }
 
             return result;
+        }
+
+        public UserDto GetUserByToken(Guid token)
+        {
+            // Create DBcontext object
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var user = dbContext.Users.FirstOrDefault(u => u.AccessToken == token && DateTime.Now.CompareTo(u.ExpiredToken) <= 0);
+
+                if (user == null)
+                {
+                    return null;
+                }
+
+                var userDto = Mapper.Map<UserDto>(user);
+                return userDto;
+            }
         }
 
         public UserDto Login(string userName, string password)

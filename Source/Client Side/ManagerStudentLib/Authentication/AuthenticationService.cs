@@ -22,7 +22,7 @@ namespace ManagerStudentLib.Authentication
 
     public class AuthenticationService
     {
-        private User currentUser;
+        private AuthencatedInfo currentUser;
         private static AuthenticationService instance;
         //singleton
         public static AuthenticationService GetInstance()
@@ -43,7 +43,7 @@ namespace ManagerStudentLib.Authentication
 
         }
 
-        public User GetCurrentUser()
+        public AuthencatedInfo GetCurrentUser()
         {
             return currentUser;
         }

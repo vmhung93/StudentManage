@@ -14,9 +14,9 @@ namespace ManagerStudentLib.Data
         public static string SUB_DOMAIN = "login";
 
         //Login
-        public static User Authenticate(string userId, string password)
+        public static AuthencatedInfo Authenticate(string userId, string password)
         {
-            User user = null;
+            AuthencatedInfo info = null;
             try
             {
                 var loginInfo = new LoginInfo()
@@ -31,13 +31,13 @@ namespace ManagerStudentLib.Data
                 //ResponseData response = DataHelper.PostJsonData(url, requestJsonData);
                 //var jsonUser = response.JsonData;
                 var jsonUser = "{ \"FullName\" : \"Admin\" , \"Role\" : 5,  \"Token\" : \"ABC\"}";
-                user = JsonConvert.DeserializeObject<User>(jsonUser);
+                info = JsonConvert.DeserializeObject<AuthencatedInfo>(jsonUser);
             }
             catch (DataGetException ex)
             {
                 throw (new AuthenticationException(ex));
             }
-            return user;
+            return info;
         }
 
         public static string testData() {

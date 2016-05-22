@@ -1,4 +1,5 @@
 ﻿using StudentManage.Common;
+using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
 using System;
@@ -18,6 +19,7 @@ namespace StudentManage.DistributedService.Controllers
 
         [HttpPost]
         [Route("api/Login")]
+        [CustomAuthorize(RequireAuthentication = false)]
         public UserDto Login(UserDto userDto)
         {
             try
@@ -39,6 +41,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/User")]
+        [CustomAuthorize]
         public IHttpActionResult Create(UserDto userDto)
         {
             try
@@ -83,6 +86,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/User/UserInfo")]
+        [CustomAuthorize]
         public IHttpActionResult UpdateUserInfo(UserDto userDto)
         {
             try

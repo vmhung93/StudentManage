@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201605161202073_AddStudentInClass.Designer.cs">
       <DependentUpon>201605161202073_AddStudentInClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605211735154_UpdateDatabase_2205.cs" />
+    <Compile Include="Migrations\201605211735154_UpdateDatabase_2205.Designer.cs">
+      <DependentUpon>201605211735154_UpdateDatabase_2205.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605161202073_AddStudentInClass.resx">
       <DependentUpon>201605161202073_AddStudentInClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605211735154_UpdateDatabase_2205.resx">
+      <DependentUpon>201605211735154_UpdateDatabase_2205.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

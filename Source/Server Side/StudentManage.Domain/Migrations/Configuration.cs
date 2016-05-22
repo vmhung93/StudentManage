@@ -47,8 +47,7 @@ namespace StudentManage.Domain.Migrations
             {
                 context.Role.Add(saRole);
             }
-            else
-            {
+            else {
                 saRole = saRoleEntity;
             }
 

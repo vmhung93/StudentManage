@@ -60,7 +60,7 @@ namespace ManagerStudentLib.Data
             try
             {
                 HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
-                request.MediaType = "application/json";
+                request.ContentType = "application/json";
                 request.Method = method.Method;
 
                 if (jsonRequestData != null)
@@ -72,7 +72,7 @@ namespace ManagerStudentLib.Data
                         streamWriter.Close();
                     }
                 }
-                request.Timeout = 10000;
+                request.Timeout = 100000;
                 using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
                 {
 

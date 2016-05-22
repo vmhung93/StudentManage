@@ -25,6 +25,8 @@ namespace StudentManage.Services.Services
         bool CreateClassWithStudent(ClassWithStudentDto classWithStudent);
 
         ClassStudentInfoDto GetClassStudentInfo(Guid classId);
+
+        bool UpdateClassWithStudents(UpdateClassWithStudentsDto classWithStudentsDto);
     }
     
     public class StudentInClassService : BaseService, IStudentInClassService
@@ -228,6 +230,56 @@ namespace StudentManage.Services.Services
 
                 return classDto;
             }
+        }
+
+        /// <summary>
+        /// Update student in and out class
+        /// </summary>
+        /// <param name="studentInClassDto"></param>
+        /// <returns></returns>
+        public bool UpdateClassWithStudents(UpdateClassWithStudentsDto classWithStudentsDto)
+        {
+            bool result = false;
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var classEntity = dbContext.Class.SingleOrDefault(c => c.Id == classWithStudentsDto.Class.Id);
+                classEntity.Name = classWithStudentsDto.Class.Name;
+                classEntity.HomeroomTeacherId = classWithStudentsDto.Class.HomeroomTeacherId;
+                classEntity.GradeId = classWithStudentsDto.Class.GradeId;
+                classEntity.Status = classWithStudentsDto.Class.Status;
+                classEntity.ModifiedDate = DateTime.Now;
+                dbContext.SaveChanges();
+
+                foreach (var student in classWithStudentsDto.AddStudentIds)
+                {
+                    var studentEntity = dbContext.StudentInClass.SingleOrDefault(c => c.ClassId == classWithStudentsDto.Class.Id && c.StudentId == student);
+                    if (studentEntity != null)
+                    {
+                        studentEntity.Status = Common.Status.Active;
+                        dbContext.SaveChanges();
+                    }
+                    else
+                    {
+                        studentEntity = new StudentInClass();
+                        studentEntity.ClassId = classWithStudentsDto.Class.Id;
+                        studentEntity.StudentId = student;
+                        studentEntity.Status = Common.Status.Active;
+                        dbContext.StudentInClass.Add(studentEntity);
+                        dbContext.SaveChanges();
+                    }
+                }
+                foreach (var student in classWithStudentsDto.SubtractStudentIds)
+                {
+                    var studentEntity = dbContext.StudentInClass.SingleOrDefault(c => c.ClassId == classWithStudentsDto.Class.Id && c.StudentId == student && c.Status == Common.Status.Active);
+                    if (studentEntity != null)
+                    {
+                        studentEntity.Status = Common.Status.Deleted;
+                        dbContext.SaveChanges();
+                    }
+                }
+                result = true;
+            }
+            return result;
         }
     }
 }

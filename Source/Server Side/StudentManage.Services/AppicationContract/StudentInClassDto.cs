@@ -34,4 +34,11 @@ namespace StudentManage.Services.AppicationContract
 
         public List<UserDto> Students { get; set; }
     }
+
+    public class UpdateClassWithStudentsDto
+    {
+        public ClassDto Class { get; set; }
+        public List<Guid> AddStudentIds { get; set; }
+        public List<Guid> SubtractStudentIds { get; set; }
+    }
 }

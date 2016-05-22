@@ -323,5 +323,15 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        ///// <summary>
+        ///// GetById class info
+        ///// </summary>
+        ///// <param name="classId"></param>
+        ///// <returns></returns>
+        //[HttpPost]
+        //[Route("api/StudentInClass/UpdateClassWithStudents")]
+        //public IHttpActionResult UpdateClassWithStudents(Guid classId)
+        //{ }
     }
 }

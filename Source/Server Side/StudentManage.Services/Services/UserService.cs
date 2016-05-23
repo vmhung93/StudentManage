@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using StudentManage.Common;
+using StudentManage.Common.External_Lib;
 using StudentManage.Domain.DbContext;
 using StudentManage.Domain.Domain;
 using StudentManage.Services.AppicationContract;
@@ -36,17 +38,36 @@ namespace StudentManage.Services.Services
             // Create DBcontext object
             using (var dbContext = new StudentManageDbContext())
             {
+                // Get user role
+                var currentUserRole = dbContext.Role.FirstOrDefault(r => r.Id == userDto.RoleId);
+                if (currentUserRole == null)
+                {
+                    return false;
+                }
+
                 // Using Mapper to map from user dto to user entity
                 var userEntity = Mapper.Map<User>(userDto);
 
                 // Generate user access token
                 userEntity.AccessToken = Guid.NewGuid();
+                userEntity.ExpiredToken = DateTime.Now.AddDays(AppSettings.AccessTokenExpireTime);
+
                 userEntity.CreatedDate = DateTime.Now;
                 userEntity.ModifiedDate = DateTime.Now;
-                userEntity.Status = Common.Status.Active;
 
                 // Add user to dbContext
                 dbContext.Users.Add(userEntity);
+                dbContext.SaveChanges();
+
+                // Generate badge id
+                userEntity.BadgeId = GenerateBadgeId.Generate(currentUserRole.Level, userEntity.UserCode);
+
+                // Hash password
+                userEntity.Password = Security.HashPassword(userEntity.BadgeId, userEntity.Password);
+
+                // Update user name is badge id
+                userEntity.UserName = userEntity.BadgeId;
+
                 dbContext.SaveChanges();
 
                 result = true;

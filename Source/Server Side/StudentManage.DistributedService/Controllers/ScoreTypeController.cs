@@ -173,7 +173,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -218,7 +218,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 

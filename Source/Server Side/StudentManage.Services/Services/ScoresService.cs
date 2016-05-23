@@ -21,6 +21,8 @@ namespace StudentManage.Services.Services
         bool Update(ScoresDto scoresDto);
 
         bool Delete(Guid scoresId);
+
+        List<StudentWithScoreDto> GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto);
     }
     
     public class ScoresService : BaseService, IScoresService
@@ -158,6 +160,32 @@ namespace StudentManage.Services.Services
                 result = true;
             }
 
+            return result;
+        }
+
+        /// <summary>
+        /// Update scores info
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
+        public List<StudentWithScoreDto> GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto)
+        {
+            List<StudentWithScoreDto> result = new List<StudentWithScoreDto>();
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get scores by id
+                var studentEntity = dbContext.StudentInClass.Where(s => s.ClassId == scoreDto.ClassId).ToList();
+                foreach (var student in studentEntity)
+                {
+                    var scores = dbContext.Score.Where(s => s.Status== Common.Status.Active && s.SemesterId == scoreDto.SemesterId && s.CourseId == scoreDto.CourseId && s.StudentId == student.StudentId).ToList();
+                    result.Add(new StudentWithScoreDto()
+                    {
+                        Student = Mapper.Map<UserDto>(student.Student),
+                        ListScore = Mapper.Map<List<ScoresDto>>(scores)
+                    }
+                    );
+                }
+            }
             return result;
         }
     }

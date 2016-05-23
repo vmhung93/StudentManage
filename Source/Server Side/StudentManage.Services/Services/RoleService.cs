@@ -97,6 +97,11 @@ namespace StudentManage.Services.Services
                 var roles = new List<RoleDto>();
                 var roleEntity = dbContext.Role.ToList();
 
+                if (!roleEntity.Any())
+                {
+                    return null;
+                }
+
                 // Mapper from list role entity to role dto
                 Mapper.Map<List<Role>, List<RoleDto>>(roleEntity, roles);
 

@@ -7,12 +7,14 @@ namespace StudentManage.Services.AppicationContract
     public class ClassDto : BaseDto
     {
         public int Code { get; set; }
-        
+
         public string Name { get; set; }
 
-        public Guid GradeId { get; set; }
+        public Guid? GradeId { get; set; }
+        
+        public GradeDto Grade { get; set; }
 
-        public Guid HomeroomTeacherId { get; set; }
+        public Guid? HomeroomTeacherId { get; set; }
         
         public UserDto HomeroomTeacher { get; set; }
     }

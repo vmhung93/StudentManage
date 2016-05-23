@@ -173,7 +173,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -218,7 +218,52 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// GetById scores info
+        /// </summary>
+        /// <param name="scoresDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Scores/GetScoreByClassCourseSemester")]
+        public IHttpActionResult GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                List<StudentWithScoreDto> result = ScoresService.GetScoreByClassCourseSemester(scoreDto);
+
+                if (result != null)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 

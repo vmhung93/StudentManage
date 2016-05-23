@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StudentManage.Services.AppicationContract
@@ -17,6 +18,26 @@ namespace StudentManage.Services.AppicationContract
         
         public ScoreTypeDto ScoreType { get; set; }
 
+        public Guid SemesterId { get; set; }
+        
+        public SemesterDto Semester { get; set; }
+
         public decimal Score { get; set; }
+    }
+
+    public class GetScoreByClassCourseSemesterDto
+    {
+        public Guid ClassId { get; set; }
+
+        public Guid CourseId { get; set; }
+
+        public Guid SemesterId { get; set; }
+    }
+
+    public class StudentWithScoreDto
+    {
+        public UserDto Student { get; set; }
+
+        public List<ScoresDto> ListScore { get; set; }
     }
 }

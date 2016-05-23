@@ -101,7 +101,7 @@ namespace StudentManage.Services.Services
                 var classes = new List<ClassDto>();
                 var classEntity = dbContext.Class.ToList();
 
-                if(classEntity.Any())
+                if(!classEntity.Any())
                 {
                     return null;
                 }

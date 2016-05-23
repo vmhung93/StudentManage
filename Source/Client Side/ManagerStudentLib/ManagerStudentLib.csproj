@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ClassData.cs" />
+    <Compile Include="Data\SubjectData.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
     <Compile Include="Authentication\AuthenticationService.cs" />
     <Compile Include="Exceptions\DataGetException.cs" />

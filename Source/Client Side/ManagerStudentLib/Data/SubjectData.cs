@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ManagerStudentLib.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,25 @@ namespace ManagerStudentLib.Data
             var diem = JsonConvert.DeserializeObject<Diem>(stringJson);
             return diem;
         }
+
+        public static string AddSubject(Subject subject)
+        {
+            string url = DataHelper.DATA_SOURCE + "/Courses";
+            string jsonData = JsonConvert.SerializeObject(subject);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            return responseData.Message;
+        }
+
+        public static List<SubjectInfo> GetListSubject()
+        {
+            string url = DataHelper.DATA_SOURCE + "/Courses";
+            ResponseData responseData = DataHelper.Get(url);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SubjectInfo>>(responseData.JsonData);
+            }
+            return new List<SubjectInfo>();
+        }
     }
 
     public class Diem {
@@ -24,4 +44,5 @@ namespace ManagerStudentLib.Data
         public string TenMonHoc;
         public int diem;
     }
+
 }

@@ -30,7 +30,7 @@
         {
             this.btnThem = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtSubjectName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -44,6 +44,7 @@
             this.btnThem.TabIndex = 39;
             this.btnThem.Text = "Thêm môn học";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnHuy
             // 
@@ -54,14 +55,15 @@
             this.btnHuy.TabIndex = 40;
             this.btnHuy.Text = "Huỷ";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // txtHoTen
+            // txtSubjectName
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(142, 76);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(383, 22);
-            this.txtHoTen.TabIndex = 35;
+            this.txtSubjectName.Location = new System.Drawing.Point(142, 76);
+            this.txtSubjectName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSubjectName.Name = "txtSubjectName";
+            this.txtSubjectName.Size = new System.Drawing.Size(383, 22);
+            this.txtSubjectName.TabIndex = 35;
             // 
             // label3
             // 
@@ -88,10 +90,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnHuy);
-            this.Controls.Add(this.txtHoTen);
+            this.Controls.Add(this.txtSubjectName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddSubjectUserControl";
             this.Size = new System.Drawing.Size(573, 199);
             this.ResumeLayout(false);
@@ -102,7 +104,7 @@
         #endregion
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.TextBox txtSubjectName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
     }

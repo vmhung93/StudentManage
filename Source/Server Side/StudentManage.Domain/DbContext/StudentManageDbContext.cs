@@ -41,11 +41,11 @@ namespace StudentManage.Domain.DbContext
 
             // User
             modelBuilder.Entity<User>()
-                .HasRequired<User>(u => u.CreatedByUser)
+               .HasOptional<User>(u => u.CreatedByUser)
                 .WithMany();
 
             modelBuilder.Entity<User>()
-                .HasRequired<User>(u => u.ModifiedByUser)
+                .HasOptional<User>(u => u.ModifiedByUser)
                 .WithMany();
 
             modelBuilder.Entity<User>()

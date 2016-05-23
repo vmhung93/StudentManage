@@ -14,21 +14,21 @@ namespace StudentManage.Domain.Migrations
         {
             AutomaticMigrationsEnabled = true;
 
-            var migration = new DbMigrator(this);
-            if (migration.GetPendingMigrations().Any())
-            {
-                hasPendingMigration = true;
-            }
+            //var migration = new DbMigrator(this);
+            //if (migration.GetPendingMigrations().Any())
+            //{
+            //    hasPendingMigration = true;
+            //}
         }
 
         protected override void Seed(StudentManage.Domain.DbContext.StudentManageDbContext context)
         {
             // This method will be called after migrating to the latest version.
             // If don't have any pending migration then return
-            if (!hasPendingMigration)
-            {
-                return;
-            }
+            //if (!hasPendingMigration)
+            //{
+            //    return;
+            //}
 
             #region ROLE
 
@@ -105,10 +105,15 @@ namespace StudentManage.Domain.Migrations
                 Status = Status.Active
             };
 
-            if (context.UserInfo.FirstOrDefault(r => r.Email.Contains("sa@studentmanage.com")) == null)
+            var saInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains("sa@studentmanage.com"));
+            if (saInfoEntity == null)
             {
                 context.UserInfo.Add(saUserInfo);
                 context.SaveChanges();
+            }
+            else
+            {
+                saUserInfo = saInfoEntity;
             }
 
             #endregion USER INFO
@@ -128,7 +133,8 @@ namespace StudentManage.Domain.Migrations
                     Status = Status.Active,
                     ModifiedDate = DateTime.Now,
                     RoleId = saRole.Id,
-                    Password = "123x@X"
+                    Password = "123x@X",
+                    ExpiredToken = DateTime.Now.AddDays(10)
                 });
 
                 context.SaveChanges();

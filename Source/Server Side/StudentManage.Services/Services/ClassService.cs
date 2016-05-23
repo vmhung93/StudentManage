@@ -101,11 +101,6 @@ namespace StudentManage.Services.Services
                 var classes = new List<ClassDto>();
                 var classEntity = dbContext.Class.ToList();
 
-                if (!classEntity.Any())
-                {
-                    return null;
-                }
-
                 // Mapper from list grade entity to grade dto
                 Mapper.Map<List<Class>, List<ClassDto>>(classEntity, classes);
 
@@ -124,15 +119,15 @@ namespace StudentManage.Services.Services
             {
                 // Get grade by id
                 var classEntity = dbContext.Class.FirstOrDefault(g => g.Id == classId);
-
-                if (classEntity == null)
+                
+                if(classEntity == null)
                 {
                     return null;
                 }
 
-                var _class = Mapper.Map<ClassDto>(classEntity);
+                var classDto = Mapper.Map<ClassDto>(classEntity);
 
-                return _class;
+                return classDto;
             }
         }
 

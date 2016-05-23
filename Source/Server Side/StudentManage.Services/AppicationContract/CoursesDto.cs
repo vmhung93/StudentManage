@@ -9,11 +9,11 @@ namespace StudentManage.Services.AppicationContract
 
         public string Name { get; set; }
 
-        public Guid DeanId { get; set; }
+        public Guid? DeanId { get; set; }
         
         public UserDto Dean { get; set; }
 
-        public Guid SemesterId { get; set; }
+        public Guid? SemesterId { get; set; }
         
         public SemesterDto Semester { get; set; }
     }

@@ -76,7 +76,6 @@
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\PositionInClassService.cs" />
     <Compile Include="Services\CoursesService.cs" />
-    <Compile Include="Services\CoefficientService.cs" />
     <Compile Include="Services\DatabaseService.cs" />
     <Compile Include="Services\ClassService.cs" />
     <Compile Include="Services\GradeService.cs" />

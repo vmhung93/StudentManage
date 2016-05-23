@@ -15,11 +15,6 @@ namespace StudentManage.Domain.Domain
         [ForeignKey("DeanId")]
         public virtual User Dean { get; set; }
 
-        public Guid SemesterId { get; set; }
-
-        [ForeignKey("SemesterId")]
-        public virtual Semester Semester { get; set; }
-
         public DateTime CreatedDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }

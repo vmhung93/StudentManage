@@ -14,10 +14,6 @@ namespace StudentManage.Services.Services
             Mapper.CreateMap<Class, ClassDto>();
             Mapper.CreateMap<ClassDto, Class>();
 
-            // Coefficient
-            Mapper.CreateMap<Coefficient, CoefficientDto>();
-            Mapper.CreateMap<CoefficientDto, Coefficient>();
-
             // Courses
             Mapper.CreateMap<Courses, CoursesDto>();
             Mapper.CreateMap<CoursesDto, Courses>();

@@ -17,7 +17,6 @@ namespace StudentManage.DistributedService.DI
             // Ex: container.RegisterType<IDbContext, DbContext>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IClassService, ClassService>();
-            container.RegisterType<ICoefficientService, CoefficientService>();
             container.RegisterType<ICoursesService, CoursesService>();
             container.RegisterType<IGradeService, GradeService>();
             container.RegisterType<IPositionInClassService, PositionInClassService>();

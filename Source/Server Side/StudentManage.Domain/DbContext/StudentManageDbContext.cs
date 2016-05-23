@@ -12,7 +12,6 @@ namespace StudentManage.Domain.DbContext
 
         public DbSet<Class> Class { get; set; }
 
-        public DbSet<Coefficient> Coefficient { get; set; }
         public DbSet<Courses> Courses { get; set; }
 
         public DbSet<Grade> Grade { get; set; }

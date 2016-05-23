@@ -12,7 +12,7 @@ namespace StudentManage.Domain.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
 
             var migration = new DbMigrator(this);
             if (migration.GetPendingMigrations().Any())

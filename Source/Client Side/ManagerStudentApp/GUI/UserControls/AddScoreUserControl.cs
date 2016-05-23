@@ -171,6 +171,7 @@ namespace ManagerStudentApp.GUI.UserControls
                                 var scoreTypeId = GetScoreTypeId(k);
                                 var newScore = new ScoreInfo()
                                 {
+                                    Id = Guid.Empty.ToString(),
                                     Score = scoreNewValue,
                                     StudentId = studentId,
                                     CourseId = subjectId,
@@ -196,7 +197,6 @@ namespace ManagerStudentApp.GUI.UserControls
             };
             try
             {
-                textBox2.Text = ScoreData.UpdateScores(updateInfo);
                 MessageBox.Show(this, ScoreData.UpdateScores(updateInfo), "Thành công", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (DataGetException ex)

@@ -25,9 +25,8 @@ namespace ManagerStudentLib.Data
         public static string UpdateScores(UpdateStudentWithScore updateInfo) {
             string url = DataHelper.DATA_SOURCE + "/Scores/UpdateWithCreateScore";
             string jsonData = JsonConvert.SerializeObject(updateInfo);
-            //ResponseData responseData = DataHelper.Post(url, jsonData);
-            //return responseData.Message;
-            return jsonData;
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            return responseData.Message;
         }
 
         public static List<ScoreType> GetScoreTypes()

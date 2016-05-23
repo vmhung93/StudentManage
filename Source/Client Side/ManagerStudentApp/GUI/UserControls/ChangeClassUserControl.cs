@@ -159,12 +159,6 @@ namespace ManagerStudentApp.GUI.UserControls
                 MessageBox.Show(this, "Chưa chọn lớp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (String.IsNullOrWhiteSpace(txtTenLop.Text))
-            {
-                MessageBox.Show(this, "Tên lớp không được trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             var newStudentIds = new List<string>();
             var substractStudentIds = new List<string>();
 
@@ -188,7 +182,7 @@ namespace ManagerStudentApp.GUI.UserControls
             string teacherId = currentClass.Class.HomeroomTeacherId;
             string name = currentClass.Class.Name;
             if (!String.IsNullOrWhiteSpace(txtTenLop.Text)) {
-                name = txtTenLop.Text.Trim(); 
+                name = txtTenLop.Text.Trim();
             }
 
             if (comboBoxKhoiLop.SelectedIndex > 0) {

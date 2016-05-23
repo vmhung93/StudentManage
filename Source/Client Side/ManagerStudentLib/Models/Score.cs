@@ -8,6 +8,10 @@ namespace ManagerStudentLib.Models
 {
     public class ScoreInfo
     {
+        public string Id { get; set; }
+
+        public string StudentId { get; set; }
+
         public string CourseId { get; set; }
 
         public string ScoreTypeId { get; set; }
@@ -30,6 +34,12 @@ namespace ManagerStudentLib.Models
     {
         public User Student { get; set; }
         public List<ScoreInfo> ListScore { get; set; }
+    }
+
+    public class UpdateStudentWithScore
+    {
+        public List<ScoreInfo> ScoresMerge;
+        public List<string> ScoresDelete;
     }
 
     public class LoadScoreInfo

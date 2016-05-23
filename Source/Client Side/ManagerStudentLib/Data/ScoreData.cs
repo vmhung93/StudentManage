@@ -21,5 +21,24 @@ namespace ManagerStudentLib.Data
             }
             return new List<StudentWithScore>();
         }
+        
+        public static string UpdateScores(UpdateStudentWithScore updateInfo) {
+            string url = DataHelper.DATA_SOURCE + "/Scores/UpdateWithCreateScore";
+            string jsonData = JsonConvert.SerializeObject(updateInfo);
+            //ResponseData responseData = DataHelper.Post(url, jsonData);
+            //return responseData.Message;
+            return jsonData;
+        }
+
+        public static List<ScoreType> GetScoreTypes()
+        {
+            var url = DataHelper.DATA_SOURCE + "/ScoreType";
+            ResponseData responseData = DataHelper.Get(url);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<ScoreType>>(responseData.JsonData);
+            }
+            return new List<ScoreType>();
+        }
     }
 }

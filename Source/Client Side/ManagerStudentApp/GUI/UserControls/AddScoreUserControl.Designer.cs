@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCapNhatDiem = new System.Windows.Forms.Button();
             this.btnHoanTac = new System.Windows.Forms.Button();
             this.cbbMon = new System.Windows.Forms.ComboBox();
@@ -43,6 +44,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,6 +136,10 @@
             // 
             // dgvDiem
             // 
+            this.dgvDiem.AllowUserToAddRows = false;
+            this.dgvDiem.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -143,44 +149,63 @@
             this.Column5});
             this.dgvDiem.Location = new System.Drawing.Point(35, 166);
             this.dgvDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDiem.MultiSelect = false;
             this.dgvDiem.Name = "dgvDiem";
             this.dgvDiem.Size = new System.Drawing.Size(771, 420);
             this.dgvDiem.TabIndex = 38;
+            this.dgvDiem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiem_CellDoubleClick);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Mã học sinh";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Width = 150;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Họ tên";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.Width = 200;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Điểm 15\'";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Điểm 1 tiết";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Width = 120;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Điểm học kỳ";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 120;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(656, 116);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 40;
             // 
             // AddScoreUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dgvDiem);
             this.Controls.Add(this.btnCapNhatDiem);
             this.Controls.Add(this.btnHoanTac);
@@ -217,5 +242,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

@@ -15,6 +15,11 @@ namespace StudentManage.Domain.Domain
         [ForeignKey("CourseId")]
         public virtual Courses Course { get; set; }
 
+        public Guid SemesterId { get; set; }
+
+        [ForeignKey("SemesterId")]
+        public virtual Semester Semester { get; set; }
+
         public Guid ScoreTypeId { get; set; }
 
         [ForeignKey("ScoreTypeId")]

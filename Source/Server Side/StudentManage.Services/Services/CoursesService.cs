@@ -22,7 +22,7 @@ namespace StudentManage.Services.Services
 
         bool Delete(Guid coursesId);
     }
-    
+
     public class CoursesService : BaseService, ICoursesService
     {
         /// <summary>
@@ -152,7 +152,6 @@ namespace StudentManage.Services.Services
 
                 coursesEntity.Name = CoursesDto.Name;
                 coursesEntity.DeanId = CoursesDto.DeanId;
-                coursesEntity.SemesterId = CoursesDto.SemesterId;
                 coursesEntity.ModifiedDate = DateTime.Now;
 
                 dbContext.SaveChanges();

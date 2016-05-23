@@ -12,7 +12,6 @@ namespace StudentManage.Domain.DbContext
 
         public DbSet<Class> Class { get; set; }
 
-        public DbSet<Coefficient> Coefficient { get; set; }
         public DbSet<Courses> Courses { get; set; }
 
         public DbSet<Grade> Grade { get; set; }
@@ -52,19 +51,6 @@ namespace StudentManage.Domain.DbContext
             modelBuilder.Entity<User>()
                 .HasRequired<Role>(u => u.Role)
                 .WithMany();
-
-            // Class
-            modelBuilder.Entity<Class>()
-               .HasRequired<User>(c => c.CreatedByUser)
-               .WithMany();
-
-            modelBuilder.Entity<Class>()
-                .HasRequired<User>(c => c.ModifiedByUser)
-                .WithMany();
-
-            modelBuilder.Entity<Class>()
-               .HasRequired<User>(c => c.HomeroomTeacher)
-               .WithMany();
         }
     }
 }

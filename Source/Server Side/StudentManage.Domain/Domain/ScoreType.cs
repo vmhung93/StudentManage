@@ -7,10 +7,7 @@ namespace StudentManage.Domain.Domain
     {
         public string Name { get; set; }
 
-        public Guid CoefficientId { get; set; }
-
-        [ForeignKey("CoefficientId")]
-        public virtual Coefficient Coefficient { get; set; }
+        public double Coefficient { get; set; }
 
         public DateTime CreatedDate { get; set; }
 

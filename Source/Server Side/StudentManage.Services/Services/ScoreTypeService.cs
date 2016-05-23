@@ -22,7 +22,7 @@ namespace StudentManage.Services.Services
 
         bool Delete(Guid scoreTypeId);
     }
-    
+
     public class ScoreTypeService : BaseService, IScoreTypeService
     {
         /// <summary>
@@ -151,7 +151,6 @@ namespace StudentManage.Services.Services
                 }
 
                 scoreTypesEntity.Name = scoreTypeDto.Name;
-                scoreTypesEntity.CoefficientId = scoreTypeDto.CoefficientId;
                 scoreTypesEntity.ModifiedDate = DateTime.Now;
 
                 dbContext.SaveChanges();

@@ -15,7 +15,7 @@ namespace StudentManage.Domain.Domain
         [ForeignKey("GradeId")]
         public virtual Grade Grade { get; set; }
 
-        public Guid HomeroomTeacherId { get; set; }
+        public Guid? HomeroomTeacherId { get; set; }
 
         [ForeignKey("HomeroomTeacherId")]
         public virtual User HomeroomTeacher { get; set; }

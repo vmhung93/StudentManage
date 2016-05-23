@@ -7,7 +7,7 @@ namespace StudentManage.Domain.Domain
     {
         public string Name { get; set; }
 
-        public Boolean Coefficient { get; set; }
+        public double Coefficient { get; set; }
 
         public DateTime CreatedDate { get; set; }
 

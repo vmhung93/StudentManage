@@ -28,99 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cbbLop = new System.Windows.Forms.ComboBox();
+            this.cbbMon = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbbHocKi = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dgvDiem = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiem)).BeginInit();
             this.SuspendLayout();
             // 
-            // button12
+            // cbbLop
             // 
-            this.button12.Location = new System.Drawing.Point(458, 436);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(131, 32);
-            this.button12.TabIndex = 46;
-            this.button12.Text = "Cập nhật bảng điểm";
-            this.button12.UseVisualStyleBackColor = true;
+            this.cbbLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbLop.FormattingEnabled = true;
+            this.cbbLop.Location = new System.Drawing.Point(137, 74);
+            this.cbbLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbbLop.Name = "cbbLop";
+            this.cbbLop.Size = new System.Drawing.Size(135, 24);
+            this.cbbLop.TabIndex = 0;
+            this.cbbLop.SelectedIndexChanged += new System.EventHandler(this.cbbSelectedIndexChanged);
             // 
-            // button11
+            // cbbMon
             // 
-            this.button11.Location = new System.Drawing.Point(322, 436);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(131, 32);
-            this.button11.TabIndex = 47;
-            this.button11.Text = "Huỷ";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(103, 60);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(102, 21);
-            this.comboBox3.TabIndex = 43;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(322, 60);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(102, 21);
-            this.comboBox4.TabIndex = 42;
+            this.cbbMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbMon.FormattingEnabled = true;
+            this.cbbMon.Location = new System.Drawing.Point(429, 74);
+            this.cbbMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbbMon.Name = "cbbMon";
+            this.cbbMon.Size = new System.Drawing.Size(135, 24);
+            this.cbbMon.TabIndex = 1;
+            this.cbbMon.SelectedIndexChanged += new System.EventHandler(this.cbbSelectedIndexChanged);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(234, 60);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Location = new System.Drawing.Point(312, 74);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(55, 13);
+            this.label22.Size = new System.Drawing.Size(72, 17);
             this.label22.TabIndex = 39;
             this.label22.Text = "Chọn môn";
             // 
-            // comboBox2
+            // cbbHocKi
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(103, 91);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(102, 21);
-            this.comboBox2.TabIndex = 44;
+            this.cbbHocKi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbHocKi.FormattingEnabled = true;
+            this.cbbHocKi.Location = new System.Drawing.Point(137, 112);
+            this.cbbHocKi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbbHocKi.Name = "cbbHocKi";
+            this.cbbHocKi.Size = new System.Drawing.Size(135, 24);
+            this.cbbHocKi.TabIndex = 2;
+            this.cbbHocKi.SelectedIndexChanged += new System.EventHandler(this.cbbSelectedIndexChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(15, 60);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Location = new System.Drawing.Point(20, 74);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 13);
+            this.label20.Size = new System.Drawing.Size(64, 17);
             this.label20.TabIndex = 40;
             this.label20.Text = "Chọn lớp";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(15, 91);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Location = new System.Drawing.Point(20, 112);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 13);
+            this.label19.Size = new System.Drawing.Size(47, 17);
             this.label19.TabIndex = 41;
             this.label19.Text = "Học kì";
             // 
@@ -128,86 +109,89 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label21.Location = new System.Drawing.Point(97, 10);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Location = new System.Drawing.Point(242, 10);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(281, 31);
+            this.label21.Size = new System.Drawing.Size(354, 39);
             this.label21.TabIndex = 38;
             this.label21.Text = "Tra cứu điểm môn học";
             // 
-            // dataGridView1
+            // dgvDiem
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 131);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(578, 283);
-            this.dataGridView1.TabIndex = 48;
+            this.dgvDiem.Location = new System.Drawing.Point(24, 161);
+            this.dgvDiem.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDiem.Name = "dgvDiem";
+            this.dgvDiem.ReadOnly = true;
+            this.dgvDiem.Size = new System.Drawing.Size(771, 420);
+            this.dgvDiem.TabIndex = 3;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Mã học sinh";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Họ tên";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Điểm 15\'";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Điểm 1 tiết";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Điểm học kỳ";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // ListScoreUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.dgvDiem);
+            this.Controls.Add(this.cbbLop);
+            this.Controls.Add(this.cbbMon);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbbHocKi);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label21);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListScoreUserControl";
-            this.Size = new System.Drawing.Size(626, 488);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Size = new System.Drawing.Size(823, 601);
+            this.Load += new System.EventHandler(this.ListScoreUserControl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cbbLop;
+        private System.Windows.Forms.ComboBox cbbMon;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbbHocKi;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDiem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

@@ -142,10 +142,10 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private void comboBoxLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxLop.SelectedIndex >= 0)
+            if (comboBoxLop.SelectedIndex > 0)
             {
                 int index = comboBoxLop.SelectedIndex;
-                string classId = classes[index].Id;
+                string classId = classes[index-1].Id;
                 currentClass = ClassData.GetInfoClassWithStudents(classId);
                 ResetCurrentClassData();
             }

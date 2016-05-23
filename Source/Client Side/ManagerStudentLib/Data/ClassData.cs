@@ -57,7 +57,7 @@ namespace ManagerStudentLib.Data
             {
                 return JsonConvert.DeserializeObject<ClassInfoWithStudents>(responseData.JsonData);
             }
-            return new ClassInfoWithStudents();
+            return null;
         }
     }
 }

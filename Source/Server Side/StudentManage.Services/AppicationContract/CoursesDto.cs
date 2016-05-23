@@ -12,9 +12,5 @@ namespace StudentManage.Services.AppicationContract
         public Guid? DeanId { get; set; }
         
         public UserDto Dean { get; set; }
-
-        public Guid? SemesterId { get; set; }
-        
-        public SemesterDto Semester { get; set; }
     }
 }

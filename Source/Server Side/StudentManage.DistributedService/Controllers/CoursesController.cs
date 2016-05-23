@@ -180,7 +180,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

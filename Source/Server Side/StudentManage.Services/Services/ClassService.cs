@@ -101,6 +101,11 @@ namespace StudentManage.Services.Services
                 var classes = new List<ClassDto>();
                 var classEntity = dbContext.Class.ToList();
 
+                if(classEntity.Any())
+                {
+                    return null;
+                }
+
                 // Mapper from list grade entity to grade dto
                 Mapper.Map<List<Class>, List<ClassDto>>(classEntity, classes);
 
@@ -174,11 +179,13 @@ namespace StudentManage.Services.Services
 
                 var teacherAvaliable = dbContext.Users.Where(u => !teacherUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Teacher).ToList();
                 var studentAvaliable = dbContext.Users.Where(u => !studentUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Student).ToList();
+                var grades = dbContext.Grade.ToList();
 
                 var result = new ClassInfoDto()
                 {
                     HomeroomTeacherdes = Mapper.Map<List<UserDto>>(teacherAvaliable),
-                    Students = Mapper.Map<List<UserDto>>(studentAvaliable)
+                    Students = Mapper.Map<List<UserDto>>(studentAvaliable),
+                    Grades = Mapper.Map<List<GradeDto>>(grades)
                 };
 
                 return result;

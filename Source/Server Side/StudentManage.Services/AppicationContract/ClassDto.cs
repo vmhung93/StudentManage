@@ -22,5 +22,7 @@ namespace StudentManage.Services.AppicationContract
         public List<UserDto> HomeroomTeacherdes { get; set; }
 
         public List<UserDto> Students { get; set; }
+
+        public List<GradeDto> Grades { get; set; }
     }
 }

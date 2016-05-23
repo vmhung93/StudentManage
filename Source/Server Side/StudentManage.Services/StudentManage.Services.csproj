@@ -60,7 +60,6 @@
     <Compile Include="AppicationContract\SemesterDto.cs" />
     <Compile Include="AppicationContract\CoursesDto.cs" />
     <Compile Include="AppicationContract\PositionInClassDto.cs" />
-    <Compile Include="AppicationContract\CoefficientDto.cs" />
     <Compile Include="AppicationContract\ClassDto.cs" />
     <Compile Include="AppicationContract\GradeDto.cs" />
     <Compile Include="AppicationContract\RoleDto.cs" />

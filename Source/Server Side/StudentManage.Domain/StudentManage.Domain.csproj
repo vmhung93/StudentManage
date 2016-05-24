@@ -52,6 +52,7 @@
     <Compile Include="DbContext\StudentManageDbContext.cs" />
     <Compile Include="Domain\Class.cs" />
     <Compile Include="Domain\Courses.cs" />
+    <Compile Include="Domain\SystemConfig.cs" />
     <Compile Include="Domain\Grade.cs" />
     <Compile Include="Domain\ITraceable.cs" />
     <Compile Include="Domain\PositionInClass.cs" />

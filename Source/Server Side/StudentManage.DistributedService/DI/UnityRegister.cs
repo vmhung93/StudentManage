@@ -25,6 +25,7 @@ namespace StudentManage.DistributedService.DI
             container.RegisterType<IScoreTypeService, ScoreTypeService>();
             container.RegisterType<ISemesterService, SemesterService>();
             container.RegisterType<IStudentInClassService, StudentInClassService>();
+            container.RegisterType<ISystemConfigService, SystemConfigService>();
             container.RegisterType<IUserInfoService, UserInfoService>();
             container.RegisterType<IUserService, UserService>();
             container.RegisterType<IGradeService, GradeService>();

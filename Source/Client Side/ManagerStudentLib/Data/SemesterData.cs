@@ -20,5 +20,16 @@ namespace ManagerStudentLib.Data
             }
             return new List<SemesterInfo>();
         }
+
+        public static List<SummarySemester> GetSummarySemester(string id)
+        {
+            string url = DataHelper.DATA_SOURCE + "/Semester/GetSummarySemester/{" + id + "}";
+            ResponseData responseData = DataHelper.Get(url);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SummarySemester>>(responseData.JsonData);
+            }
+            return new List<SummarySemester>();
+        }
     }
 }

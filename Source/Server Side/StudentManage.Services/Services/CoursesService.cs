@@ -21,6 +21,8 @@ namespace StudentManage.Services.Services
         bool Update(CoursesDto CoursesDto);
 
         bool Delete(Guid coursesId);
+
+        List<SummaryCourseDto> SummaryCourse(GetSummaryCourseDto coursesDto);
     }
 
     public class CoursesService : BaseService, ICoursesService
@@ -137,27 +139,63 @@ namespace StudentManage.Services.Services
         /// </summary>
         /// <param name="coursesDto"></param>
         /// <returns></returns>
-        public bool Update(CoursesDto CoursesDto)
+        public bool Update(CoursesDto coursesDto)
         {
             bool result = false;
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == CoursesDto.Id);
+                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == coursesDto.Id);
 
                 if (coursesEntity == null)
                 {
                     return false;
                 }
 
-                coursesEntity.Name = CoursesDto.Name;
-                coursesEntity.DeanId = CoursesDto.DeanId;
+                coursesEntity.Name = coursesDto.Name;
+                coursesEntity.DeanId = coursesDto.DeanId;
                 coursesEntity.ModifiedDate = DateTime.Now;
 
                 dbContext.SaveChanges();
                 result = true;
             }
 
+            return result;
+        }
+
+        /// <summary>
+        /// Update grade info
+        /// </summary>
+        /// <param name="coursesDto"></param>
+        /// <returns></returns>
+        public List<SummaryCourseDto> SummaryCourse(GetSummaryCourseDto coursesDto)
+        {
+            List<SummaryCourseDto> result = new List<SummaryCourseDto>();
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get grade by id
+                var classEntity = dbContext.Class.ToList();
+
+                foreach(var c in classEntity)
+                {
+                    var summary = new SummaryCourseDto() { Class = Mapper.Map<ClassDto>(c) };
+
+                    List<StudentWithScoreDto> studentScore = new List<StudentWithScoreDto>();
+                    var studentEntity = dbContext.StudentInClass.Where(s => s.ClassId == c.Id).ToList();
+                    foreach (var student in studentEntity)
+                    {
+                        var scores = dbContext.Score.Where(s => s.Status == Common.Status.Active && s.SemesterId == coursesDto.SemesterId && s.CourseId == coursesDto.CourseId && s.StudentId == student.StudentId).ToList();
+                        studentScore.Add(new StudentWithScoreDto()
+                        {
+                            Student = Mapper.Map<UserDto>(student.Student),
+                            ListScore = Mapper.Map<List<ScoresDto>>(scores)
+                        }
+                        );
+                    }
+                    summary.StudentScore = studentScore;
+                    result.Add(summary);
+                }
+            }
             return result;
         }
     }

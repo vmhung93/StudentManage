@@ -40,4 +40,11 @@ namespace StudentManage.Services.AppicationContract
 
         public List<ScoresDto> ListScore { get; set; }
     }
+
+    public class ScoreUpdateDto
+    {
+        public List<ScoresDto> ScoresAdd;
+        public List<ScoresDto> ScoresUpdate;
+        public List<Guid> ScoresDelete;
+    }
 }

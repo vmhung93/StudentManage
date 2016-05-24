@@ -23,6 +23,8 @@ namespace StudentManage.Services.Services
         bool Delete(Guid scoresId);
 
         List<StudentWithScoreDto> GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto);
+
+        bool UpdateWithCreateScore(ScoreUpdateDto scoreDto);
     }
     
     public class ScoresService : BaseService, IScoresService
@@ -185,6 +187,51 @@ namespace StudentManage.Services.Services
                     }
                     );
                 }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Update scores info
+        /// </summary>
+        /// <param name="score"></param>
+        /// <returns></returns>
+        public bool UpdateWithCreateScore(ScoreUpdateDto scoreDto)
+        {
+            bool result = false;
+            using (var dbContext = new StudentManageDbContext())
+            {
+                foreach (var score in scoreDto.ScoresUpdate)
+                {
+                    var scoreEntity = dbContext.Score.SingleOrDefault(s => s.Status == Common.Status.Active && s.Id == score.Id);
+                    if (scoreEntity == null)
+                    {
+                        scoreEntity = Mapper.Map<Scores>(score);
+                        scoreEntity.CreatedDate = DateTime.Now;
+                        scoreEntity.ModifiedDate = DateTime.Now;
+                        dbContext.Score.Add(scoreEntity);
+                        dbContext.SaveChanges();
+                    }
+                }
+                foreach (var score in scoreDto.ScoresAdd)
+                {
+                    var scoreEntity = Mapper.Map<Scores>(score);
+                    scoreEntity.CreatedDate = DateTime.Now;
+                    scoreEntity.ModifiedDate = DateTime.Now;
+                    dbContext.Score.Add(scoreEntity);
+                    dbContext.SaveChanges();
+                }
+                foreach (var scoreId in scoreDto.ScoresDelete)
+                {
+                    var scoreEntity = dbContext.Score.SingleOrDefault(s => s.Status == Common.Status.Active && s.Id == scoreId);
+                    if (scoreEntity != null)
+                    {
+                        scoreEntity.Status = Common.Status.Deleted;
+                        scoreEntity.ModifiedDate = DateTime.Now;
+                        dbContext.SaveChanges();
+                    }
+                }
+                result = true;
             }
             return result;
         }

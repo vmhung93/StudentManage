@@ -283,5 +283,49 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// GetById scores info
+        /// </summary>
+        /// <param name="scoresDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Scores/UpdateWithCreateScore")]
+        public IHttpActionResult UpdateWithCreateScore(ScoreUpdateDto scoreDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                bool result = ScoresService.UpdateWithCreateScore(scoreDto);
+
+                if (result == true)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.UpdateSuccessful
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.UpdateUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
     }
 }

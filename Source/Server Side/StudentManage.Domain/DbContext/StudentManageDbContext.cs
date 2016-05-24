@@ -28,9 +28,11 @@ namespace StudentManage.Domain.DbContext
 
         public DbSet<StudentInClass> StudentInClass { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<SystemConfig> SystemConfig { get; set; }
 
         public DbSet<UserInfo> UserInfo { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,11 +43,11 @@ namespace StudentManage.Domain.DbContext
 
             // User
             modelBuilder.Entity<User>()
-                .HasRequired<User>(u => u.CreatedByUser)
+                .HasOptional<User>(u => u.CreatedByUser)
                 .WithMany();
 
             modelBuilder.Entity<User>()
-                .HasRequired<User>(u => u.ModifiedByUser)
+                .HasOptional<User>(u => u.ModifiedByUser)
                 .WithMany();
 
             modelBuilder.Entity<User>()

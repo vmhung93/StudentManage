@@ -9,8 +9,6 @@ namespace StudentManage.Services.AppicationContract
 
         public string UserName { get; set; }
 
-        public string Password { get; set; }
-
         public Guid AccessToken { get; set; }
 
         [Required]
@@ -22,5 +20,14 @@ namespace StudentManage.Services.AppicationContract
 
         [Required]
         public Guid RoleId { get; set; }
+    }
+
+    public class LoginDto
+    {
+        [Required]
+        public string BadgeId { get; set; }
+
+        [Required]
+        public string Password { get; set; }
     }
 }

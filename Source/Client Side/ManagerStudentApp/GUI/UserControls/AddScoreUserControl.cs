@@ -137,6 +137,7 @@ namespace ManagerStudentApp.GUI.UserControls
         private void btnCapNhatDiem_Click(object sender, EventArgs e)
         {
             var updateScores = new List<ScoreInfo>();
+            var addScores = new List<AddScoreInfo>();
             var delScores = new List<string>();
             for (int i = 0; i < dgvDiem.Rows.Count; ++i ) {
                 var row = dgvDiem.Rows[i];
@@ -145,7 +146,7 @@ namespace ManagerStudentApp.GUI.UserControls
                 var semesterId = listSemesterInfo[cbbHocKi.SelectedIndex - 1].Id;
                 for (int k = 2; k <= 4; ++k)
                 {
-                    if (IsValidCellValue(row.Cells[k].Value.ToString()))
+                    if (row.Cells[k].Value != null && IsValidCellValue(row.Cells[k].Value.ToString()))
                     {
                         string value = row.Cells[k].Value.ToString();
                         if (string.IsNullOrWhiteSpace(value))
@@ -169,16 +170,15 @@ namespace ManagerStudentApp.GUI.UserControls
                             {
                                 var scoreNewValue = decimal.Parse(row.Cells[k].Value.ToString().Trim());
                                 var scoreTypeId = GetScoreTypeId(k);
-                                var newScore = new ScoreInfo()
+                                var newScore = new AddScoreInfo()
                                 {
-                                    Id = Guid.Empty.ToString(),
                                     Score = scoreNewValue,
                                     StudentId = studentId,
                                     CourseId = subjectId,
                                     SemesterId = semesterId,
                                     ScoreTypeId = scoreTypeId
                                 };
-                                updateScores.Add(newScore);
+                                addScores.Add(newScore);
                             }
                         }
                     }
@@ -192,7 +192,8 @@ namespace ManagerStudentApp.GUI.UserControls
 
             var updateInfo = new UpdateStudentWithScore()
             {
-                ScoresMerge = updateScores,
+                ScoresUpdate = updateScores,
+                ScoresAdd = addScores,
                 ScoresDelete = delScores
             };
             try
@@ -203,6 +204,7 @@ namespace ManagerStudentApp.GUI.UserControls
             {
                 MessageBox.Show(this, ex.DataGetMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            LoadDataStudents();
         }
 
         // hard code the scoreType for cell 2,3,4

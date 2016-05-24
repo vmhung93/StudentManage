@@ -35,6 +35,18 @@ namespace ManagerStudentLib.Data
             }
             return new List<SubjectInfo>();
         }
+
+        public static List<SummarySubject> GetSummarySubject(GetSummarySubject summary)
+        {
+            string url = DataHelper.DATA_SOURCE + "/Courses/SummaryCourse";
+            string jsonData = JsonConvert.SerializeObject(summary);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SummarySubject>>(responseData.JsonData);
+            }
+            return new List<SummarySubject>();
+        }
     }
 
     public class Diem {

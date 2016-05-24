@@ -16,4 +16,16 @@ namespace ManagerStudentLib.Models
         public string Id { get; set; }
         public string Name { get; set; }
     }
+
+    public class SummarySubject
+    {
+        public ClassInfo Class;
+        public List<StudentWithScore> StudentScore;
+    }
+
+    public class GetSummarySubject
+    {
+        public string CourseId;
+        public string SemesterId;
+    }
 }

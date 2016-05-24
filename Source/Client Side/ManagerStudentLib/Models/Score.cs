@@ -21,7 +21,22 @@ namespace ManagerStudentLib.Models
         public string SemesterId { get; set; }
 
         public decimal Score { get; set; }
-    } 
+    }
+
+    public class AddScoreInfo
+    {
+        public string StudentId { get; set; }
+
+        public string CourseId { get; set; }
+
+        public string ScoreTypeId { get; set; }
+
+        public ScoreType ScoreType { get; set; }
+
+        public string SemesterId { get; set; }
+
+        public decimal Score { get; set; }
+    }
 
     public class ScoreType
     {
@@ -38,7 +53,8 @@ namespace ManagerStudentLib.Models
 
     public class UpdateStudentWithScore
     {
-        public List<ScoreInfo> ScoresMerge;
+        public List<AddScoreInfo> ScoresAdd;
+        public List<ScoreInfo> ScoresUpdate;
         public List<string> ScoresDelete;
     }
 

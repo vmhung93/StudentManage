@@ -53,6 +53,8 @@
             this.comboBoxGVCN = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxKhoiLop = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSiSoToiDa = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -215,11 +217,12 @@
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(716, 155);
+            this.txtSiSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiSo.Location = new System.Drawing.Point(691, 155);
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiSo.Name = "txtSiSo";
             this.txtSiSo.ReadOnly = true;
-            this.txtSiSo.Size = new System.Drawing.Size(55, 22);
+            this.txtSiSo.Size = new System.Drawing.Size(80, 22);
             this.txtSiSo.TabIndex = 17;
             this.txtSiSo.Text = "1";
             this.txtSiSo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -296,6 +299,27 @@
             this.comboBoxKhoiLop.Size = new System.Drawing.Size(185, 24);
             this.comboBoxKhoiLop.TabIndex = 2;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(592, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Sỉ số tối đa";
+            // 
+            // txtSiSoToiDa
+            // 
+            this.txtSiSoToiDa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiSoToiDa.Location = new System.Drawing.Point(691, 129);
+            this.txtSiSoToiDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSiSoToiDa.Name = "txtSiSoToiDa";
+            this.txtSiSoToiDa.ReadOnly = true;
+            this.txtSiSoToiDa.Size = new System.Drawing.Size(80, 22);
+            this.txtSiSoToiDa.TabIndex = 17;
+            this.txtSiSoToiDa.Text = "1";
+            this.txtSiSoToiDa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // AddClassUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -310,6 +334,8 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtSiSoToiDa);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSiSo);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label2);
@@ -355,5 +381,7 @@
         private System.Windows.Forms.ComboBox comboBoxGVCN;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxKhoiLop;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSiSoToiDa;
     }
 }

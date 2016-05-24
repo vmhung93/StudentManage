@@ -62,6 +62,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxKhoiLop = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.txtSiSoToiDa = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +98,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(466, 159);
+            this.label12.Location = new System.Drawing.Point(466, 187);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 17);
             this.label12.TabIndex = 44;
@@ -104,11 +106,12 @@
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(670, 159);
+            this.txtSiSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiSo.Location = new System.Drawing.Point(694, 187);
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiSo.Name = "txtSiSo";
             this.txtSiSo.ReadOnly = true;
-            this.txtSiSo.Size = new System.Drawing.Size(104, 22);
+            this.txtSiSo.Size = new System.Drawing.Size(80, 22);
             this.txtSiSo.TabIndex = 47;
             this.txtSiSo.Text = "1";
             this.txtSiSo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -157,7 +160,7 @@
             // 
             this.groupBox1.Controls.Add(this.lvLop);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox1.Location = new System.Drawing.Point(20, 189);
+            this.groupBox1.Location = new System.Drawing.Point(20, 214);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -210,7 +213,7 @@
             // 
             this.groupBox2.Controls.Add(this.lvLopSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(431, 189);
+            this.groupBox2.Location = new System.Drawing.Point(431, 214);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -221,7 +224,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(370, 236);
+            this.btnAdd.Location = new System.Drawing.Point(370, 261);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(56, 68);
@@ -232,7 +235,7 @@
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(370, 308);
+            this.btnAddAll.Location = new System.Drawing.Point(370, 333);
             this.btnAddAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(56, 68);
@@ -243,7 +246,7 @@
             // 
             // btnSubstract
             // 
-            this.btnSubstract.Location = new System.Drawing.Point(370, 382);
+            this.btnSubstract.Location = new System.Drawing.Point(370, 407);
             this.btnSubstract.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubstract.Name = "btnSubstract";
             this.btnSubstract.Size = new System.Drawing.Size(56, 68);
@@ -254,7 +257,7 @@
             // 
             // btnSubstractAll
             // 
-            this.btnSubstractAll.Location = new System.Drawing.Point(370, 456);
+            this.btnSubstractAll.Location = new System.Drawing.Point(370, 481);
             this.btnSubstractAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubstractAll.Name = "btnSubstractAll";
             this.btnSubstractAll.Size = new System.Drawing.Size(56, 68);
@@ -265,7 +268,7 @@
             // 
             // btnHoanTac
             // 
-            this.btnHoanTac.Location = new System.Drawing.Point(469, 533);
+            this.btnHoanTac.Location = new System.Drawing.Point(469, 558);
             this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
@@ -276,7 +279,7 @@
             // 
             // btnCapNhatLop
             // 
-            this.btnCapNhatLop.Location = new System.Drawing.Point(596, 533);
+            this.btnCapNhatLop.Location = new System.Drawing.Point(596, 558);
             this.btnCapNhatLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapNhatLop.Name = "btnCapNhatLop";
             this.btnCapNhatLop.Size = new System.Drawing.Size(175, 39);
@@ -383,7 +386,7 @@
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Firebrick;
-            this.btnDelete.Location = new System.Drawing.Point(20, 533);
+            this.btnDelete.Location = new System.Drawing.Point(20, 558);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(112, 39);
@@ -392,10 +395,33 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // txtSiSoToiDa
+            // 
+            this.txtSiSoToiDa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiSoToiDa.Location = new System.Drawing.Point(694, 160);
+            this.txtSiSoToiDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSiSoToiDa.Name = "txtSiSoToiDa";
+            this.txtSiSoToiDa.ReadOnly = true;
+            this.txtSiSoToiDa.Size = new System.Drawing.Size(80, 22);
+            this.txtSiSoToiDa.TabIndex = 62;
+            this.txtSiSoToiDa.Text = "1";
+            this.txtSiSoToiDa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(466, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 17);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "Sỉ số tối đa";
+            // 
             // ChangeClassUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtSiSoToiDa);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxKhoiLop);
             this.Controls.Add(this.txtKhoiLopHienTai);
             this.Controls.Add(this.txtTenGVHienTai);
@@ -424,7 +450,7 @@
             this.Controls.Add(this.label2);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChangeClassUserControl";
-            this.Size = new System.Drawing.Size(804, 611);
+            this.Size = new System.Drawing.Size(804, 651);
             this.Load += new System.EventHandler(this.ChangeClassUserControl_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -469,6 +495,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxKhoiLop;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtSiSoToiDa;
+        private System.Windows.Forms.Label label7;
 
     }
 }

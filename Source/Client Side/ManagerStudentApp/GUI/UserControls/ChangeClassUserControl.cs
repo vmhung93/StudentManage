@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ManagerStudentLib.Models;
 using ManagerStudentLib.Data;
 using ManagerStudentApp.Exceptions;
+using ManagerStudentLib.Service;
 
 namespace ManagerStudentApp.GUI.UserControls
 {
@@ -22,6 +23,7 @@ namespace ManagerStudentApp.GUI.UserControls
         private List<User> teachers = new List<User>();
         private List<Grade> grades = new List<Grade>();
         private ClassInfoWithStudents currentClass;
+        private int currentNum = -1;
 
         public ChangeClassUserControl()
         {
@@ -42,6 +44,7 @@ namespace ManagerStudentApp.GUI.UserControls
             grades = preLoad.grades;
             LoadGrades();
             LoadTeachers();
+            LoadNumMaxStudent();
         }
 
         private void LoadClassesData()
@@ -137,7 +140,25 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private void LoadNumAddStudent()
         {
-            this.txtSiSo.Text = this.lvLopSelect.Items.Count.ToString();
+            currentNum = this.lvLopSelect.Items.Count;
+            decimal maxNum = SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MaxNumberInClass);
+            int remain = currentNum - (int)maxNum;
+            string strValue = currentNum.ToString();
+            if (remain > 0)
+            {
+                strValue = String.Format("{0}+{1}", currentNum, remain);
+                this.txtSiSo.ForeColor = Color.OrangeRed;
+            }
+            else
+            {
+                this.txtSiSo.ForeColor = Color.LimeGreen;
+            }
+            this.txtSiSo.Text = strValue;
+        }
+
+        private void LoadNumMaxStudent()
+        {
+            this.txtSiSoToiDa.Text = SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MaxNumberInClass).ToString();
         }
 
         private void comboBoxLop_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,6 +180,12 @@ namespace ManagerStudentApp.GUI.UserControls
                 MessageBox.Show(this, "Chưa chọn lớp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (currentNum > SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MaxNumberInClass))
+            {
+                MessageBox.Show(this, "Sỉ số lớp vượt mức quy định", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var newStudentIds = new List<string>();
             var substractStudentIds = new List<string>();
 

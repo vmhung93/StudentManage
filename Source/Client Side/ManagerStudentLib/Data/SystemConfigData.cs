@@ -23,9 +23,9 @@ namespace ManagerStudentLib.Data
 
         public static string UpdateSystemConfigs(List<SystemConfig> configs) 
         {
-            string url = DataHelper.DATA_SOURCE + "/SystemConfig";
+            string url = DataHelper.DATA_SOURCE + "/SystemConfig/UpdateAll";
             string jsonData = JsonConvert.SerializeObject(configs);
-            ResponseData response = DataHelper.Put(url, jsonData);
+            ResponseData response = DataHelper.Post(url, jsonData);
             return response.Message;
         }
     }

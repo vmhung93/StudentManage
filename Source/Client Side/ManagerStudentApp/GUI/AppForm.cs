@@ -58,7 +58,7 @@ namespace ManagerStudentApp
         private void AppForm_Load(object sender, EventArgs e)
         {
             //Load data
-            SystemConfigService.GetInstance();
+            //SystemConfigService.GetInstance();
         }
 
     }

@@ -51,6 +51,7 @@
     <Compile Include="Data\SubjectData.cs" />
     <Compile Include="Data\SystemConfigData.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
+    <Compile Include="Models\RoleModels.cs" />
     <Compile Include="Service\AuthenticationService.cs" />
     <Compile Include="Exceptions\DataGetException.cs" />
     <Compile Include="Data\DataHelper.cs" />
@@ -65,8 +66,7 @@
     <Compile Include="Models\StudentNotInClass.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\SystemConfigModels.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

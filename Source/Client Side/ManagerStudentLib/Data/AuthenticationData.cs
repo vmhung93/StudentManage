@@ -40,10 +40,15 @@ namespace ManagerStudentLib.Data
             return info;
         }
 
-        public static string testData() {
-            string url = DataHelper.DATA_SOURCE + "/Values";
-            ResponseData response = DataHelper.Get(url);
-            return response.JsonData;
+        public static List<RoleInfo> GetAllRoles()
+        {
+            string url = DataHelper.DATA_SOURCE + "/Role";
+            ResponseData responseData = DataHelper.Get(url);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<RoleInfo>>(responseData.JsonData);
+            }
+            return new List<RoleInfo>();
         }
     }
 }

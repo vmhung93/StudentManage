@@ -30,7 +30,7 @@
         {
             this.btnThem = new System.Windows.Forms.Button();
             this.btnHoanTac = new System.Windows.Forms.Button();
-            this.lwLop = new System.Windows.Forms.ListView();
+            this.lvLop = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.raBtnNu = new System.Windows.Forms.RadioButton();
@@ -45,14 +45,16 @@
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.textBoxLopChon = new System.Windows.Forms.TextBox();
             this.btnBoChonLop = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTuoi = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(352, 482);
+            this.btnThem.Location = new System.Drawing.Point(352, 493);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(175, 39);
@@ -63,28 +65,29 @@
             // 
             // btnHoanTac
             // 
-            this.btnHoanTac.Location = new System.Drawing.Point(225, 482);
+            this.btnHoanTac.Location = new System.Drawing.Point(225, 493);
             this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
             this.btnHoanTac.TabIndex = 10;
-            this.btnHoanTac.Text = "Huỷ";
+            this.btnHoanTac.Text = "Hoàn tác";
             this.btnHoanTac.UseVisualStyleBackColor = true;
             // 
-            // lwLop
+            // lvLop
             // 
-            this.lwLop.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvLop.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3});
-            this.lwLop.FullRowSelect = true;
-            this.lwLop.GridLines = true;
-            this.lwLop.Location = new System.Drawing.Point(144, 344);
-            this.lwLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lwLop.Name = "lwLop";
-            this.lwLop.Size = new System.Drawing.Size(383, 115);
-            this.lwLop.TabIndex = 8;
-            this.lwLop.UseCompatibleStateImageBehavior = false;
-            this.lwLop.View = System.Windows.Forms.View.Details;
+            this.lvLop.FullRowSelect = true;
+            this.lvLop.GridLines = true;
+            this.lvLop.Location = new System.Drawing.Point(144, 355);
+            this.lvLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvLop.MultiSelect = false;
+            this.lvLop.Name = "lvLop";
+            this.lvLop.Size = new System.Drawing.Size(383, 115);
+            this.lvLop.TabIndex = 8;
+            this.lvLop.UseCompatibleStateImageBehavior = false;
+            this.lvLop.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader2
             // 
@@ -126,7 +129,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 295);
+            this.label8.Location = new System.Drawing.Point(27, 306);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 17);
             this.label8.TabIndex = 7;
@@ -134,7 +137,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(144, 249);
+            this.txtEmail.Location = new System.Drawing.Point(144, 260);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(383, 22);
@@ -143,7 +146,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 249);
+            this.label7.Location = new System.Drawing.Point(27, 260);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 17);
             this.label7.TabIndex = 8;
@@ -153,8 +156,9 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(144, 204);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(383, 22);
+            this.txtDiaChi.Size = new System.Drawing.Size(383, 41);
             this.txtDiaChi.TabIndex = 4;
             // 
             // label6
@@ -211,16 +215,17 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Thêm học sinh";
             // 
-            // dateTimePicker1
+            // dtpNgaySinh
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(144, 134);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpNgaySinh.Location = new System.Drawing.Point(144, 134);
+            this.dtpNgaySinh.Name = "dtpNgaySinh";
+            this.dtpNgaySinh.Size = new System.Drawing.Size(200, 22);
+            this.dtpNgaySinh.TabIndex = 1;
+            this.dtpNgaySinh.ValueChanged += new System.EventHandler(this.dtpNgaySinh_ValueChanged);
             // 
             // textBoxLopChon
             // 
-            this.textBoxLopChon.Location = new System.Drawing.Point(144, 292);
+            this.textBoxLopChon.Location = new System.Drawing.Point(144, 303);
             this.textBoxLopChon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLopChon.Name = "textBoxLopChon";
             this.textBoxLopChon.ReadOnly = true;
@@ -229,7 +234,7 @@
             // 
             // btnBoChonLop
             // 
-            this.btnBoChonLop.Location = new System.Drawing.Point(304, 288);
+            this.btnBoChonLop.Location = new System.Drawing.Point(304, 299);
             this.btnBoChonLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBoChonLop.Name = "btnBoChonLop";
             this.btnBoChonLop.Size = new System.Drawing.Size(94, 31);
@@ -238,15 +243,34 @@
             this.btnBoChonLop.UseVisualStyleBackColor = true;
             this.btnBoChonLop.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(377, 137);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 17);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Tuổi";
+            // 
+            // txtTuoi
+            // 
+            this.txtTuoi.Location = new System.Drawing.Point(429, 134);
+            this.txtTuoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTuoi.Name = "txtTuoi";
+            this.txtTuoi.ReadOnly = true;
+            this.txtTuoi.Size = new System.Drawing.Size(98, 22);
+            this.txtTuoi.TabIndex = 0;
+            this.txtTuoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // AddStudentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.btnBoChonLop);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnHoanTac);
-            this.Controls.Add(this.lwLop);
+            this.Controls.Add(this.lvLop);
             this.Controls.Add(this.raBtnNu);
             this.Controls.Add(this.raBtnNam);
             this.Controls.Add(this.label8);
@@ -255,8 +279,10 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtTuoi);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -273,7 +299,7 @@
 
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnHoanTac;
-        private System.Windows.Forms.ListView lwLop;
+        private System.Windows.Forms.ListView lvLop;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.RadioButton raBtnNu;
@@ -289,9 +315,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.TextBox textBoxLopChon;
         private System.Windows.Forms.Button btnBoChonLop;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTuoi;
 
     }
 }

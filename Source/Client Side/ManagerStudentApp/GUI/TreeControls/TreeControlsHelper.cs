@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagerStudentLib.Models;
 namespace ManagerStudentApp.GUI.TreeControls
 {
     public enum ControlAction {

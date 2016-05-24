@@ -10,19 +10,13 @@ using System.Threading.Tasks;
 
 namespace ManagerStudentLib.Authentication
 {
-    public enum UserRole
-    {
-        ADMINSTRATOR = 5,
-        EDUCATION_STAFF = 4,
-        PRINCIPAL = 3,
-        TEACHER = 2,
-        STUDENT = 1
-    }
+    
    
 
     public class AuthenticationService
     {
         private AuthencatedInfo currentUser;
+        private Dictionary<UserRole, RoleInfo> roles;
         private static AuthenticationService instance;
         //singleton
         public static AuthenticationService GetInstance()
@@ -32,6 +26,49 @@ namespace ManagerStudentLib.Authentication
                 instance = new AuthenticationService();
             }
             return instance;
+        }
+
+        public void LoadRoles()
+        {
+            if (currentUser.Role == UserRole.ADMINSTRATOR || currentUser.Role == UserRole.EDUCATION_STAFF)
+            {
+                roles = new Dictionary<UserRole, RoleInfo>();
+                var rls = AuthenticationData.GetAllRoles();
+                foreach (RoleInfo r in rls)
+                {
+                    switch (r.Level)
+                    {
+                        case UserRole.ADMINSTRATOR:
+                            roles.Add(UserRole.ADMINSTRATOR, r);
+                            break;
+                        case UserRole.EDUCATION_STAFF:
+                            roles.Add(UserRole.EDUCATION_STAFF, r);
+                            break;
+                        case UserRole.PRINCIPAL:
+                            roles.Add(UserRole.PRINCIPAL, r);
+                            break;
+                        case UserRole.STUDENT:
+                            roles.Add(UserRole.STUDENT, r);
+                            break;
+                        case UserRole.TEACHER:
+                            roles.Add(UserRole.TEACHER, r);
+                            break;
+                    }
+                }
+            }
+        }
+
+        public string GetRoleId(UserRole level)
+        {
+            RoleInfo role;
+            if (roles.TryGetValue(level, out role))
+            {
+                return role.Id;
+            }
+            else
+            {
+                return "";
+            }
         }
 
         public void Authenticate(string username, string password) {

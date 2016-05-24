@@ -21,6 +21,8 @@ namespace StudentManage.Services.Services
         bool Update(SystemConfigDto systemConfigDto);
 
         bool Delete(Guid systemConfigId);
+
+        bool UpdateAll(List<SystemConfigDto> systemConfigs);
     }
     
     public class SystemConfigService : BaseService, ISystemConfigService
@@ -158,6 +160,32 @@ namespace StudentManage.Services.Services
                 result = true;
             }
 
+            return result;
+        }
+
+        /// <summary>
+        /// Update systemConfigEntity info
+        /// </summary>
+        /// <param name="systemConfigDto"></param>
+        /// <returns></returns>
+        public bool UpdateAll(List<SystemConfigDto> systemConfigs)
+        {
+            bool result = false;
+            using (var dbContext = new StudentManageDbContext())
+            {
+                foreach(var sys in systemConfigs)
+                {
+                    var systemConfigEntity = dbContext.SystemConfig.SingleOrDefault(s => s.Id == sys.Id);
+                    if (systemConfigEntity != null)
+                    {
+                        systemConfigEntity.Name = sys.Name;
+                        systemConfigEntity.Value = sys.Value;
+                        systemConfigEntity.ModifiedDate = DateTime.Now;
+                        dbContext.SaveChanges();
+                    }
+                }
+                result = true;
+            }
             return result;
         }
     }

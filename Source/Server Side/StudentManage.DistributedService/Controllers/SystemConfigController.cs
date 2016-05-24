@@ -2,6 +2,7 @@
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 
@@ -226,5 +227,43 @@ namespace StudentManage.DistributedService.Controllers
             }
         }
 
+        /// <summary>
+        /// Get grade by id
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/SystemConfig/UpdateAll")]
+        public IHttpActionResult UpdateAll(List<SystemConfigDto> systemConfigs)
+        {
+            try
+            {
+                var result = SystemConfigService.UpdateAll(systemConfigs);
+
+                if (result == true)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.UpdateSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.UpdateUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
     }
 }

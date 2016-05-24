@@ -327,5 +327,50 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// GetById scores info
+        /// </summary>
+        /// <param name="studentName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Scores/GetStudentCourseScore")]
+        public IHttpActionResult GetStudentCourseScore(PostNameDto studentName)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                List<StudentClassCourseScoreDto> result = ScoresService.GetStudentCourseScore(studentName);
+
+                if (result.Count > 0)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.NoRecord
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
     }
 }

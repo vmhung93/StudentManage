@@ -25,6 +25,8 @@ namespace StudentManage.Services.Services
         List<StudentWithScoreDto> GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto);
 
         bool UpdateWithCreateScore(ScoreUpdateDto scoreDto);
+
+        List<StudentClassCourseScoreDto> GetStudentCourseScore(PostNameDto studentName);
     }
     
     public class ScoresService : BaseService, IScoresService
@@ -230,6 +232,54 @@ namespace StudentManage.Services.Services
                     }
                 }
                 result = true;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Update scores info
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        public List<StudentClassCourseScoreDto> GetStudentCourseScore(PostNameDto studentName)
+        {
+            List<StudentClassCourseScoreDto> result = new List<StudentClassCourseScoreDto>();
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var studentInClassEntity = from c in dbContext.Class
+                                           join sic in dbContext.StudentInClass on c.Id equals sic.ClassId
+                                           join s in dbContext.Users on sic.StudentId equals s.Id
+                                           join si in dbContext.UserInfo on s.UserInfoId equals si.Id
+                                           where si.Name.Contains(studentName.Name)
+                                           select new { StudentId = s.Id, Name = si.Name, ClassId = sic.ClassId, ClassName = c.Name };
+                if(studentInClassEntity == null)
+                {
+                    return result;
+                }
+                var courseEntity = dbContext.Courses.ToList();
+                var semesterEntity = dbContext.Semester.ToList();
+                foreach (var sice in studentInClassEntity)
+                {
+                    StudentClassCourseScoreDto student = new StudentClassCourseScoreDto()
+                    {
+                        StudentName = sice.Name,
+                        ClassName = sice.ClassName,
+                        SemesterCourses = new List<SemesterCourseDto>()
+                    };
+
+                    foreach (var semester in semesterEntity)
+                    {
+                        var sem = new SemesterCourseDto() { Semester = Mapper.Map<SemesterDto>(semester), CourseScores = new List<CourseScoreDto>() };
+                        foreach (var course in courseEntity)
+                        {
+                            var scoreEntity = dbContext.Score.Where(s => s.Status == Common.Status.Active && s.SemesterId == semester.Id && s.StudentId == sice.StudentId && s.CourseId == course.Id).ToList();
+                            var score = new CourseScoreDto() { Course = Mapper.Map<CoursesDto>(course), Scores = Mapper.Map<List<ScoresDto>>(scoreEntity) };
+                            sem.CourseScores.Add(score);
+                        }
+                        student.SemesterCourses.Add(sem);
+                    }
+                    result.Add(student);
+                }
             }
             return result;
         }

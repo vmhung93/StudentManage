@@ -23,9 +23,11 @@
 
         public static string LogoutSuccessfully = "Logout successfully";
 
+        public static string LogoutUnSuccessfully = "Logout unsuccessfully";
+
         public static string LoginSuccessfully = "Login successfully";
 
-        public static string LoginInvalidEmailOrPassword = "The email/password combination is not valid. Please try again or click the forgot password link";
+        public static string LoginInvalidBadgeIdOrPassword = "The badge id/password combination is not valid";
 
         public static string UpdateCurrentSubSiteSuccessfully = "Updated current sub-site successfully";
 

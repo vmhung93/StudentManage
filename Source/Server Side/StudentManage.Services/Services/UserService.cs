@@ -13,13 +13,17 @@ namespace StudentManage.Services.Services
     {
         bool Create(UserDto userDto);
 
+        bool CheckEmailIsExist(string email);
+
         bool CheckTokenIsValid(Guid token);
 
         bool Delete(Guid userId);
 
         UserDto GetUserByToken(Guid token);
 
-        UserDto Login(string userName, string password);
+        bool Logout(Guid userId);
+
+        UserDto Login(string badgeId, string password);
 
         bool UpdateUserInfo(UserDto userDto);
     }
@@ -77,6 +81,24 @@ namespace StudentManage.Services.Services
         }
 
         /// <summary>
+        /// Check user email is exist or not
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public bool CheckEmailIsExist(string email)
+        {
+            bool result = false;
+
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get user by id
+                result = dbContext.UserInfo.Any(u => u.Email.Contains(email));
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Check token is valid or not
         /// </summary>
         /// <param name="token"></param>
@@ -123,6 +145,11 @@ namespace StudentManage.Services.Services
             return result;
         }
 
+        /// <summary>
+        /// Get user by access token
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public UserDto GetUserByToken(Guid token)
         {
             // Create DBcontext object
@@ -140,12 +167,67 @@ namespace StudentManage.Services.Services
             }
         }
 
-        public UserDto Login(string userName, string password)
+        /// <summary>
+        /// Logout user is update new access token and set time expired is now
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool Logout(Guid userId)
         {
-            StudentManageDbContext dbcontext = new StudentManageDbContext();
+            var result = false;
 
-            //var result = dbcontext.Users.ToList();
-            return new UserDto();
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var user = dbContext.Users.FirstOrDefault(u => u.Id == userId);
+
+                if (user == null)
+                {
+                    return false;
+                }
+
+                // Generate new access token and update token expired time
+                user.AccessToken = Guid.NewGuid();
+                user.ExpiredToken = DateTime.Now;
+
+                dbContext.SaveChanges();
+
+                result = true;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// User login into system
+        /// When user login success then generate new access token and update expired token time
+        /// </summary>
+        /// <param name="badgeId"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public UserDto Login(string badgeId, string password)
+        {
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Hash password
+                string passwordHash = Security.HashPassword(badgeId, password);
+
+                var user = dbContext.Users.FirstOrDefault(u => u.BadgeId == badgeId && u.Password == passwordHash && u.Status == Status.Active);
+
+                if (user == null)
+                {
+                    return null;
+                }
+
+                // Generate new access token and update token expired time
+                user.AccessToken = Guid.NewGuid();
+                user.ExpiredToken = DateTime.Now.AddDays(AppSettings.AccessTokenExpireTime);
+
+                dbContext.SaveChanges();
+
+                var userDto = Mapper.Map<UserDto>(user);
+
+                return userDto;
+            }
         }
 
         /// <summary>

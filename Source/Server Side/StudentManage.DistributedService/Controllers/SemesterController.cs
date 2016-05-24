@@ -238,5 +238,50 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// GetById semester info
+        /// </summary>
+        /// <param name="semesterDto"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/Semester/GetSummarySemester/{semesterId}")]
+        public IHttpActionResult GetSummarySemester(Guid semesterId)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                List<SummarySemesterDto> result = SemesterService.GetSummarySemester(semesterId);
+
+                if (result != null)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
     }
 }

@@ -197,10 +197,10 @@ namespace StudentManage.DistributedService.Controllers
         /// <summary>
         /// GetById courses info
         /// </summary>
-        /// <param name="coursesDto"></param>
+        /// <param name="coursesId"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Courses")]
+        [Route("api/Courses/{coursesId}")]
         public IHttpActionResult GetById(Guid coursesId)
         {
             try

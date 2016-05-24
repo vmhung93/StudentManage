@@ -204,12 +204,10 @@ namespace StudentManage.Services.Services
                 foreach (var score in scoreDto.ScoresUpdate)
                 {
                     var scoreEntity = dbContext.Score.SingleOrDefault(s => s.Status == Common.Status.Active && s.Id == score.Id);
-                    if (scoreEntity == null)
+                    if (scoreEntity != null)
                     {
-                        scoreEntity = Mapper.Map<Scores>(score);
-                        scoreEntity.CreatedDate = DateTime.Now;
                         scoreEntity.ModifiedDate = DateTime.Now;
-                        dbContext.Score.Add(scoreEntity);
+                        scoreEntity.Score = score.Score;
                         dbContext.SaveChanges();
                     }
                 }

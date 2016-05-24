@@ -200,7 +200,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="userInfoDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/UserInfo")]
+        [Route("api/UserInfo/{userInfoId}")]
         public IHttpActionResult GetById(Guid userInfoId)
         {
             try

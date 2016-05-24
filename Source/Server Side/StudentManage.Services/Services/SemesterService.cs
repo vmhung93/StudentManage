@@ -21,6 +21,8 @@ namespace StudentManage.Services.Services
         bool Update(SemesterDto semesterDto);
 
         bool Delete(Guid semesterId);
+
+        List<SummarySemesterDto> GetSummarySemester(Guid semesterId);
     }
     
     public class SemesterService : BaseService, ISemesterService
@@ -157,6 +159,41 @@ namespace StudentManage.Services.Services
                 result = true;
             }
 
+            return result;
+        }
+
+        /// <summary>
+        /// Update semester info
+        /// </summary>
+        /// <param name="semesterDto"></param>
+        /// <returns></returns>
+        public List<SummarySemesterDto> GetSummarySemester(Guid semesterId)
+        {
+            List<SummarySemesterDto> result = new List<SummarySemesterDto>();
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var classEntity = dbContext.Class.Where(c => c.Status == Common.Status.Active).ToList();
+                foreach (var c in classEntity)
+                {
+                    var summary = new SummarySemesterDto() { Class = Mapper.Map<ClassDto>(c), StudentCourses = new List<StudentCourseDto>() };
+                    var studentInClassEntity = dbContext.StudentInClass.Where(s => s.Status== Common.Status.Active && s.ClassId == c.Id).ToList();
+                    var courseEntity = dbContext.Courses.ToList();
+                    foreach (var studentInClass in studentInClassEntity)
+                    {
+                        var studentEntity = dbContext.Users.FirstOrDefault(s => s.Id == studentInClass.StudentId);
+                        StudentCourseDto studentCourse = new StudentCourseDto() { Student = Mapper.Map<UserDto>(studentEntity), CourseScores = new List<CourseScoreDto>() };
+                        foreach (var course in courseEntity)
+                        {
+                            var scoresEntity = dbContext.Score.Where(s => s.Status == Common.Status.Active && s.SemesterId == semesterId && s.CourseId == course.Id && s.StudentId == studentEntity.Id).ToList();
+
+                            CourseScoreDto courseScore = new CourseScoreDto() { Course = Mapper.Map<CoursesDto>(course), Scores = Mapper.Map<List<ScoresDto>>(scoresEntity) };
+                            studentCourse.CourseScores.Add(courseScore);
+                        }
+                        summary.StudentCourses.Add(studentCourse);
+                    }
+                    result.Add(summary);
+                }
+            }
             return result;
         }
     }

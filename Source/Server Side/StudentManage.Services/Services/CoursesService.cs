@@ -174,14 +174,14 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var classEntity = dbContext.Class.ToList();
+                var classEntity = dbContext.Class.Where(c => c.Status == Common.Status.Active).ToList();
 
                 foreach(var c in classEntity)
                 {
                     var summary = new SummaryCourseDto() { Class = Mapper.Map<ClassDto>(c) };
 
                     List<StudentWithScoreDto> studentScore = new List<StudentWithScoreDto>();
-                    var studentEntity = dbContext.StudentInClass.Where(s => s.ClassId == c.Id).ToList();
+                    var studentEntity = dbContext.StudentInClass.Where(s => s.Status == Common.Status.Active && s.ClassId == c.Id).ToList();
                     foreach (var student in studentEntity)
                     {
                         var scores = dbContext.Score.Where(s => s.Status == Common.Status.Active && s.SemesterId == coursesDto.SemesterId && s.CourseId == coursesDto.CourseId && s.StudentId == student.StudentId).ToList();

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentManage.Common.External_Lib
 {
@@ -10,37 +7,42 @@ namespace StudentManage.Common.External_Lib
     {
         public static string Generate(RoleLevel role, int value)
         {
-            string result = "";
-            switch(role)
+            StringBuilder result = new StringBuilder();
+
+            // First character define user role
+            switch (role)
             {
                 case RoleLevel.Education_Staff:
-                    result = "E";
+                    result.Append("E");
                     break;
+
                 case RoleLevel.Principal:
-                    result = "P";
+                    result.Append("P");
                     break;
+
                 case RoleLevel.Student:
-                    result = "S";
+                    result.Append("S");
                     break;
+
                 case RoleLevel.Teacher:
-                    result = "T";
+                    result.Append("T");
                     break;
             }
-            result += DateTime.Now.Year.ToString().Substring(DateTime.Now.ToString().Length - 2);
-            string temp = DateTime.Now.Month.ToString();
-            if(temp.Length < 2)
-            {
-                temp = "0" + temp;
-            }
-            result += temp;
-            temp = Convert.ToString(value);
-            while (temp.Length <3)
-            {
-                temp = "0" + temp;
-            }
-            result += temp;
-            return result;
+
+            // Year
+            result.Append(DateTime.Now.Year.ToString().Substring(DateTime.Now.Year.ToString().Length - 2));
+
+            // Month
+            string month = DateTime.Now.Month.ToString("00");
+            result.Append(month);
+
+            // User code
+            string userCode = value.ToString("000");
+            result.Append(userCode);
+
+            return result.ToString();
         }
+
         public static int DeGenerate(string id)
         {
             return Convert.ToInt32(id.Substring(5));

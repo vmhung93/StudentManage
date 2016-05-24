@@ -1,6 +1,7 @@
 namespace StudentManage.Domain.Migrations
 {
     using Common;
+    using Common.External_Lib;
     using Domain;
     using System;
     using System.Data.Entity.Migrations;
@@ -105,15 +106,15 @@ namespace StudentManage.Domain.Migrations
                 Status = Status.Active
             };
 
-            var saInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains("sa@studentmanage.com"));
-            if (saInfoEntity == null)
+            var saUserInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains("sa@studentmanage.com"));
+            if (saUserInfoEntity == null)
             {
                 context.UserInfo.Add(saUserInfo);
                 context.SaveChanges();
             }
             else
             {
-                saUserInfo = saInfoEntity;
+                saUserInfo = saUserInfoEntity;
             }
 
             #endregion USER INFO
@@ -122,9 +123,7 @@ namespace StudentManage.Domain.Migrations
 
             if (context.Users.FirstOrDefault(u => u.UserName.Contains("Super Admin") && u.Role.Level == RoleLevel.Adminstrator) == null)
             {
-                // Seed default super admin
-                context.Users.Add(
-                new User()
+                var saUser = new User()
                 {
                     UserName = "Super Admin",
                     UserInfoId = saUserInfo.Id,
@@ -134,8 +133,20 @@ namespace StudentManage.Domain.Migrations
                     ModifiedDate = DateTime.Now,
                     RoleId = saRole.Id,
                     Password = "123x@X",
-                    ExpiredToken = DateTime.Now.AddDays(10)
-                });
+                    ExpiredToken = DateTime.Now.AddYears(1)
+                };
+
+                // Seed default super admin
+                context.Users.Add(saUser);
+
+                // Generate badge id
+                saUser.BadgeId = GenerateBadgeId.Generate(RoleLevel.Adminstrator, saUser.UserCode);
+
+                // Hash password
+                saUser.Password = Security.HashPassword(saUser.BadgeId, saUser.Password);
+
+                // Update user name is badge id
+                saUser.UserName = saUser.BadgeId;
 
                 context.SaveChanges();
             }

@@ -14,4 +14,9 @@ namespace ManagerStudentLib.Models
         [JsonProperty("Data")]
         public string JsonData { get; set; }
     }
+    public static class Response
+    {
+        public static int Success = 200;
+        public static int Fail = 400;
+    }
 }

@@ -15,8 +15,11 @@ namespace ManagerStudentLib.Data
         {
             string url = DataHelper.DATA_SOURCE + "/" + SUB_DOMAIN + "/GetInfoForCreateClass";
             ResponseData responseData = DataHelper.Get(url);
-
-            return JsonConvert.DeserializeObject<PreLoadAddClassInfo>(responseData.JsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<PreLoadAddClassInfo>(responseData.JsonData);
+            }
+            return new PreLoadAddClassInfo();
         }
 
         public static string AddClass(ClassInfoWithStudentIds classInfo)
@@ -39,14 +42,22 @@ namespace ManagerStudentLib.Data
         {
             string url = DataHelper.DATA_SOURCE + "/" + SUB_DOMAIN;
             ResponseData responseData = DataHelper.Get(url);
-            return JsonConvert.DeserializeObject<List<ClassInfo>>(responseData.JsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<ClassInfo>>(responseData.JsonData);
+            }
+            return new List<ClassInfo>();
         }
 
         public static ClassInfoWithStudents GetInfoClassWithStudents(string classId)
         {
             string url = DataHelper.DATA_SOURCE + "/StudentInClass/GetClassStudentInfo/" + classId;
             ResponseData responseData = DataHelper.Get(url);
-            return JsonConvert.DeserializeObject<ClassInfoWithStudents>(responseData.JsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<ClassInfoWithStudents>(responseData.JsonData);
+            }
+            return null;
         }
     }
 }

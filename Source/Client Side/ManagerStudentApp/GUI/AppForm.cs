@@ -1,6 +1,7 @@
 ﻿using ManagerStudentApp.GUI;
 using ManagerStudentApp.GUI.TabControls;
 using ManagerStudentApp.GUI.TreeControls;
+using ManagerStudentLib.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,6 +53,12 @@ namespace ManagerStudentApp
         {
             var configForm = new ConfigForm();
             configForm.ShowDialog();
+        }
+
+        private void AppForm_Load(object sender, EventArgs e)
+        {
+            //Load data
+            SystemConfigService.GetInstance();
         }
 
     }

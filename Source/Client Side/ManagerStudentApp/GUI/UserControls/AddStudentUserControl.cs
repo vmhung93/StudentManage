@@ -127,9 +127,11 @@ namespace ManagerStudentApp.GUI.UserControls
                             break;
                         }
                     }
-                    var stu = new CreateStudentInClass()
+                    int error = 0;
+                    bool result = false;
+                    if (cbbLop.SelectedIndex == 0)
                     {
-                        Student = new CreateUser()
+                        var stu = new CreateUser()
                         {
                             UserInfo = new UserInfo()
                             {
@@ -141,11 +143,34 @@ namespace ManagerStudentApp.GUI.UserControls
                             },
                             RoleId = roleId,
                             Password = pass
-                        },
-                        ClassId = listClassInfo[cbbLop.SelectedIndex].Id
-                    };
-                    int error = 0;
-                    bool result = ClassData.CreateStudentInClass(stu, ref error);
+                        };
+                        var r = UserData.CreateUser(stu, ref error);
+                        if(r != null && error == 0)
+                        {
+                            result = true;
+                        }
+                    }
+                    else
+                    {
+                        var stu = new CreateStudentInClass()
+                        {
+                            Student = new CreateUser()
+                            {
+                                UserInfo = new UserInfo()
+                                {
+                                    Name = txtHoTen.Text,
+                                    Address = txtDiaChi.Text,
+                                    DateOfBirth = dtpNgaySinh.Value,
+                                    Email = txtEmail.Text,
+                                    Gender = raBtnNam.Checked == true ? Gender.Male : Gender.Female
+                                },
+                                RoleId = roleId,
+                                Password = pass
+                            },
+                            ClassId = listClassInfo[cbbLop.SelectedIndex - 1].Id
+                        };
+                        result = ClassData.CreateStudentInClass(stu, ref error);
+                    }
                     if (result == true && error == 0)
                     {
                         MessageBox.Show(this, "Thêm học sinh thành công", "Thành công", MessageBoxButtons.OK);
@@ -176,6 +201,7 @@ namespace ManagerStudentApp.GUI.UserControls
         {
             listClassInfo = ClassData.GetListClasses();
             roles = AuthenticationData.GetAllRoles();
+            cbbLop.Items.Add("Chưa chọn");
             foreach (var c in listClassInfo)
             {
                 cbbLop.Items.Add(c.Name);

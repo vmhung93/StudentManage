@@ -46,7 +46,8 @@ namespace ManagerStudentApp.GUI.TreeControls
             return instance;
         }
 
-        private TreeControlsHelper() {
+        public void Reset()
+        {
             dicNodes = new Dictionary<TreeRootId, TreeNodeControl>();
         }
 

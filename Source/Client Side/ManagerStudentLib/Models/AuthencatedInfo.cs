@@ -16,5 +16,26 @@ namespace ManagerStudentLib.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public UserRole Role { get; set; }
         public string Token { get; set; }
+        public string RoleId { get; set; }
+        //public GetAuthencatedInfo AuthenInfo { get; set; }
+    }
+
+    public class GetAuthencatedInfo
+    {
+        public string Id { get; set; }
+
+        public int UserCode { get; set; }
+
+        public string UserName { get; set; }
+
+        public Guid AccessToken { get; set; }
+
+        public UserInfo UserInfo { get; set; }
+
+        public Guid UserInfoId { get; set; }
+
+        public RoleInfo Role { get; set; }
+
+        public Guid RoleId { get; set; }
     }
 }

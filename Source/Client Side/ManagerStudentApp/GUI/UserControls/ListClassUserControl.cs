@@ -45,6 +45,16 @@ namespace ManagerStudentApp.GUI.UserControls
             }
         }
 
+        private void ClearData()
+        {
+            txtTenLopHienTai.Text = "";
+            txtTenGVHienTai.Text = "";
+            txtKhoiLop.Text = "";
+            txtSiSo.Text = "";
+
+            lvDsHocSinh.Items.Clear();
+        }
+
         private void LoadInfoClass()
         {
             if (currentClass != null) {
@@ -69,6 +79,7 @@ namespace ManagerStudentApp.GUI.UserControls
             if (comboBoxDsLop.SelectedIndex >= 0)
             {
                 currentClass = ClassData.GetInfoClassWithStudents(listClassInfo[comboBoxDsLop.SelectedIndex].Id);
+                ClearData();
                 LoadInfoClass();
             } 
         }

@@ -59,5 +59,17 @@ namespace ManagerStudentLib.Data
             }
             return null;
         }
+
+        public static bool CreateStudentInClass(CreateStudentInClass student)
+        {
+            string url = DataHelper.DATA_SOURCE + "/StudentInClass/CreateStudentInClass";
+            string jsonData = JsonConvert.SerializeObject(student);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

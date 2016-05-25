@@ -28,10 +28,12 @@ namespace ManagerStudentApp
             ManagerStudentLib.Authentication.AuthenticationService.GetInstance().Authenticate(textBoxUsername.Text, textBoxPassword.Text);
             if (ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser() != null)
             {
+                ResetPassword();
                 this.Hide();
                 Form mainForm = new AppForm();
                 mainForm.ShowDialog();
-                this.Close();
+                this.Show();
+                //this.Close();
             } 
         }
 
@@ -41,5 +43,14 @@ namespace ManagerStudentApp
             configForm.ShowDialog();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ResetPassword()
+        {
+            textBoxPassword.Text = string.Empty;
+        }
     }
 }

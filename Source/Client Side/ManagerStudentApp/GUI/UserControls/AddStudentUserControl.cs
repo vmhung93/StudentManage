@@ -26,6 +26,9 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private int currentAge = 0;
 
+        private List<ClassInfo> listClassInfo;
+        private List<RoleInfo> roles;
+
         private void raBtnNam_CheckedChanged(object sender, EventArgs e)
         {
             GioiTinh = "Nam";
@@ -114,6 +117,41 @@ namespace ManagerStudentApp.GUI.UserControls
             {
                 try
                 {
+                    string roleId = null;
+                    string pass = "12345678";
+                    foreach (var role in roles)
+                    {
+                        if (role.Level == UserRole.STUDENT)
+                        {
+                            roleId = role.Id;
+                            break;
+                        }
+                    }
+                    var stu = new CreateStudentInClass()
+                    {
+                        Student = new CreateUser()
+                        {
+                            UserInfo = new UserInfo()
+                            {
+                                Name = txtHoTen.Text,
+                                Address = txtDiaChi.Text,
+                                DateOfBirth = dtpNgaySinh.Value,
+                                Email = txtEmail.Text,
+                                Gender = raBtnNam.Checked == true ? Gender.Male : Gender.Female
+                            },
+                            RoleId = roleId,
+                            Password = pass
+                        },
+                        ClassId = listClassInfo[cbbLop.SelectedIndex - 1].Id
+                    };
+                    if (ClassData.CreateStudentInClass(stu))
+                    {
+                        MessageBox.Show(this, "Thêm học sinh thành công", "Thành công", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Thêm học sinh thất bại", "Thất bại", MessageBoxButtons.OK);
+                    }
                 }
                 catch (DataGetException ex)
                 {
@@ -129,6 +167,14 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private void AddStudentUserControl_Load(object sender, EventArgs e)
         {
+            listClassInfo = ClassData.GetListClasses();
+            roles = AuthenticationData.GetAllRoles();
+            cbbLop.Items.Add("Chưa chọn");
+            cbbLop.SelectedIndex = 0;
+            foreach (var c in listClassInfo)
+            {
+                cbbLop.Items.Add(c.Name);
+            }
         }
 
         private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)

@@ -24,10 +24,9 @@ namespace ManagerStudentApp.GUI.TabControls
             return instance;
         }
 
-        private TabControlsHelper()
+        public void Reset()
         {
             dicTabs = new Dictionary<TreeControls.ControlAction, TabPageControl>();
-            
         }
 
         public void SetTabControl(TabControl tabControl)

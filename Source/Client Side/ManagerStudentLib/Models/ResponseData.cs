@@ -18,5 +18,6 @@ namespace ManagerStudentLib.Models
     {
         public static int Success = 200;
         public static int Fail = 400;
+        public static int EmailIsExist = 198;
     }
 }

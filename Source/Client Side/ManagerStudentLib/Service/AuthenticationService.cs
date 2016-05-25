@@ -82,7 +82,8 @@ namespace ManagerStudentLib.Authentication
 
         public void Logout()
         {
-
+            AuthenticationData.Logout();
+            currentUser = null;
         }
 
         public AuthencatedInfo GetCurrentUser()

@@ -25,13 +25,15 @@ namespace ManagerStudentLib.Data
                     Password = password
                 };
                 var url = DataHelper.DATA_SOURCE + "/" + SUB_DOMAIN;
-                //http://localhost:/api/login
                 var requestJsonData = JsonConvert.SerializeObject(loginInfo);
-                // {UserId : ádasd, Password : ádasdasd}
                 ResponseData response = DataHelper.Post(url, requestJsonData);
-                var jsonUser = response.JsonData;
-                //var jsonUser = "{ \"FullName\" : \"Admin\" , \"Role\" : 5,  \"Token\" : \"ABC\"}";
-                var getInfo = JsonConvert.DeserializeObject<GetAuthencatedInfo>(jsonUser);
+                var jsonData = response.JsonData;
+
+                if (jsonData == null)
+                {
+                    throw new AuthenticationException(new DataGetException(response.Message));
+                }
+                var getInfo = JsonConvert.DeserializeObject<GetAuthencatedInfo>(jsonData);
 
                 info = new AuthencatedInfo();
                 info.FullName = getInfo.UserInfo.Name;
@@ -45,6 +47,13 @@ namespace ManagerStudentLib.Data
                 throw (new AuthenticationException(ex));
             }
             return info;
+        }
+
+        public static string Logout()
+        {
+            string url = DataHelper.DATA_SOURCE + "/Logout";
+            ResponseData response = DataHelper.Post(url, "");
+            return response.Message;
         }
 
         public static List<RoleInfo> GetAllRoles()

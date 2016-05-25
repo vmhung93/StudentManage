@@ -1,6 +1,7 @@
 ﻿using ManagerStudentApp.GUI;
 using ManagerStudentApp.GUI.TabControls;
 using ManagerStudentApp.GUI.TreeControls;
+using ManagerStudentLib.Authentication;
 using ManagerStudentLib.Service;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace ManagerStudentApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ManagerStudentLib.Data.UserData.Logout();
+            AuthenticationService.GetInstance().Logout();
             this.Close();
         }
 

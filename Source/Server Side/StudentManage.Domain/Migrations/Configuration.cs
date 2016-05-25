@@ -101,7 +101,7 @@
             var teacherRole = new Role()
             {
                 Name = teacherName,
-                Level = RoleLevel.Adminstrator,
+                Level = RoleLevel.Teacher,
                 Status = Status.Active,
                 CreatedDate = DateTime.Now,
                 ModifiedDate = DateTime.Now

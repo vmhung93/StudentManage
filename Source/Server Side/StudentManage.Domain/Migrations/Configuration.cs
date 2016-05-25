@@ -691,7 +691,7 @@
                 ModifiedDate = DateTime.Now
             };
 
-            var ethicEntity = context.Courses.FirstOrDefault(u => u.Name == @"Đạo đức");
+            var ethicEntity = context.Courses.FirstOrDefault(u => u.Name == @"Đạo Đức");
             if (ethicEntity == null)
             {
                 context.Courses.Add(ethic);
@@ -706,7 +706,7 @@
                 ModifiedDate = DateTime.Now
             };
 
-            var gymnasticsEntity = context.Courses.FirstOrDefault(u => u.Name == @"Thể dục");
+            var gymnasticsEntity = context.Courses.FirstOrDefault(u => u.Name == @"Thể Dục");
             if (gymnasticsEntity == null)
             {
                 context.Courses.Add(gymnastics);

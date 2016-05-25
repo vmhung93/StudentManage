@@ -9,7 +9,7 @@ namespace StudentManage.Domain.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<StudentManage.Domain.DbContext.StudentManageDbContext>
     {
-        private bool hasPendingMigration = false;
+        //private bool hasPendingMigration = false;
 
         public Configuration()
         {
@@ -59,6 +59,19 @@ namespace StudentManage.Domain.Migrations
                 {
                     Name = "Principal",
                     Level = RoleLevel.Principal,
+                    Status = Status.Active,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now
+                });
+            }
+
+            // Education staff
+            if (context.Role.FirstOrDefault(r => r.Name.Contains("Education Staff") && r.Level == RoleLevel.Education_Staff) == null)
+            {
+                context.Role.Add(new Role()
+                {
+                    Name = "Education Staff",
+                    Level = RoleLevel.Education_Staff,
                     Status = Status.Active,
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now
@@ -138,15 +151,13 @@ namespace StudentManage.Domain.Migrations
 
                 // Seed default super admin
                 context.Users.Add(saUser);
+                context.SaveChanges();
 
                 // Generate badge id
                 saUser.BadgeId = GenerateBadgeId.Generate(RoleLevel.Adminstrator, saUser.UserCode);
 
                 // Hash password
                 saUser.Password = Security.HashPassword(saUser.BadgeId, saUser.Password);
-
-                // Update user name is badge id
-                saUser.UserName = saUser.BadgeId;
 
                 context.SaveChanges();
             }

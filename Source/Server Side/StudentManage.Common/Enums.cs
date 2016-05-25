@@ -22,14 +22,14 @@
 
     public enum RoleLevel
     {
-        Adminstrator = 0,
+        Adminstrator = 5,
 
-        Education_Staff = 1,
+        Education_Staff = 4,
 
-        Principal = 2,
+        Principal = 3,
 
-        Teacher = 3,
+        Teacher = 2,
 
-        Student = 4
+        Student = 1
     }
 }

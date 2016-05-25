@@ -27,11 +27,10 @@ namespace ManagerStudentLib.Data
             return null;
         }
 
-        public static string UpdateSystemConfigs(List<SystemConfig> configs) 
+        public static string Logout() 
         {
-            string url = DataHelper.DATA_SOURCE + "/SystemConfig/UpdateAll";
-            string jsonData = JsonConvert.SerializeObject(configs);
-            ResponseData response = DataHelper.Post(url, jsonData);
+            string url = DataHelper.DATA_SOURCE + "/Logout";
+            ResponseData response = DataHelper.Post(url, "");
             return response.Message;
         }
     }

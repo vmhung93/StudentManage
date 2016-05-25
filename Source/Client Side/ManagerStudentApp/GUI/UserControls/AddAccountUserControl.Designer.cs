@@ -54,7 +54,7 @@
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker1.TabIndex = 55;
+            this.dateTimePicker1.TabIndex = 4;
             // 
             // btnThem
             // 
@@ -62,8 +62,8 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(175, 39);
-            this.btnThem.TabIndex = 53;
-            this.btnThem.Text = "Thêm học sinh";
+            this.btnThem.TabIndex = 8;
+            this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -73,7 +73,7 @@
             this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(112, 39);
-            this.btnHuy.TabIndex = 54;
+            this.btnHuy.TabIndex = 9;
             this.btnHuy.Text = "Hoàn tác";
             this.btnHuy.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +84,7 @@
             this.raBtnNu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.raBtnNu.Name = "raBtnNu";
             this.raBtnNu.Size = new System.Drawing.Size(47, 21);
-            this.raBtnNu.TabIndex = 51;
+            this.raBtnNu.TabIndex = 6;
             this.raBtnNu.TabStop = true;
             this.raBtnNu.Text = "Nữ";
             this.raBtnNu.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.raBtnNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.raBtnNam.Name = "raBtnNam";
             this.raBtnNam.Size = new System.Drawing.Size(58, 21);
-            this.raBtnNam.TabIndex = 52;
+            this.raBtnNam.TabIndex = 5;
             this.raBtnNam.TabStop = true;
             this.raBtnNam.Text = "Nam";
             this.raBtnNam.UseVisualStyleBackColor = true;
@@ -106,9 +106,10 @@
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(154, 329);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(383, 22);
-            this.txtDiaChi.TabIndex = 49;
+            this.txtDiaChi.Size = new System.Drawing.Size(383, 135);
+            this.txtDiaChi.TabIndex = 7;
             // 
             // label6
             // 
@@ -139,16 +140,16 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(154, 212);
+            this.txtHoTen.Location = new System.Drawing.Point(155, 127);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(383, 22);
-            this.txtHoTen.TabIndex = 50;
+            this.txtHoTen.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 212);
+            this.label3.Location = new System.Drawing.Point(40, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 17);
             this.label3.TabIndex = 47;
@@ -170,7 +171,7 @@
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(383, 22);
-            this.txtMatKhau.TabIndex = 57;
+            this.txtMatKhau.TabIndex = 2;
             // 
             // label1
             // 
@@ -196,12 +197,12 @@
             this.cbbQuyen.Location = new System.Drawing.Point(154, 82);
             this.cbbQuyen.Name = "cbbQuyen";
             this.cbbQuyen.Size = new System.Drawing.Size(383, 24);
-            this.cbbQuyen.TabIndex = 62;
+            this.cbbQuyen.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 126);
+            this.label7.Location = new System.Drawing.Point(39, 208);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 17);
             this.label7.TabIndex = 43;
@@ -209,11 +210,11 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(154, 126);
+            this.txtEmail.Location = new System.Drawing.Point(154, 208);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(383, 22);
-            this.txtEmail.TabIndex = 48;
+            this.txtEmail.TabIndex = 3;
             // 
             // AddAccountUserControl
             // 

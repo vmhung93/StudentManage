@@ -53,7 +53,7 @@ namespace ManagerStudentApp.GUI.UserControls
                 str += "\nMã tài khoản : " + getUser.BadgeId;
                 str += "\nMật khẩu : " + user.Password;
                 str += "\nEmail : " + user.UserInfo.Email;
-                MessageBox.Show(this, "Chỉ chấp nhận điểm là số và 10 >= điểm >= 0", "Thành công", MessageBoxButtons.OK);
+                MessageBox.Show(this, str, "Thành công", MessageBoxButtons.OK);
             }
             else
             {

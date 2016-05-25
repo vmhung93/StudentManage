@@ -46,7 +46,8 @@ namespace ManagerStudentApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ManagerStudentLib.Data.UserData.Logout();
+            this.Close();
         }
 
         private void configToolStripMenuItem_Click(object sender, EventArgs e)

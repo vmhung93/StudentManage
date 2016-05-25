@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnInitDb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,11 +119,23 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "ms";
             // 
+            // btnInitDb
+            // 
+            this.btnInitDb.Location = new System.Drawing.Point(13, 186);
+            this.btnInitDb.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInitDb.Name = "btnInitDb";
+            this.btnInitDb.Size = new System.Drawing.Size(169, 44);
+            this.btnInitDb.TabIndex = 4;
+            this.btnInitDb.Text = "Initiate database";
+            this.btnInitDb.UseVisualStyleBackColor = true;
+            this.btnInitDb.Click += new System.EventHandler(this.btnInitDb_Click);
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 243);
+            this.Controls.Add(this.btnInitDb);
             this.Controls.Add(this.numericUpDownTimeout);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -160,5 +173,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDownTimeout;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnInitDb;
     }
 }

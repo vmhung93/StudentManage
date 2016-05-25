@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ManagerStudentLib.Data;
+using ManagerStudentLib.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,6 +39,11 @@ namespace ManagerStudentApp.GUI
         private void ConfigForm_Load(object sender, EventArgs e)
         {
             LoadInit();
+        }
+
+        private void btnInitDb_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Mã số : " + ManagerStudentLib.Data.SystemConfigData.InitData()+"\nMật khẩu : 123x@X" , "Thành công",MessageBoxButtons.OK);
         }
     }
 }

@@ -19,22 +19,29 @@ namespace ManagerStudentLib.Data
             AuthencatedInfo info = null;
             try
             {
-                var loginInfo = new LoginInfo()
+                var loginInfo = new 
                 {
-                    UserId = userId,
+                    BadgeId = userId,
                     Password = password
                 };
                 var url = DataHelper.DATA_SOURCE + "/" + SUB_DOMAIN;
-                // http://localhost:/api/login
+                //http://localhost:/api/login
                 var requestJsonData = JsonConvert.SerializeObject(loginInfo);
                 // {UserId : ádasd, Password : ádasdasd}
-                //ResponseData response = DataHelper.PostJsonData(url, requestJsonData);
-                //var jsonUser = response.JsonData;
-                var jsonUser = "{ \"FullName\" : \"Admin\" , \"Role\" : 5,  \"Token\" : \"ABC\"}";
-                info = JsonConvert.DeserializeObject<AuthencatedInfo>(jsonUser);
+                ResponseData response = DataHelper.Post(url, requestJsonData);
+                var jsonUser = response.JsonData;
+                //var jsonUser = "{ \"FullName\" : \"Admin\" , \"Role\" : 5,  \"Token\" : \"ABC\"}";
+                var getInfo = JsonConvert.DeserializeObject<GetAuthencatedInfo>(jsonUser);
+
+                info = new AuthencatedInfo();
+                info.FullName = getInfo.UserInfo.Name;
+                info.Role = getInfo.Role.Level;
+                info.Token = getInfo.AccessToken.ToString();
+                info.RoleId = getInfo.RoleId.ToString();
             }
             catch (DataGetException ex)
             {
+                return null;
                 throw (new AuthenticationException(ex));
             }
             return info;

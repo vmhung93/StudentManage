@@ -11,6 +11,7 @@ namespace ManagerStudentLib.Models
     public class User
     {
         public int UserCode { get; set; }
+        public string BadgeId { get; set; }
         public string UserName { get; set; }
         public UserInfo UserInfo { get; set; }
         public string Id { get; set; }
@@ -26,6 +27,13 @@ namespace ManagerStudentLib.Models
         public string Email { get; set; }
         [JsonProperty("Adress")]
         public string Address { get; set; }
+    }
+
+    public class CreateUser
+    {
+        public string Password { get; set; }
+        public string RoleId { get; set; }
+        public UserInfo UserInfo { get; set; }
     }
 
     public enum Gender

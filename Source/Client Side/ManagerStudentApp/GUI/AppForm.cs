@@ -59,6 +59,7 @@ namespace ManagerStudentApp
         {
             //Load data
             //SystemConfigService.GetInstance();
+            lbName.Text += ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser().FullName;
         }
 
     }

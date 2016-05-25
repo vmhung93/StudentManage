@@ -34,7 +34,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewControls = new System.Windows.Forms.TreeView();
@@ -93,7 +93,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lbName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -114,20 +114,20 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // lbName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Xin chào, Bạch Chấn Minh (Học sinh)";
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(15, 15);
+            this.lbName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(96, 24);
+            this.lbName.TabIndex = 2;
+            this.lbName.Text = "Xin chào, ";
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1044);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1023);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
             this.statusStrip1.Size = new System.Drawing.Size(1368, 22);
@@ -149,7 +149,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1368, 959);
+            this.splitContainer1.Size = new System.Drawing.Size(1368, 938);
             this.splitContainer1.SplitterDistance = 311;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
@@ -162,7 +162,7 @@
             this.treeViewControls.Location = new System.Drawing.Point(0, 0);
             this.treeViewControls.Margin = new System.Windows.Forms.Padding(4);
             this.treeViewControls.Name = "treeViewControls";
-            this.treeViewControls.Size = new System.Drawing.Size(311, 959);
+            this.treeViewControls.Size = new System.Drawing.Size(311, 938);
             this.treeViewControls.TabIndex = 0;
             // 
             // tabControl1
@@ -174,7 +174,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(21, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1052, 959);
+            this.tabControl1.Size = new System.Drawing.Size(1052, 938);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage6
@@ -321,7 +321,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1368, 1066);
+            this.ClientSize = new System.Drawing.Size(1368, 1045);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
@@ -352,7 +352,7 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;

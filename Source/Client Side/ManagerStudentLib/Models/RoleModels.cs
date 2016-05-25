@@ -23,5 +23,6 @@ namespace ManagerStudentLib.Models
         [JsonProperty("Level")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserRole Level { get; set; }
+        public string Name { get; set; }
     }
 }

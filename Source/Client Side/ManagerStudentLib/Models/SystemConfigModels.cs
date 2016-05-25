@@ -22,6 +22,6 @@ namespace ManagerStudentLib.Models
         [JsonProperty("Name")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SystemConfigEnum Name { get; set; }
-        public decimal Value { get; set; }
+        public string Value { get; set; }
     }
 }

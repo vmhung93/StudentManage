@@ -46,5 +46,17 @@ namespace ManagerStudentLib.Properties {
                 this["DOMAIN"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public decimal TIME_OUT {
+            get {
+                return ((decimal)(this["TIME_OUT"]));
+            }
+            set {
+                this["TIME_OUT"] = value;
+            }
+        }
     }
 }

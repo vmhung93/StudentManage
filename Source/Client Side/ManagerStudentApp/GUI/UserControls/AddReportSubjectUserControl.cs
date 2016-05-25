@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManagerStudentLib.Models;
 using ManagerStudentLib.Data;
+using ManagerStudentLib.Service;
 
 namespace ManagerStudentApp.GUI.UserControls
 {
@@ -52,6 +53,7 @@ namespace ManagerStudentApp.GUI.UserControls
             if(cbbMon.SelectedIndex != 0 || cbbHocKi.SelectedIndex != 0)
             {
                 lvTongKet.Items.Clear();
+                decimal passScore = SystemConfigService.GetInstance().GetValue(SystemConfigEnum.PassScore);
                 GetSummarySubject summarySubject = new GetSummarySubject()
                 {
                     CourseId = listSubjectInfo[cbbMon.SelectedIndex - 1].Id,
@@ -76,7 +78,7 @@ namespace ManagerStudentApp.GUI.UserControls
                             sum += Convert.ToDouble(sc.Score) * sc.ScoreType.Coefficient;
                         }
                         sum = sum / sumCofficient;
-                        if (sum >= 5.0)
+                        if (sum >= (double)passScore)
                         {
                             numStudentPass += 1;
                         }

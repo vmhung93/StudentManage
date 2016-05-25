@@ -224,7 +224,7 @@
             this.txtSiSo.ReadOnly = true;
             this.txtSiSo.Size = new System.Drawing.Size(80, 22);
             this.txtSiSo.TabIndex = 17;
-            this.txtSiSo.Text = "1";
+            this.txtSiSo.Text = "0";
             this.txtSiSo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
@@ -317,7 +317,7 @@
             this.txtSiSoToiDa.ReadOnly = true;
             this.txtSiSoToiDa.Size = new System.Drawing.Size(80, 22);
             this.txtSiSoToiDa.TabIndex = 17;
-            this.txtSiSoToiDa.Text = "1";
+            this.txtSiSoToiDa.Text = "0";
             this.txtSiSoToiDa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // AddClassUserControl

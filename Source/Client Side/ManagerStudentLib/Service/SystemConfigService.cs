@@ -72,7 +72,7 @@ namespace ManagerStudentLib.Service
             SystemConfig config;
             if (Configs.TryGetValue(name, out config))
             {
-                return config.Value;
+                return decimal.Parse(config.Value);
             }
             else
             {
@@ -85,7 +85,7 @@ namespace ManagerStudentLib.Service
             SystemConfig config;
             if (Configs.TryGetValue(name, out config))
             {
-                config.Value = value;
+                config.Value = value.ToString();
             }
         }
     }

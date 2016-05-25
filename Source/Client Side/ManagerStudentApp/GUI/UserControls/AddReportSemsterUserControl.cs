@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManagerStudentLib.Models;
 using ManagerStudentLib.Data;
+using ManagerStudentLib.Service;
 
 namespace ManagerStudentApp.GUI.UserControls
 {
@@ -40,6 +41,7 @@ namespace ManagerStudentApp.GUI.UserControls
             {
                 lvTongKet.Items.Clear();
                 double sumCofficient = 0;
+                decimal passScore = SystemConfigService.GetInstance().GetValue(SystemConfigEnum.PassScore);
                 foreach (var sct in listScoreType)
                 {
                     sumCofficient += sct.Coefficient;
@@ -60,7 +62,7 @@ namespace ManagerStudentApp.GUI.UserControls
                                 sum += Convert.ToDouble(score.Score) * score.ScoreType.Coefficient;
                             }
                             sum = sum / sumCofficient;
-                            if (sum >= 5.0)
+                            if (sum >= (double)passScore)
                             {
                                 coursePass += 1;
                             }

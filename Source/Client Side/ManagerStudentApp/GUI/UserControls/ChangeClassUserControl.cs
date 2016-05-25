@@ -144,6 +144,7 @@ namespace ManagerStudentApp.GUI.UserControls
             decimal maxNum = SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MaxNumberInClass);
             int remain = currentNum - (int)maxNum;
             string strValue = currentNum.ToString();
+            this.txtSiSo.BackColor = this.txtSiSo.BackColor;
             if (remain > 0)
             {
                 strValue = String.Format("{0}+{1}", currentNum, remain);

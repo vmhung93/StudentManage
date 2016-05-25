@@ -23,7 +23,7 @@ namespace ManagerStudentApp.GUI.UserControls
         {
             SystemConfigService.GetInstance().SetValue(SystemConfigEnum.MinAge, numericMinAge.Value);
             SystemConfigService.GetInstance().SetValue(SystemConfigEnum.MaxAge, numericMaxAge.Value);
-            SystemConfigService.GetInstance().SetValue(SystemConfigEnum.MaxNumberInClass, numericMinAge.Value);
+            SystemConfigService.GetInstance().SetValue(SystemConfigEnum.MaxNumberInClass, numericMaxNumberInClass.Value);
             SystemConfigService.GetInstance().SetValue(SystemConfigEnum.PassScore, numericPassScore.Value);
             bool isSuccessful = SystemConfigService.GetInstance().UpdateConfigs();
             if (isSuccessful) {

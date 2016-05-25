@@ -140,7 +140,7 @@
             // 
             this.numericPassScore.DecimalPlaces = 1;
             this.numericPassScore.Increment = new decimal(new int[] {
-            11,
+            1,
             0,
             0,
             65536});

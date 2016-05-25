@@ -17,11 +17,12 @@ namespace ManagerStudentLib.Data
     {
         public static string DATA_SOURCE = "http://" + Settings.Default.HOST + "/" + Settings.Default.DOMAIN;
 
-        public static void SetDataSource(string host, string domain)
+        public static void SetDataSource(string host, string domain, decimal timeOut)
         {
             DATA_SOURCE = "http://" + host + "/" + domain;
             Settings.Default.HOST = host;
             Settings.Default.DOMAIN = domain;
+            Settings.Default.TIME_OUT = timeOut;
             Settings.Default.Save();
         }
 
@@ -33,6 +34,11 @@ namespace ManagerStudentLib.Data
         public static string GetDomain()
         {
             return Settings.Default.DOMAIN;
+        }
+
+        public static decimal GetTimeOut()
+        {
+            return Settings.Default.TIME_OUT;
         }
 
         public static ResponseData Post(string url, string jsonRequestData)
@@ -76,7 +82,7 @@ namespace ManagerStudentLib.Data
                         streamWriter.Close();
                     }
                 }
-                request.Timeout = 100000;
+                request.Timeout = (int)Settings.Default.TIME_OUT;
                 using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
                 {
 

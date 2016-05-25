@@ -33,12 +33,16 @@
             this.textBoxHost = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxDomain = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(273, 146);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonChange.Location = new System.Drawing.Point(273, 186);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(110, 44);
             this.buttonChange.TabIndex = 2;
@@ -78,11 +82,50 @@
             this.textBoxDomain.Size = new System.Drawing.Size(222, 28);
             this.textBoxDomain.TabIndex = 1;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(28, 141);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Timeout";
+            // 
+            // numericUpDownTimeout
+            // 
+            this.numericUpDownTimeout.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownTimeout.Location = new System.Drawing.Point(161, 141);
+            this.numericUpDownTimeout.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownTimeout.Name = "numericUpDownTimeout";
+            this.numericUpDownTimeout.Size = new System.Drawing.Size(177, 28);
+            this.numericUpDownTimeout.TabIndex = 3;
+            this.numericUpDownTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(348, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 24);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "ms";
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 213);
+            this.ClientSize = new System.Drawing.Size(421, 243);
+            this.Controls.Add(this.numericUpDownTimeout);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxDomain);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxHost);
@@ -90,7 +133,7 @@
             this.Controls.Add(this.buttonChange);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfigForm";
@@ -101,6 +144,7 @@
             this.Text = "Cấu hình";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ConfigForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +157,8 @@
         private System.Windows.Forms.TextBox textBoxHost;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxDomain;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDownTimeout;
+        private System.Windows.Forms.Label label4;
     }
 }

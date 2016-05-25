@@ -1,4 +1,5 @@
-﻿using ManagerStudentLib.Data;
+﻿using ManagerStudentApp.Exceptions;
+using ManagerStudentLib.Data;
 using ManagerStudentLib.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -10,9 +11,6 @@ using System.Threading.Tasks;
 
 namespace ManagerStudentLib.Authentication
 {
-    
-   
-
     public class AuthenticationService
     {
         private AuthencatedInfo currentUser;
@@ -72,7 +70,14 @@ namespace ManagerStudentLib.Authentication
         }
 
         public void Authenticate(string username, string password) {
-            currentUser = AuthenticationData.Authenticate(username, password);
+            try 
+            {
+                currentUser = AuthenticationData.Authenticate(username, password);
+            } catch (AuthenticationException ex) 
+            {
+                currentUser = null;
+                throw ex;
+            }
         }
 
         public void Logout()

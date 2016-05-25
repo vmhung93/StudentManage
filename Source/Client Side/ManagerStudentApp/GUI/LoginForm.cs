@@ -1,4 +1,5 @@
-﻿using ManagerStudentApp.GUI;
+﻿using ManagerStudentApp.Exceptions;
+using ManagerStudentApp.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,20 @@ namespace ManagerStudentApp
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            ManagerStudentLib.Authentication.AuthenticationService.GetInstance().Authenticate(textBoxUsername.Text, textBoxPassword.Text);
+            if (string.IsNullOrWhiteSpace(textBoxUsername.Text) || string.IsNullOrWhiteSpace(textBoxPassword.Text)) {
+                MessageBox.Show(this, "Mã hoặc mật khẩu không được trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                ManagerStudentLib.Authentication.AuthenticationService.GetInstance().Authenticate(textBoxUsername.Text, textBoxPassword.Text);
+            }
+            catch (AuthenticationException ex)
+            {
+                MessageBox.Show(this, ex.DataGetException.DataGetMessage, "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             if (ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser() != null)
             {
                 ResetPassword();
@@ -33,7 +47,6 @@ namespace ManagerStudentApp
                 Form mainForm = new AppForm();
                 mainForm.ShowDialog();
                 this.Show();
-                //this.Close();
             } 
         }
 

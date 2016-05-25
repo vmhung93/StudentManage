@@ -30,4 +30,19 @@ namespace StudentManage.Services.AppicationContract
         [Required]
         public string Password { get; set; }
     }
+
+    public class PasswordDto
+    {
+        [Required]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string CurrentPassword { get; set; }
+
+        [Required]
+        public string NewPassword { get; set; }
+
+        [Compare("NewPassword")]
+        public string ConfirmPassword { get; set; }
+    }
 }

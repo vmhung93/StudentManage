@@ -29,9 +29,9 @@
 
         public static string LoginInvalidBadgeIdOrPassword = "The badge id/password combination is not valid";
 
-        public static string UpdateCurrentSubSiteSuccessfully = "Updated current sub-site successfully";
-
         public static string UpdatePasswordSuccessfully = "Your password was changed successfully";
+
+        public static string UpdatePasswordUnSuccessfully = "Your password was changed unsuccessfully";
 
         public static string InternalServerError = "Process error";
 

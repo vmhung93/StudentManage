@@ -37,7 +37,7 @@ namespace ManagerStudentLib.Data
 
                 info = new AuthencatedInfo();
                 info.FullName = getInfo.UserInfo.Name;
-                info.Role = getInfo.Role.Level;
+                info.Role = getInfo.Role;
                 info.Token = getInfo.AccessToken.ToString();
                 info.RoleId = getInfo.RoleId.ToString();
             }

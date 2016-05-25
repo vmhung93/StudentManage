@@ -85,7 +85,7 @@ namespace ManagerStudentApp.GUI.UserControls
             this.lvLop.Items.Clear();
             foreach (User st in this.preAddStudents)
             {
-                var item = new ListViewItem(new String[] { st.UserCode.ToString(), st.UserInfo.Name });
+                var item = new ListViewItem(new String[] { st.BadgeId.ToString(), st.UserInfo.Name, st.UserInfo.DateOfBirth.ToShortDateString() });
                 lvLop.Items.Add(item);
             }
         }
@@ -95,7 +95,7 @@ namespace ManagerStudentApp.GUI.UserControls
             this.lvLopSelect.Items.Clear();
             foreach (User st in this.addedStudents)
             {
-                var item = new ListViewItem(new String[] { st.UserCode.ToString(), st.UserInfo.Name });
+                var item = new ListViewItem(new String[] { st.BadgeId.ToString(), st.UserInfo.Name, st.UserInfo.DateOfBirth.ToShortDateString() });
                 lvLopSelect.Items.Add(item);
             }
         }

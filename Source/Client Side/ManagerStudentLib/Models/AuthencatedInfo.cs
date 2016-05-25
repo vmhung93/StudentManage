@@ -13,8 +13,7 @@ namespace ManagerStudentLib.Models
     {
         public string FullName { get; set; }
         [JsonProperty("Role")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public UserRole Role { get; set; }
+        public RoleInfo Role { get; set; }
         public string Token { get; set; }
         public string RoleId { get; set; }
         //public GetAuthencatedInfo AuthenInfo { get; set; }

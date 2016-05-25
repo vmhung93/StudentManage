@@ -132,6 +132,7 @@
             this.columnHeader5,
             this.columnHeader6});
             this.lvLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvLop.FullRowSelect = true;
             this.lvLop.GridLines = true;
             this.lvLop.Location = new System.Drawing.Point(3, 19);
             this.lvLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

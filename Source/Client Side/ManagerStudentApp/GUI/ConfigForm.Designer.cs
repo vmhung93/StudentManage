@@ -101,7 +101,7 @@
             0});
             this.numericUpDownTimeout.Location = new System.Drawing.Point(161, 141);
             this.numericUpDownTimeout.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});

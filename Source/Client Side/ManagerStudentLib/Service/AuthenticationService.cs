@@ -28,7 +28,7 @@ namespace ManagerStudentLib.Authentication
 
         public void LoadRoles()
         {
-            if (currentUser.Role == UserRole.ADMINSTRATOR || currentUser.Role == UserRole.EDUCATION_STAFF)
+            if (currentUser.Role.Level == UserRole.ADMINSTRATOR || currentUser.Role.Level == UserRole.EDUCATION_STAFF)
             {
                 roles = new Dictionary<UserRole, RoleInfo>();
                 var rls = AuthenticationData.GetAllRoles();

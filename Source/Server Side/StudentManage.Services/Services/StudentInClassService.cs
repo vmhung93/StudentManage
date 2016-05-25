@@ -223,7 +223,7 @@ namespace StudentManage.Services.Services
                     return null;
                 }
 
-                var studentEntity = dbContext.StudentInClass.Where(s => s.ClassId == classId).Select(s => s.Student).ToList();
+                var studentEntity = dbContext.StudentInClass.Where(s => s.Status == Status.Active && s.ClassId == classId).Select(s => s.Student).ToList();
                 
                 var classDto = new ClassStudentInfoDto()
                 {

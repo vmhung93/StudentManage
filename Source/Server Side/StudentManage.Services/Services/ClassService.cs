@@ -175,10 +175,16 @@ namespace StudentManage.Services.Services
             {
                 // Get grade by id
                 var teacherUnavaliable = dbContext.Class.Select(c => c.HomeroomTeacherId).ToList();
-                var studentUnavaliable = dbContext.StudentInClass.Select(s => s.StudentId).ToList();
+                var studentUnavaliable = dbContext.StudentInClass
+                    .Where(s =>s.Status != Common.Status.Deleted)
+                    .Select(s => s.StudentId).ToList();
 
-                var teacherAvaliable = dbContext.Users.Where(u => !teacherUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Teacher).ToList();
-                var studentAvaliable = dbContext.Users.Where(u => !studentUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Student).ToList();
+                var teacherAvaliable = dbContext.Users
+                    .Where(u => !teacherUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Teacher && u.Status == Common.Status.Active)
+                    .ToList();
+                var studentAvaliable = dbContext.Users
+                    .Where(u => !studentUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Student && u.Status == Common.Status.Active)
+                    .ToList();
                 var grades = dbContext.Grade.ToList();
 
                 var result = new ClassInfoDto()

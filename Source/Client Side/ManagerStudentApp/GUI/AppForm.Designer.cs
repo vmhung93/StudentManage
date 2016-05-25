@@ -98,26 +98,28 @@
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1368, 55);
+            this.panel1.Size = new System.Drawing.Size(1368, 41);
             this.panel1.TabIndex = 1;
             // 
             // btnDangXuat
             // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDangXuat.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnDangXuat.BackgroundImage = global::ManagerStudentApp.Properties.Resources.logout;
+            this.btnDangXuat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnDangXuat.Location = new System.Drawing.Point(1223, 0);
+            this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDangXuat.Location = new System.Drawing.Point(1315, 0);
             this.btnDangXuat.Margin = new System.Windows.Forms.Padding(4);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(145, 55);
+            this.btnDangXuat.Size = new System.Drawing.Size(53, 41);
             this.btnDangXuat.TabIndex = 3;
-            this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(15, 15);
+            this.lbName.Location = new System.Drawing.Point(16, 9);
             this.lbName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(96, 24);
@@ -137,7 +139,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 85);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 71);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -149,7 +151,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1368, 938);
+            this.splitContainer1.Size = new System.Drawing.Size(1368, 952);
             this.splitContainer1.SplitterDistance = 311;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
@@ -162,7 +164,7 @@
             this.treeViewControls.Location = new System.Drawing.Point(0, 0);
             this.treeViewControls.Margin = new System.Windows.Forms.Padding(4);
             this.treeViewControls.Name = "treeViewControls";
-            this.treeViewControls.Size = new System.Drawing.Size(311, 938);
+            this.treeViewControls.Size = new System.Drawing.Size(311, 952);
             this.treeViewControls.TabIndex = 0;
             // 
             // tabControl1
@@ -174,7 +176,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(21, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1052, 938);
+            this.tabControl1.Size = new System.Drawing.Size(1052, 952);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage6

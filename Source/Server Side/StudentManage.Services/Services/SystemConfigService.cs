@@ -1,30 +1,31 @@
 ﻿using AutoMapper;
+using StudentManage.Common;
 using StudentManage.Domain.DbContext;
 using StudentManage.Domain.Domain;
 using StudentManage.Services.AppicationContract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentManage.Services.Services
 {
     public interface ISystemConfigService
     {
-        SystemConfigDto GetById(Guid systemConfigId);
-
-        List<SystemConfigDto> GetAll();
-
         bool Create(SystemConfigDto systemConfigDto);
-
-        bool Update(SystemConfigDto systemConfigDto);
 
         bool Delete(Guid systemConfigId);
 
+        List<SystemConfigDto> GetAll();
+
+        SystemConfigDto GetById(Guid systemConfigId);
+
+        string InitiateDatabase();
+
+        bool Update(SystemConfigDto systemConfigDto);
+
         bool UpdateAll(List<SystemConfigDto> systemConfigs);
     }
-    
+
     public class SystemConfigService : BaseService, ISystemConfigService
     {
         /// <summary>
@@ -135,6 +136,23 @@ namespace StudentManage.Services.Services
             }
         }
 
+        public string InitiateDatabase()
+        {
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get systemConfigEntity by id
+                var saEmail = AppSettings.SuperAdminEmailAddress;
+                var saUser = dbContext.Users.FirstOrDefault(u => u.UserInfo.Email == saEmail);
+
+                if (saUser != null)
+                {
+                    return saUser.BadgeId;
+                }
+
+                return string.Empty;
+            }
+        }
+
         /// <summary>
         /// Update systemConfigEntity info
         /// </summary>
@@ -173,7 +191,7 @@ namespace StudentManage.Services.Services
             bool result = false;
             using (var dbContext = new StudentManageDbContext())
             {
-                foreach(var sys in systemConfigs)
+                foreach (var sys in systemConfigs)
                 {
                     var systemConfigEntity = dbContext.SystemConfig.SingleOrDefault(s => s.Id == sys.Id);
                     if (systemConfigEntity != null)

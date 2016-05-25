@@ -27,13 +27,6 @@ namespace ManagerStudentLib.Data
             return null;
         }
 
-        public static string Logout() 
-        {
-            string url = DataHelper.DATA_SOURCE + "/Logout";
-            ResponseData response = DataHelper.Post(url, "");
-            return response.Message;
-        }
-
         public static List<User> GetAllUser(bool active)
         {
             string url = DataHelper.DATA_SOURCE + "/User/GetAll/"+active.ToString();

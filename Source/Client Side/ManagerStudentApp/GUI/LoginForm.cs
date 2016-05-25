@@ -26,20 +26,23 @@ namespace ManagerStudentApp
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxUsername.Text) || string.IsNullOrWhiteSpace(textBoxPassword.Text)) {
+            if (string.IsNullOrWhiteSpace(textBoxUsername.Text) || string.IsNullOrWhiteSpace(textBoxPassword.Text))
+            {
                 MessageBox.Show(this, "Mã hoặc mật khẩu không được trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
+                HandleControls(false);
                 ManagerStudentLib.Authentication.AuthenticationService.GetInstance().Authenticate(textBoxUsername.Text, textBoxPassword.Text);
             }
             catch (AuthenticationException ex)
             {
+                HandleControls(true);
                 MessageBox.Show(this, ex.DataGetException.DataGetMessage, "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+            HandleControls(true);
             if (ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser() != null)
             {
                 ResetPassword();
@@ -47,7 +50,14 @@ namespace ManagerStudentApp
                 Form mainForm = new AppForm();
                 mainForm.ShowDialog();
                 this.Show();
-            } 
+            }
+        }
+
+        private void HandleControls(bool isDisable)
+        {
+            textBoxUsername.Enabled = isDisable;
+            textBoxPassword.Enabled = isDisable;
+            buttonLogin.Enabled = isDisable;
         }
 
         private void configToolStripMenuItem_Click(object sender, EventArgs e)

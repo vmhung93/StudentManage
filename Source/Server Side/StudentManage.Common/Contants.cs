@@ -3,6 +3,10 @@
     public static class ResponseMessages
     {
         // User
+        public static string InitiateDatabaseSuccessfully = "Data was initiated successfully";
+
+        public static string InitiateDatabaseUnSuccessfully = "Data was initiated unsuccessfully";
+
         public static string CreateDataSuccessfully = "Data was created successfully";
 
         public static string CreateDataUnsuccessfully = "Data was created unsuccessfully";

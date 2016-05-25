@@ -47,6 +47,6 @@ namespace ManagerStudentLib.Models
     {
         public ClassInfo Class { get; set; }
         public List<string> AddStudentIds { get; set; }
-        public List<string> SubstractStudentIds { get; set; }
+        public List<string> SubtractStudentIds { get; set; }
     }
 }

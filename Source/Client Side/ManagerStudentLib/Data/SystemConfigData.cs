@@ -33,7 +33,7 @@ namespace ManagerStudentLib.Data
         {
             string url = DataHelper.DATA_SOURCE + "/InitiateDatabase";
             ResponseData response = DataHelper.Get(url);
-            return JsonConvert.SerializeObject(response.JsonData);
+            return JsonConvert.DeserializeObject<string>(response.JsonData);
         }
     }
 }

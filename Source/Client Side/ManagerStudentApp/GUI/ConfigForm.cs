@@ -43,7 +43,7 @@ namespace ManagerStudentApp.GUI
 
         private void btnInitDb_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "Mã số : " + ManagerStudentLib.Data.SystemConfigData.InitData()+"\nMật khẩu : 123x@X" , "Thành công",MessageBoxButtons.OK);
+            MessageBox.Show(this, "Mã số : " + ManagerStudentLib.Data.SystemConfigData.InitData() , "Thành công",MessageBoxButtons.OK);
         }
     }
 }

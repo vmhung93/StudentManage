@@ -61,6 +61,10 @@ namespace ManagerStudentLib.Data
             {
                 HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
                 request.ContentType = "application/json";
+                if(ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser() != null)
+                {
+                    request.Headers.Add("Token", ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser().Token);
+                }
                 request.Method = method.Method;
 
                 if (jsonRequestData != null)

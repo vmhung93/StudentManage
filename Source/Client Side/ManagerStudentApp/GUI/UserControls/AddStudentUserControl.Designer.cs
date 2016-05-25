@@ -46,10 +46,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.textBoxLopChon = new System.Windows.Forms.TextBox();
-            this.btnBoChonLop = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTuoi = new System.Windows.Forms.TextBox();
+            this.cbbLop = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnThem
@@ -58,7 +57,7 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(175, 39);
-            this.btnThem.TabIndex = 9;
+            this.btnThem.TabIndex = 8;
             this.btnThem.Text = "Thêm học sinh";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -69,9 +68,10 @@
             this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
-            this.btnHoanTac.TabIndex = 10;
+            this.btnHoanTac.TabIndex = 9;
             this.btnHoanTac.Text = "Hoàn tác";
             this.btnHoanTac.UseVisualStyleBackColor = true;
+            this.btnHoanTac.Click += new System.EventHandler(this.btnHoanTac_Click);
             // 
             // lvLop
             // 
@@ -85,7 +85,7 @@
             this.lvLop.MultiSelect = false;
             this.lvLop.Name = "lvLop";
             this.lvLop.Size = new System.Drawing.Size(383, 115);
-            this.lvLop.TabIndex = 8;
+            this.lvLop.TabIndex = 7;
             this.lvLop.UseCompatibleStateImageBehavior = false;
             this.lvLop.View = System.Windows.Forms.View.Details;
             // 
@@ -223,26 +223,6 @@
             this.dtpNgaySinh.TabIndex = 1;
             this.dtpNgaySinh.ValueChanged += new System.EventHandler(this.dtpNgaySinh_ValueChanged);
             // 
-            // textBoxLopChon
-            // 
-            this.textBoxLopChon.Location = new System.Drawing.Point(144, 303);
-            this.textBoxLopChon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxLopChon.Name = "textBoxLopChon";
-            this.textBoxLopChon.ReadOnly = true;
-            this.textBoxLopChon.Size = new System.Drawing.Size(127, 22);
-            this.textBoxLopChon.TabIndex = 6;
-            // 
-            // btnBoChonLop
-            // 
-            this.btnBoChonLop.Location = new System.Drawing.Point(304, 299);
-            this.btnBoChonLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBoChonLop.Name = "btnBoChonLop";
-            this.btnBoChonLop.Size = new System.Drawing.Size(94, 31);
-            this.btnBoChonLop.TabIndex = 7;
-            this.btnBoChonLop.Text = "Bỏ chọn";
-            this.btnBoChonLop.UseVisualStyleBackColor = true;
-            this.btnBoChonLop.Click += new System.EventHandler(this.btnThem_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -262,19 +242,26 @@
             this.txtTuoi.TabIndex = 0;
             this.txtTuoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // cbbLop
+            // 
+            this.cbbLop.FormattingEnabled = true;
+            this.cbbLop.Location = new System.Drawing.Point(144, 303);
+            this.cbbLop.Name = "cbbLop";
+            this.cbbLop.Size = new System.Drawing.Size(127, 24);
+            this.cbbLop.TabIndex = 6;
+            // 
             // AddStudentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbbLop);
             this.Controls.Add(this.dtpNgaySinh);
-            this.Controls.Add(this.btnBoChonLop);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnHoanTac);
             this.Controls.Add(this.lvLop);
             this.Controls.Add(this.raBtnNu);
             this.Controls.Add(this.raBtnNam);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBoxLopChon);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDiaChi);
@@ -316,10 +303,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
-        private System.Windows.Forms.TextBox textBoxLopChon;
-        private System.Windows.Forms.Button btnBoChonLop;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTuoi;
-
+        private System.Windows.Forms.ComboBox cbbLop;
     }
 }

@@ -26,6 +26,9 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private int currentAge = 0;
 
+        private List<ClassInfo> listClassInfo;
+        private List<RoleInfo> roles;
+
         private void raBtnNam_CheckedChanged(object sender, EventArgs e)
         {
             GioiTinh = "Nam";
@@ -114,6 +117,48 @@ namespace ManagerStudentApp.GUI.UserControls
             {
                 try
                 {
+                    string roleId = null;
+                    string pass = "12345678";
+                    foreach (var role in roles)
+                    {
+                        if (role.Level == UserRole.STUDENT)
+                        {
+                            roleId = role.Id;
+                            break;
+                        }
+                    }
+                    var stu = new CreateStudentInClass()
+                    {
+                        Student = new CreateUser()
+                        {
+                            UserInfo = new UserInfo()
+                            {
+                                Name = txtHoTen.Text,
+                                Address = txtDiaChi.Text,
+                                DateOfBirth = dtpNgaySinh.Value,
+                                Email = txtEmail.Text,
+                                Gender = raBtnNam.Checked == true ? Gender.Male : Gender.Female
+                            },
+                            RoleId = roleId,
+                            Password = pass
+                        },
+                        ClassId = listClassInfo[cbbLop.SelectedIndex].Id
+                    };
+                    int error = 0;
+                    bool result = ClassData.CreateStudentInClass(stu, ref error);
+                    if (result == true && error == 0)
+                    {
+                        MessageBox.Show(this, "Thêm học sinh thành công", "Thành công", MessageBoxButtons.OK);
+                        Reset();
+                    }
+                    else if (result == false && error == 1)
+                    {
+                        MessageBox.Show(this, "Email bị trùng", "Thất bại", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Thêm học sinh thất bại", "Thất bại", MessageBoxButtons.OK);
+                    }
                 }
                 catch (DataGetException ex)
                 {
@@ -129,6 +174,35 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private void AddStudentUserControl_Load(object sender, EventArgs e)
         {
+            listClassInfo = ClassData.GetListClasses();
+            roles = AuthenticationData.GetAllRoles();
+            foreach (var c in listClassInfo)
+            {
+                cbbLop.Items.Add(c.Name);
+            }
+            cbbLop.SelectedIndex = 0;
+            LoadData();
+        }
+
+        void Reset()
+        {
+            dtpNgaySinh.Value = DateTime.Now;
+            txtHoTen.Text = string.Empty;
+            raBtnNam.Checked = true;
+            txtDiaChi.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            cbbLop.SelectedIndex = 0;
+            LoadData();
+        }
+
+        void LoadData()
+        {
+            lvLop.Items.Clear();
+            foreach (var cl in listClassInfo)
+            {
+                var students = ClassData.GetInfoClassWithStudents(cl.Id);
+                lvLop.Items.Add(new ListViewItem(new string[] { students.Class.Name, students.Students.Count.ToString() }));
+            }
         }
 
         private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
@@ -143,6 +217,11 @@ namespace ManagerStudentApp.GUI.UserControls
             if (now < dtpNgaySinh.Value.AddYears(age)) age--;
             currentAge = age;
             txtTuoi.Text = currentAge.ToString();
+        }
+
+        private void btnHoanTac_Click(object sender, EventArgs e)
+        {
+            Reset();
         }
     }
 }

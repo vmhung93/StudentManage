@@ -59,5 +59,21 @@ namespace ManagerStudentLib.Data
             }
             return null;
         }
+
+        public static bool CreateStudentInClass(CreateStudentInClass student, ref int error)
+        {
+            string url = DataHelper.DATA_SOURCE + "/StudentInClass/CreateStudentInClass";
+            string jsonData = JsonConvert.SerializeObject(student);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return true;
+            }
+            else if (responseData.Status == Response.EmailIsExist)
+            {
+                error = 1;
+            }
+            return false;
+        }
     }
 }

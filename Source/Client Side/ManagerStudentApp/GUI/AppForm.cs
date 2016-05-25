@@ -24,6 +24,8 @@ namespace ManagerStudentApp
 
         private void InitTreeControls()
         {
+            TreeControlsHelper.GetInstance().Reset();
+            TabControlsHelper.GetInstance().Reset();
             TabControlsHelper.GetInstance().SetTabControl(this.tabControl1);
             TreeControlsHelper.GetInstance().BuildTreeNodeControls(treeViewControls, imageTreeList);
             //this.tabControl1.SelectedTab = this.tabPage4;
@@ -46,7 +48,8 @@ namespace ManagerStudentApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ManagerStudentLib.Data.UserData.Logout();
+            this.Close();
         }
 
         private void configToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,6 +62,7 @@ namespace ManagerStudentApp
         {
             //Load data
             //SystemConfigService.GetInstance();
+            lbName.Text += ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser().FullName;
         }
 
     }

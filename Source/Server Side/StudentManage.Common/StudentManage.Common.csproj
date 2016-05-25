@@ -45,6 +45,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Contants.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="External Lib\EnumDescriptionExtensions.cs" />
     <Compile Include="External Lib\GenerateBadgeId.cs" />
     <Compile Include="External Lib\Security.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

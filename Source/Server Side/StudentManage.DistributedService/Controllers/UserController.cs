@@ -255,12 +255,12 @@ namespace StudentManage.DistributedService.Controllers
         [HttpPost]
         [Route("api/Logout")]
         [CustomAuthorize]
-        public IHttpActionResult Logout(BaseDto logoutDto)
+        public IHttpActionResult Logout()
         {
             try
             {
                 // Logout
-                var result = UserService.Logout(logoutDto.Id);
+                var result = UserService.Logout(CurrentUser.Id);
 
                 if (result)
                 {

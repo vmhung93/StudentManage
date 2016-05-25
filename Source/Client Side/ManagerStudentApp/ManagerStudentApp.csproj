@@ -297,6 +297,7 @@
     <None Include="Resources\Icons\email.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Icons\app.ico" />
     <Content Include="Resources\Icons\logout.png" />
     <Content Include="Resources\Icons\score.png" />
     <Content Include="Resources\Icons\class.png" />

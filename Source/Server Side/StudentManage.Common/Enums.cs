@@ -43,16 +43,16 @@ namespace StudentManage.Common
     /// </summary>
     public enum SystemConfigEnum
     {
-        [Description("Min age")]
+        [Description("MinAge")]
         MinAge,
 
-        [Description("Max age")]
+        [Description("MaxAge")]
         MaxAge,
 
-        [Description("Max number in class")]
+        [Description("MaxNumberInClass")]
         MaxNumberInClass,
 
-        [Description("Pass score")]
+        [Description("PassScore")]
         PassScore
     }
 }

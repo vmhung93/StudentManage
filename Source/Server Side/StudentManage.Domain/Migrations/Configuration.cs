@@ -34,16 +34,18 @@
             #region ROLE
 
             // Super admin
+            string saRoleName = RoleLevel.Adminstrator.GetDescription();
+
             var saRole = new Role()
             {
-                Name = "Administration",
+                Name = saRoleName,
                 Level = RoleLevel.Adminstrator,
                 Status = Status.Active,
                 CreatedDate = DateTime.Now,
                 ModifiedDate = DateTime.Now
             };
 
-            var saRoleEntity = context.Role.FirstOrDefault(r => r.Name.Contains("Administration") && r.Level == RoleLevel.Adminstrator);
+            var saRoleEntity = context.Role.FirstOrDefault(r => r.Name == saRoleName && r.Level == RoleLevel.Adminstrator);
             if (saRoleEntity == null)
             {
                 context.Role.Add(saRole);
@@ -53,11 +55,12 @@
             }
 
             // Principal
-            if (context.Role.FirstOrDefault(r => r.Name.Contains("Principal") && r.Level == RoleLevel.Principal) == null)
+            string principalName = RoleLevel.Principal.GetDescription();
+            if (context.Role.FirstOrDefault(r => r.Name == principalName && r.Level == RoleLevel.Principal) == null)
             {
                 context.Role.Add(new Role()
                 {
-                    Name = "Principal",
+                    Name = principalName,
                     Level = RoleLevel.Principal,
                     Status = Status.Active,
                     CreatedDate = DateTime.Now,
@@ -66,11 +69,12 @@
             }
 
             // Education staff
-            if (context.Role.FirstOrDefault(r => r.Name.Contains("Education Staff") && r.Level == RoleLevel.Education_Staff) == null)
+            string educationStaffName = RoleLevel.Education_Staff.GetDescription();
+            if (context.Role.FirstOrDefault(r => r.Name == educationStaffName && r.Level == RoleLevel.Education_Staff) == null)
             {
                 context.Role.Add(new Role()
                 {
-                    Name = "Education Staff",
+                    Name = educationStaffName,
                     Level = RoleLevel.Education_Staff,
                     Status = Status.Active,
                     CreatedDate = DateTime.Now,
@@ -79,11 +83,12 @@
             }
 
             // Student
-            if (context.Role.FirstOrDefault(r => r.Name.Contains("Student") && r.Level == RoleLevel.Student) == null)
+            string studentName = RoleLevel.Student.GetDescription();
+            if (context.Role.FirstOrDefault(r => r.Name == studentName && r.Level == RoleLevel.Student) == null)
             {
                 context.Role.Add(new Role()
                 {
-                    Name = "Student",
+                    Name = studentName,
                     Level = RoleLevel.Student,
                     Status = Status.Active,
                     CreatedDate = DateTime.Now,
@@ -92,16 +97,17 @@
             }
 
             // Teacher
+            string teacherName = RoleLevel.Teacher.GetDescription();
             var teacherRole = new Role()
             {
-                Name = "Teacher",
-                Level = RoleLevel.Adminstrator,
+                Name = teacherName,
+                Level = RoleLevel.Teacher,
                 Status = Status.Active,
                 CreatedDate = DateTime.Now,
                 ModifiedDate = DateTime.Now
             };
 
-            var teacherRoleEntity = context.Role.FirstOrDefault(r => r.Name.Contains("Teacher") && r.Level == RoleLevel.Teacher);
+            var teacherRoleEntity = context.Role.FirstOrDefault(r => r.Name == teacherName && r.Level == RoleLevel.Teacher);
             if (teacherRoleEntity == null)
             {
                 context.Role.Add(teacherRole);

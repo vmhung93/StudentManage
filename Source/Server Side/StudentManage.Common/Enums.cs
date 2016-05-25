@@ -1,4 +1,6 @@
-﻿namespace StudentManage.Common
+﻿using System.ComponentModel;
+
+namespace StudentManage.Common
 {
     /// <summary>
     ///  Status of record
@@ -41,9 +43,16 @@
     /// </summary>
     public enum SystemConfigEnum
     {
+        [Description("Min age")]
         MinAge,
+
+        [Description("Max age")]
         MaxAge,
+
+        [Description("Max number in class")]
         MaxNumberInClass,
+
+        [Description("Pass score")]
         PassScore
     }
 }

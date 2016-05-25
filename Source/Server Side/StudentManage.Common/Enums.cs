@@ -27,14 +27,19 @@ namespace StudentManage.Common
     /// </summary>
     public enum RoleLevel
     {
+        [Description("Adminstrator")]
         Adminstrator = 5,
 
+        [Description(@"Giáo vụ")]
         Education_Staff = 4,
 
+        [Description(@"Hiệu trưởng")]
         Principal = 3,
 
+        [Description(@"Giáo viên")]
         Teacher = 2,
 
+        [Description(@"Học sinh")]
         Student = 1
     }
 

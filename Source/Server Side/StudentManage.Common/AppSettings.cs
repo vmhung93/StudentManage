@@ -18,5 +18,19 @@ namespace StudentManage.Common
                 return result;
             }
         }
+
+        public static string SuperAdminEmailAddress
+        {
+            get
+            {
+                string webConfig = ConfigurationManager.AppSettings["SuperAdminEmailAddress"];
+                if (string.IsNullOrEmpty(webConfig))
+                {
+                    webConfig = "sa@studentmanage.com";
+                }
+
+                return webConfig;
+            }
+        }
     }
 }

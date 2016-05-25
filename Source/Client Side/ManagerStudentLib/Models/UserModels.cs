@@ -36,6 +36,12 @@ namespace ManagerStudentLib.Models
         public UserInfo UserInfo { get; set; }
     }
 
+    public class CreateStudentInClass
+    {
+        public CreateUser Student { get; set; }
+        public string ClassId { get; set; }
+    }
+
     public enum Gender
     {
         Male=0,

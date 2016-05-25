@@ -24,6 +24,8 @@ namespace ManagerStudentApp
 
         private void InitTreeControls()
         {
+            TreeControlsHelper.GetInstance().Reset();
+            TabControlsHelper.GetInstance().Reset();
             TabControlsHelper.GetInstance().SetTabControl(this.tabControl1);
             TreeControlsHelper.GetInstance().BuildTreeNodeControls(treeViewControls, imageTreeList);
             //this.tabControl1.SelectedTab = this.tabPage4;

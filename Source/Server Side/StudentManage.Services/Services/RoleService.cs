@@ -121,11 +121,6 @@ namespace StudentManage.Services.Services
                 // Get role by id
                 var roleEntity = dbContext.Role.FirstOrDefault(g => g.Id == roleId);
 
-                if (roleEntity == null)
-                {
-                    return null;
-                }
-
                 var role = Mapper.Map<RoleDto>(roleEntity);
 
                 return role;

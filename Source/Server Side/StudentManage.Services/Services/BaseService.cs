@@ -46,6 +46,10 @@ namespace StudentManage.Services.Services
             Mapper.CreateMap<StudentInClass, StudentInClassDto>();
             Mapper.CreateMap<StudentInClassDto, StudentInClass>();
 
+            // SystemConfig
+            Mapper.CreateMap<SystemConfig, SystemConfigDto>();
+            Mapper.CreateMap<SystemConfigDto, SystemConfig>();
+
             // User
             Mapper.CreateMap<UserDto, User>();
             Mapper.CreateMap<User, UserDto>();

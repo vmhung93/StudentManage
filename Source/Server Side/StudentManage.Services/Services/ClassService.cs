@@ -101,7 +101,7 @@ namespace StudentManage.Services.Services
                 var classes = new List<ClassDto>();
                 var classEntity = dbContext.Class.ToList();
 
-                if (!classEntity.Any())
+                if(!classEntity.Any())
                 {
                     return null;
                 }
@@ -124,15 +124,15 @@ namespace StudentManage.Services.Services
             {
                 // Get grade by id
                 var classEntity = dbContext.Class.FirstOrDefault(g => g.Id == classId);
-
-                if (classEntity == null)
+                
+                if(classEntity == null)
                 {
                     return null;
                 }
 
-                var _class = Mapper.Map<ClassDto>(classEntity);
+                var classDto = Mapper.Map<ClassDto>(classEntity);
 
-                return _class;
+                return classDto;
             }
         }
 
@@ -179,11 +179,13 @@ namespace StudentManage.Services.Services
 
                 var teacherAvaliable = dbContext.Users.Where(u => !teacherUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Teacher).ToList();
                 var studentAvaliable = dbContext.Users.Where(u => !studentUnavaliable.Contains(u.Id) && u.Role.Level == Common.RoleLevel.Student).ToList();
+                var grades = dbContext.Grade.ToList();
 
                 var result = new ClassInfoDto()
                 {
                     HomeroomTeacherdes = Mapper.Map<List<UserDto>>(teacherAvaliable),
-                    Students = Mapper.Map<List<UserDto>>(studentAvaliable)
+                    Students = Mapper.Map<List<UserDto>>(studentAvaliable),
+                    Grades = Mapper.Map<List<GradeDto>>(grades)
                 };
 
                 return result;

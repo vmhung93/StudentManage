@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using StudentManage.Common;
+using StudentManage.Common.External_Lib;
 using StudentManage.Domain.DbContext;
 using StudentManage.Domain.Domain;
 using StudentManage.Services.AppicationContract;
@@ -27,6 +29,10 @@ namespace StudentManage.Services.Services
         ClassStudentInfoDto GetClassStudentInfo(Guid classId);
 
         bool UpdateClassWithStudents(UpdateClassWithStudentsDto classWithStudentsDto);
+
+        bool CreateStudentInClass(CreateStudentInClassDto createStudentInClssDto);
+
+        bool CheckEmailIsExist(string email);
     }
     
     public class StudentInClassService : BaseService, IStudentInClassService
@@ -276,6 +282,67 @@ namespace StudentManage.Services.Services
                 }
                 result = true;
             }
+            return result;
+        }
+
+        /// <summary>
+        /// Update student in and out class
+        /// </summary>
+        /// <param name="studentInClassDto"></param>
+        /// <returns></returns>
+        public bool CreateStudentInClass(CreateStudentInClassDto createStudentInClassDto)
+        {
+            bool result = false;
+
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get user role
+                var currentUserRole = dbContext.Role.FirstOrDefault(r => r.Id == createStudentInClassDto.Student.RoleId);
+
+                // Using Mapper to map from user dto to user entity
+                var userEntity = Mapper.Map<User>(createStudentInClassDto.Student);
+
+                // Generate user access token
+                userEntity.AccessToken = Guid.NewGuid();
+                userEntity.ExpiredToken = DateTime.Now.AddDays(AppSettings.AccessTokenExpireTime);
+
+                userEntity.CreatedDate = DateTime.Now;
+                userEntity.ModifiedDate = DateTime.Now;
+
+                // Add user to dbContext
+                dbContext.Users.Add(userEntity);
+                dbContext.SaveChanges();
+
+                // Generate badge id
+                userEntity.BadgeId = GenerateBadgeId.Generate(currentUserRole.Level, userEntity.UserCode);
+
+                // Hash password
+                userEntity.Password = Security.HashPassword(userEntity.BadgeId, userEntity.Password);
+
+                // Update user name is badge id
+                userEntity.UserName = userEntity.BadgeId;
+
+                dbContext.SaveChanges();
+
+                dbContext.StudentInClass.Add(new StudentInClass() { StudentId = userEntity.Id, ClassId = createStudentInClassDto.ClassId, CreatedDate = DateTime.Now, ModifiedDate = DateTime.Now });
+
+                dbContext.SaveChanges();
+
+                result = true;
+            }
+            return result;
+        }
+
+        public bool CheckEmailIsExist(string email)
+        {
+            bool result = false;
+
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get user by id
+                result = dbContext.UserInfo.Any(u => u.Email.Contains(email));
+            }
+
             return result;
         }
     }

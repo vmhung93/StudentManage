@@ -41,4 +41,11 @@ namespace StudentManage.Services.AppicationContract
         public List<Guid> AddStudentIds { get; set; }
         public List<Guid> SubtractStudentIds { get; set; }
     }
+
+    public class CreateStudentInClassDto
+    {
+        public Guid ClassId { get; set; }
+
+        public UserDto Student { get; set; }
+    }
 }

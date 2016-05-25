@@ -369,5 +369,58 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        /// GetById class info
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/StudentInClass/CreateStudentInClass")]
+        public IHttpActionResult CreateStudentInClass(CreateStudentInClassDto createStudentInClassDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                if (StudentInClassService.CheckEmailIsExist(createStudentInClassDto.Student.UserInfo.Email))
+                {
+                    return Json(new
+                    {
+                        Status = 198,
+                        Message = ResponseMessages.EmailAlreadyExist
+                    });
+                }
+
+                var result = StudentInClassService.CreateStudentInClass(createStudentInClassDto);
+
+                if (result == true)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.CreateDataSuccessfully
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.CreateDataUnsuccessfully
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
     }
 }

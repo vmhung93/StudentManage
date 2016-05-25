@@ -1,13 +1,15 @@
 ﻿using StudentManage.Common;
+using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
+    [CustomAuthorize]
     public class CoursesController : BaseApiController
     {
         private ICoursesService CoursesService;
@@ -180,7 +182,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.GetDataUnsuccessful
+                    Message = ResponseMessages.DeleteUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -197,10 +199,10 @@ namespace StudentManage.DistributedService.Controllers
         /// <summary>
         /// GetById courses info
         /// </summary>
-        /// <param name="coursesId"></param>
+        /// <param name="coursesDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Courses/{coursesId}")]
+        [Route("api/Courses")]
         public IHttpActionResult GetById(Guid coursesId)
         {
             try
@@ -226,51 +228,6 @@ namespace StudentManage.DistributedService.Controllers
                 {
                     Status = HttpStatusCode.BadRequest,
                     Message = ResponseMessages.DeleteUnsuccessful
-                });
-            }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    Status = HttpStatusCode.InternalServerError,
-                    Message = ResponseMessages.InternalServerError,
-                    Error = ex.ToString()
-                });
-            }
-        }
-
-        /// <summary>
-        /// GetById courses info
-        /// </summary>
-        /// <param name="coursesDto"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("api/Courses/SummaryCourse")]
-        public IHttpActionResult SummaryCourse(GetSummaryCourseDto coursesDto)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
-
-                List<SummaryCourseDto> result = CoursesService.SummaryCourse(coursesDto);
-
-                if (result != null)
-                {
-                    return Json(new
-                    {
-                        Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.GetDataSuccessful,
-                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
-                    });
-                }
-
-                return Json(new
-                {
-                    Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

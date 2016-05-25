@@ -1,4 +1,5 @@
 ﻿using StudentManage.Common;
+using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
 using System;

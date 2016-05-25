@@ -96,7 +96,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1368, 55);
             this.panel1.TabIndex = 1;
@@ -106,7 +106,7 @@
             this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.Location = new System.Drawing.Point(1223, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 55);
             this.button1.TabIndex = 3;
@@ -138,7 +138,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 85);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -160,7 +160,7 @@
             this.treeViewControls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.treeViewControls.Location = new System.Drawing.Point(0, 0);
-            this.treeViewControls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeViewControls.Margin = new System.Windows.Forms.Padding(4);
             this.treeViewControls.Name = "treeViewControls";
             this.treeViewControls.Size = new System.Drawing.Size(311, 959);
             this.treeViewControls.TabIndex = 0;
@@ -170,7 +170,7 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(21, 3);
             this.tabControl1.SelectedIndex = 0;
@@ -328,9 +328,10 @@
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AppForm";
             this.Text = "AppForm";
+            this.Load += new System.EventHandler(this.AppForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.panel1.ResumeLayout(false);

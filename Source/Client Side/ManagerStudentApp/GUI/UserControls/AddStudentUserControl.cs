@@ -1,6 +1,7 @@
 ﻿using ManagerStudentApp.Exceptions;
 using ManagerStudentLib.Data;
 using ManagerStudentLib.Models;
+using ManagerStudentLib.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace ManagerStudentApp.GUI.UserControls
 
         private string GioiTinh = "Nam";
 
+        private int currentAge = 0;
+
         private void raBtnNam_CheckedChanged(object sender, EventArgs e)
         {
             GioiTinh = "Nam";
@@ -33,7 +36,7 @@ namespace ManagerStudentApp.GUI.UserControls
             GioiTinh = "Nu";
         }
 
-        static public bool KiemTraHoTen(string hoTen)
+        private bool KiemTraHoTen(string hoTen)
         {
             // Kiem tra giua 2 chu chi co 1 khoang trang
             if (hoTen.IndexOf("  ") != -1) return false;
@@ -52,7 +55,7 @@ namespace ManagerStudentApp.GUI.UserControls
             return true;
         }
 
-        static public bool KiemTraDienThoai(string dienThoai)
+        private bool KiemTraDienThoai(string dienThoai)
         {
             // Kiểm tra dãy số đúng 12 kí tự
             if (dienThoai.Length != 12) return false;
@@ -71,7 +74,7 @@ namespace ManagerStudentApp.GUI.UserControls
             return true;
         }
 
-        static public bool KiemTraEmail(string email)
+        private bool KiemTraEmail(string email)
         {
             string match = "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
             Regex reg = new Regex(match);
@@ -84,11 +87,24 @@ namespace ManagerStudentApp.GUI.UserControls
         {
             string thongBao = "";
 
-            if (KiemTraHoTen(txtHoTen.Text) == false)
-                thongBao += "Họ Tên Không Hợp Lệ\n";
-            if (KiemTraEmail(txtEmail.Text) == false)
-                thongBao += "Email Không Hợp Lệ\n";
+            if (!KiemTraHoTen(txtHoTen.Text))
+                thongBao += "Họ tên không hợp lệ\n";
+            if (!KiemTraEmail(txtEmail.Text))
+                thongBao += "Email không hợp lệ\n";
+            if (!CheckAge())
+                thongBao += "Tuổi không hợp lệ\n";
             return thongBao;
+        }
+
+        private bool CheckAge()
+        {
+            int maxAge = (int)SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MaxAge);
+            int minAge = (int)SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MinAge);
+            if (currentAge < minAge || currentAge > maxAge)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -96,21 +112,8 @@ namespace ManagerStudentApp.GUI.UserControls
             string thongBao = KiemTraNhapLieu();
             if (String.IsNullOrEmpty(thongBao))
             {
-                //string json = StudentData.AddStudent(new Student()
-                //{
-                //    ID = 1,
-                //    HoTen = txtHoTen.Text,
-                //    NgaySinh = Convert.ToDateTime(txtNgaySinh.Text),
-                //    GioiTinh = GioiTinh,
-                //    DiaChi = txtDiaChi.Text,
-                //    Email = txtEmail.Text,
-                //    IdLop = 1,
-                //});
-                //MessageBox.Show(json);
                 try
                 {
-                    string data = AuthenticationData.testData();
-                    MessageBox.Show(data);
                 }
                 catch (DataGetException ex)
                 {
@@ -128,69 +131,18 @@ namespace ManagerStudentApp.GUI.UserControls
         {
         }
 
-        //private void txtEmail_Validating(object sender, CancelEventArgs e)
-        //{
-        //    var regex = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
-        //    if (!Regex.IsMatch(txtEmail.Text, regex))
-        //    {
-        //        ShowError("Fuck Minh");
-        //    }
-        //    else
-        //    {
-        //        ShowError(string.Empty);
-        //    }
-        //}
+        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateAndLoadAge();
+        }
 
-        //private void ShowError(string error)
-        //{
-        //    if (!string.IsNullOrEmpty(error))
-        //    {
-        //        StringBuilder strBuilder = new StringBuilder(lblValidation.Text);
-        //        strBuilder.Append(error);
-
-        //        lblValidation.Text = strBuilder.ToString();
-        //    }
-        //}
-
-        //private void Validating_Common(object sender, CancelEventArgs e)
-        //{
-        //    private Control control = (Control)sender;
-        //    StringBuilder strBuilder = new StringBuilder(lblValidation.Text);
-
-        //    switch (control.Name)
-        //    {
-        //        case "txtHoTen":
-
-        //            if (control.Text.Length > 5)
-        //            {
-        //                strBuilder.Append("Fuck Ho Ten");
-        //            }
-
-        //            else
-        //            {
-        //                strBuilder.Replace("Fuck Ho Ten", string.Empty);
-        //            }
-
-        //            break;
-
-        //        case "txtEmail":
-        //            var regex = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
-        //            if (!Regex.IsMatch(txtEmail.Text, regex))
-        //            {
-        //                strBuilder.Append("Fuck Email");
-        //            }
-        //            else
-        //            {
-        //                strBuilder.Replace("Fuck Email", string.Empty);
-        //            }
-
-        //            break;
-
-        //        default:
-        //            break;
-        //    }
-
-        //    lblValidation.Text = strBuilder.ToString();
-        //}
+        private void CalculateAndLoadAge()
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - dtpNgaySinh.Value.Year;
+            if (now < dtpNgaySinh.Value.AddYears(age)) age--;
+            currentAge = age;
+            txtTuoi.Text = currentAge.ToString();
+        }
     }
 }

@@ -60,9 +60,6 @@ namespace ManagerStudentApp.GUI.UserControls
                 case ControlAction.ADD_REPORT_SEMESTER:
                     userControl = new AddReportSemsterUserControl();
                     break;
-                case ControlAction.LIST_REPORT:
-                    userControl = new ListReportUserControl();
-                    break;
                 case ControlAction.SETTING:
                     userControl = new SettingUserControl();
                     break;

@@ -49,8 +49,8 @@
     <Compile Include="Data\SemesterData.cs" />
     <Compile Include="Data\GradeData.cs" />
     <Compile Include="Data\SubjectData.cs" />
+    <Compile Include="Data\SystemConfigData.cs" />
     <Compile Include="Exceptions\AuthenticationException.cs" />
-    <Compile Include="Authentication\AuthenticationService.cs" />
     <Compile Include="Exceptions\DataGetException.cs" />
     <Compile Include="Data\DataHelper.cs" />
     <Compile Include="Data\AuthenticationData.cs" />
@@ -63,6 +63,7 @@
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\StudentNotInClass.cs" />
     <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\SystemConfigModels.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +72,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Service\AuthenticationService.cs" />
+    <Compile Include="Service\SystemConfigService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -64,4 +64,17 @@ namespace ManagerStudentLib.Models
         public string CourseId { get; set; }
         public string SemesterId { get; set; }
     }
+
+    public class SemesterCourse
+    {
+        public SemesterInfo Semester { get; set; }
+        public List<CourseScore> CourseScores { get; set; }
+    }
+
+    public class StudentClassCourseScore
+    {
+        public string StudentName { get; set; }
+        public string ClassName { get; set; }
+        public List<SemesterCourse> SemesterCourses { get; set; }
+    }
 }

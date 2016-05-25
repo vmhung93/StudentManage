@@ -39,5 +39,17 @@ namespace ManagerStudentLib.Data
             }
             return new List<ScoreType>();
         }
+
+        public static List<StudentClassCourseScore> GetStudentClassCourseScore(string studentName)
+        {
+            var url = DataHelper.DATA_SOURCE + "/Scores/GetStudentCourseScore";
+            string jsonData = JsonConvert.SerializeObject(new { Name = studentName });
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<StudentClassCourseScore>>(responseData.JsonData);
+            }
+            return new List<StudentClassCourseScore>();
+        }
     }
 }

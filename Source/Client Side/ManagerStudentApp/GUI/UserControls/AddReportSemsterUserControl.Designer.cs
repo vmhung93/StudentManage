@@ -28,66 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.listView6 = new System.Windows.Forms.ListView();
+            this.btnLapBaoCao = new System.Windows.Forms.Button();
+            this.lvTongKet = new System.Windows.Forms.ListView();
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.cbbHocKi = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button15
+            // btnLapBaoCao
             // 
-            this.button15.Location = new System.Drawing.Point(333, 452);
-            this.button15.Margin = new System.Windows.Forms.Padding(2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(131, 32);
-            this.button15.TabIndex = 51;
-            this.button15.Text = "Huỷ";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnLapBaoCao.Location = new System.Drawing.Point(660, 96);
+            this.btnLapBaoCao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLapBaoCao.Name = "btnLapBaoCao";
+            this.btnLapBaoCao.Size = new System.Drawing.Size(114, 31);
+            this.btnLapBaoCao.TabIndex = 1;
+            this.btnLapBaoCao.Text = "Lập báo cáo";
+            this.btnLapBaoCao.UseVisualStyleBackColor = true;
+            this.btnLapBaoCao.Click += new System.EventHandler(this.btnLapBaoCao_Click);
             // 
-            // button14
+            // lvTongKet
             // 
-            this.button14.Location = new System.Drawing.Point(467, 452);
-            this.button14.Margin = new System.Windows.Forms.Padding(2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(131, 32);
-            this.button14.TabIndex = 52;
-            this.button14.Text = "Lưu báo cáo";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(452, 57);
-            this.button13.Margin = new System.Windows.Forms.Padding(2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(131, 32);
-            this.button13.TabIndex = 53;
-            this.button13.Text = "Lập báo cáo";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // listView6
-            // 
-            this.listView6.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvTongKet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader20,
             this.columnHeader21,
             this.columnHeader22,
             this.columnHeader23,
             this.columnHeader24});
-            this.listView6.GridLines = true;
-            this.listView6.Location = new System.Drawing.Point(27, 113);
-            this.listView6.Margin = new System.Windows.Forms.Padding(2);
-            this.listView6.Name = "listView6";
-            this.listView6.Size = new System.Drawing.Size(572, 324);
-            this.listView6.TabIndex = 50;
-            this.listView6.UseCompatibleStateImageBehavior = false;
-            this.listView6.View = System.Windows.Forms.View.Details;
+            this.lvTongKet.FullRowSelect = true;
+            this.lvTongKet.GridLines = true;
+            this.lvTongKet.Location = new System.Drawing.Point(29, 139);
+            this.lvTongKet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvTongKet.Name = "lvTongKet";
+            this.lvTongKet.Size = new System.Drawing.Size(745, 432);
+            this.lvTongKet.TabIndex = 2;
+            this.lvTongKet.UseCompatibleStateImageBehavior = false;
+            this.lvTongKet.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader20
             // 
@@ -114,22 +94,22 @@
             this.columnHeader24.Text = "Tỉ lệ";
             this.columnHeader24.Width = 181;
             // 
-            // comboBox7
+            // cbbHocKi
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(74, 61);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(102, 21);
-            this.comboBox7.TabIndex = 49;
+            this.cbbHocKi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbHocKi.FormattingEnabled = true;
+            this.cbbHocKi.Location = new System.Drawing.Point(86, 96);
+            this.cbbHocKi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbbHocKi.Name = "cbbHocKi";
+            this.cbbHocKi.Size = new System.Drawing.Size(135, 24);
+            this.cbbHocKi.TabIndex = 0;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(32, 64);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Location = new System.Drawing.Point(30, 100);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(38, 13);
+            this.label24.Size = new System.Drawing.Size(47, 17);
             this.label24.TabIndex = 47;
             this.label24.Text = "Học kì";
             // 
@@ -137,26 +117,25 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label25.Location = new System.Drawing.Point(145, 12);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Location = new System.Drawing.Point(217, 15);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(303, 31);
+            this.label25.Size = new System.Drawing.Size(378, 39);
             this.label25.TabIndex = 45;
             this.label25.Text = "Báo cáo tổng kết học kỳ";
             // 
             // AddReportSemsterUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.listView6);
-            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.btnLapBaoCao);
+            this.Controls.Add(this.lvTongKet);
+            this.Controls.Add(this.cbbHocKi);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label25);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddReportSemsterUserControl";
-            this.Size = new System.Drawing.Size(629, 496);
+            this.Size = new System.Drawing.Size(806, 610);
+            this.Load += new System.EventHandler(this.AddReportSemsterUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,16 +143,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.ListView listView6;
+        private System.Windows.Forms.Button btnLapBaoCao;
+        private System.Windows.Forms.ListView lvTongKet;
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.ColumnHeader columnHeader21;
         private System.Windows.Forms.ColumnHeader columnHeader22;
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.ColumnHeader columnHeader24;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox cbbHocKi;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
     }

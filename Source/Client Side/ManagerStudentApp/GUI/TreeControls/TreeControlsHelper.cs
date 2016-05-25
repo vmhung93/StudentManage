@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagerStudentLib.Models;
 namespace ManagerStudentApp.GUI.TreeControls
 {
     public enum ControlAction {
@@ -28,7 +29,6 @@ namespace ManagerStudentApp.GUI.TreeControls
         [Description("Danh sách bảng điểm")]        LIST_SCORE,
         [Description("Lập báo cáo môn học")]        ADD_REPORT_SUBJECT,
         [Description("Lập báo cáo học kỳ")]         ADD_REPORT_SEMESTER,
-        [Description("Danh sách các báo cáo")]      LIST_REPORT,
         [Description("Quy định")]                   SETTING
     }
     public class TreeControlsHelper
@@ -173,8 +173,8 @@ namespace ManagerStudentApp.GUI.TreeControls
             }
             if (dicNodes.TryGetValue(TreeRootId.REPORT, out node))
             {
-                var childNode = new TreeNodeControl(GetActionValue(ControlAction.ADD_REPORT_SUBJECT), 8, 8, node).SetAction(ControlAction.ADD_REPORT_SUBJECT);
-                childNode = new TreeNodeControl(GetActionValue(ControlAction.ADD_REPORT_SEMESTER), 8, 8, node).SetAction(ControlAction.ADD_REPORT_SEMESTER);
+                var childNode = new TreeNodeControl(GetActionValue(ControlAction.ADD_REPORT_SUBJECT), 7, 7, node).SetAction(ControlAction.ADD_REPORT_SUBJECT);
+                childNode = new TreeNodeControl(GetActionValue(ControlAction.ADD_REPORT_SEMESTER), 7, 7, node).SetAction(ControlAction.ADD_REPORT_SEMESTER);
             }
 
             var settingNode = new TreeNodeControl(GetActionValue(ControlAction.SETTING), 12, 12, null).SetAction(ControlAction.SETTING);
@@ -184,7 +184,6 @@ namespace ManagerStudentApp.GUI.TreeControls
         private  void BuildTeacherTreeNode(Dictionary<TreeRootId, TreeNodeControl> dicNodes)
         {
             var reportNode = new TreeNodeControl("Báo cáo tổng kết", 9, 9, null);
-            var childNode = new TreeNodeControl(GetActionValue(ControlAction.LIST_REPORT), 7, 7, reportNode).SetAction(ControlAction.LIST_REPORT);
             dicNodes.Add(TreeRootId.REPORT, reportNode);
         }
 

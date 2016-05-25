@@ -5,19 +5,28 @@ using StudentManage.Domain.DbContext;
 using StudentManage.Domain.Domain;
 using StudentManage.Services.AppicationContract;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StudentManage.Services.Services
 {
     public interface IUserService
     {
-        bool Create(UserDto userDto);
+        UserDto Create(UserDto userDto);
+
+        bool ChangePassword(PasswordDto passwordDto);
 
         bool CheckEmailIsExist(string email);
 
         bool CheckTokenIsValid(Guid token);
 
         bool Delete(Guid userId);
+
+        List<UserDto> GetAllUser(bool activeOnly);
+
+        UserDto GetUserById(Guid userId);
+
+        List<UserDto> GetUserByRole(RoleLevel roleLevel);
 
         UserDto GetUserByToken(Guid token);
 
@@ -35,10 +44,8 @@ namespace StudentManage.Services.Services
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
-        public bool Create(UserDto userDto)
+        public UserDto Create(UserDto userDto)
         {
-            bool result = false;
-
             // Create DBcontext object
             using (var dbContext = new StudentManageDbContext())
             {
@@ -46,7 +53,7 @@ namespace StudentManage.Services.Services
                 var currentUserRole = dbContext.Role.FirstOrDefault(r => r.Id == userDto.RoleId);
                 if (currentUserRole == null)
                 {
-                    return false;
+                    return null;
                 }
 
                 // Using Mapper to map from user dto to user entity
@@ -71,6 +78,49 @@ namespace StudentManage.Services.Services
 
                 // Update user name is badge id
                 userEntity.UserName = userEntity.BadgeId;
+
+                dbContext.SaveChanges();
+
+                userDto = Mapper.Map<UserDto>(userEntity);
+
+                return userDto;
+            }
+        }
+
+        /// <summary>
+        /// Change user password
+        /// </summary>
+        /// <param name="passwordDto"></param>
+        /// <returns></returns>
+        public bool ChangePassword(PasswordDto passwordDto)
+        {
+            bool result = false;
+
+            // Create DBcontext object
+            using (var dbContext = new StudentManageDbContext())
+            {
+                // Get user by id
+                var user = dbContext.Users.FirstOrDefault(u => u.Id == passwordDto.UserId);
+
+                if (user == null)
+                {
+                    return false;
+                }
+
+                // Hash current password
+                string currentPasswordHash = Security.HashPassword(user.BadgeId, passwordDto.CurrentPassword);
+
+                if (user.Password.CompareTo(currentPasswordHash) != 0)
+                {
+                    return false;
+                }
+
+                // Hash new password
+                string newPassword = Security.HashPassword(user.BadgeId, passwordDto.NewPassword);
+
+                // Update new password
+                user.Password = newPassword;
+                user.ModifiedDate = DateTime.Now;
 
                 dbContext.SaveChanges();
 
@@ -143,6 +193,76 @@ namespace StudentManage.Services.Services
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Get all user
+        /// </summary>
+        /// <returns></returns>
+        public List<UserDto> GetAllUser(bool onlyActive)
+        {
+            // Create DBcontext object
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var users = dbContext.Users.ToList();
+
+                if (onlyActive)
+                {
+                    users = users.Where(u => u.Status == Status.Active).ToList();
+                }
+
+                if (users.Count <= 0)
+                {
+                    return null;
+                }
+
+                var userDtos = Mapper.Map<List<UserDto>>(users);
+                return userDtos;
+            }
+        }
+
+        /// <summary>
+        /// Get user by user id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public UserDto GetUserById(Guid userId)
+        {
+            // Create DBcontext object
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var user = dbContext.Users.FirstOrDefault(u => u.Id == userId && u.Status == Status.Active);
+
+                if (user == null)
+                {
+                    return null;
+                }
+
+                var userDto = Mapper.Map<UserDto>(user);
+                return userDto;
+            }
+        }
+
+        /// <summary>
+        /// Get user by role level
+        /// </summary>
+        /// <param name="roleLevel"></param>
+        /// <returns></returns>
+        public List<UserDto> GetUserByRole(RoleLevel roleLevel)
+        {
+            // Create DBcontext object
+            using (var dbContext = new StudentManageDbContext())
+            {
+                var users = dbContext.Users.Where(u => u.Role.Level == roleLevel && u.Status == Status.Active).ToList();
+
+                if (users.Count <= 0)
+                {
+                    return null;
+                }
+
+                var userDtos = Mapper.Map<List<UserDto>>(users);
+                return userDtos;
+            }
         }
 
         /// <summary>

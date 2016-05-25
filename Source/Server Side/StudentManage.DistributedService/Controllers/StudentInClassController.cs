@@ -1,13 +1,15 @@
 ﻿using StudentManage.Common;
+using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
+    [CustomAuthorize]
     public class StudentInClassController : BaseApiController
     {
         private IStudentInClassService StudentInClassService;

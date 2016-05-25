@@ -1,4 +1,5 @@
 ﻿using StudentManage.Common;
+using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
 using System;
@@ -7,6 +8,7 @@ using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
+    [CustomAuthorize]
     public class GradeController : BaseApiController
     {
         private IGradeService GradeService;
@@ -15,7 +17,7 @@ namespace StudentManage.DistributedService.Controllers
         {
             this.GradeService = gradeService;
         }
-        
+
         /// <summary>
         /// Create new grade
         /// </summary>
@@ -225,6 +227,5 @@ namespace StudentManage.DistributedService.Controllers
                 });
             }
         }
-
     }
 }

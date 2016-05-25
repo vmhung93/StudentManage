@@ -20,6 +20,9 @@
         Female = 1
     }
 
+    /// <summary>
+    /// User role level
+    /// </summary>
     public enum RoleLevel
     {
         Adminstrator = 5,
@@ -31,5 +34,16 @@
         Teacher = 2,
 
         Student = 1
+    }
+
+    /// <summary>
+    /// System configuration
+    /// </summary>
+    public enum SystemConfigEnum
+    {
+        MinAge,
+        MaxAge,
+        MaxNumberInClass,
+        PassScore
     }
 }

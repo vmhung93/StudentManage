@@ -1,4 +1,5 @@
 ﻿using StudentManage.Common;
+using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
 using System;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
+    [CustomAuthorize]
     public class SystemConfigController : BaseApiController
     {
         private ISystemConfigService SystemConfigService;
@@ -16,7 +18,7 @@ namespace StudentManage.DistributedService.Controllers
         {
             this.SystemConfigService = systemConfigService;
         }
-        
+
         /// <summary>
         /// Create new grade
         /// </summary>

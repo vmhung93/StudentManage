@@ -9,7 +9,6 @@ using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
-    [CustomAuthorize]
     public class SystemConfigController : BaseApiController
     {
         private ISystemConfigService SystemConfigService;
@@ -26,6 +25,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/SystemConfig")]
+        [CustomAuthorize]
         public IHttpActionResult Create(SystemConfigDto systemConfigDto)
         {
             try
@@ -70,6 +70,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/SystemConfig")]
+        [CustomAuthorize]
         public IHttpActionResult Update(SystemConfigDto systemConfigDto)
         {
             try
@@ -114,6 +115,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/DeleteSystemConfig")]
+        [CustomAuthorize]
         public IHttpActionResult Delete(BaseDto systemConfigDto)
         {
             try
@@ -157,6 +159,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/SystemConfig")]
+        [CustomAuthorize]
         public IHttpActionResult GetAll()
         {
             try
@@ -196,6 +199,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/SystemConfig/{systemConfigId}")]
+        [CustomAuthorize]
         public IHttpActionResult Get(Guid systemConfigId)
         {
             try
@@ -235,6 +239,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/SystemConfig/UpdateAll")]
+        [CustomAuthorize]
         public IHttpActionResult UpdateAll(List<SystemConfigDto> systemConfigs)
         {
             try
@@ -255,6 +260,48 @@ namespace StudentManage.DistributedService.Controllers
                 {
                     Status = HttpStatusCode.BadRequest,
                     Message = ResponseMessages.UpdateUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// Initiate database and return SA badge id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/InitiateDatabase")]
+        [CustomAuthorize(RequireAuthentication = false)]
+        public IHttpActionResult InitiateData()
+        {
+            try
+            {
+                // Initiate database
+                // Get badge id of super admin
+                var saBadgeId = SystemConfigService.InitiateDatabase();
+
+                if (!string.IsNullOrEmpty(saBadgeId))
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.InitiateDatabaseSuccessfully,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(saBadgeId)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InitiateDatabaseUnSuccessfully
                 });
             }
             catch (Exception ex)

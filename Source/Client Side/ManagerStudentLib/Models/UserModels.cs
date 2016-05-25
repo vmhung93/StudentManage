@@ -15,6 +15,7 @@ namespace ManagerStudentLib.Models
         public string UserName { get; set; }
         public UserInfo UserInfo { get; set; }
         public string Id { get; set; }
+        public RoleInfo Role { get; set; }
     }
 
     public class UserInfo

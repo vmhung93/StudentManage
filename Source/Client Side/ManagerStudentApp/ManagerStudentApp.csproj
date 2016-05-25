@@ -239,6 +239,9 @@
     <EmbeddedResource Include="GUI\UserControls\ChangeScoreUserControl.resx">
       <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ListAccountUserControl.resx">
+      <DependentUpon>ListAccountUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ListClassUserControl.resx">
       <DependentUpon>ListClassUserControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -57,7 +57,7 @@
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(175, 39);
-            this.btnThem.TabIndex = 9;
+            this.btnThem.TabIndex = 8;
             this.btnThem.Text = "Thêm học sinh";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -68,9 +68,10 @@
             this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
-            this.btnHoanTac.TabIndex = 10;
+            this.btnHoanTac.TabIndex = 9;
             this.btnHoanTac.Text = "Hoàn tác";
             this.btnHoanTac.UseVisualStyleBackColor = true;
+            this.btnHoanTac.Click += new System.EventHandler(this.btnHoanTac_Click);
             // 
             // lvLop
             // 
@@ -84,7 +85,7 @@
             this.lvLop.MultiSelect = false;
             this.lvLop.Name = "lvLop";
             this.lvLop.Size = new System.Drawing.Size(383, 115);
-            this.lvLop.TabIndex = 8;
+            this.lvLop.TabIndex = 7;
             this.lvLop.UseCompatibleStateImageBehavior = false;
             this.lvLop.View = System.Windows.Forms.View.Details;
             // 
@@ -247,7 +248,7 @@
             this.cbbLop.Location = new System.Drawing.Point(144, 303);
             this.cbbLop.Name = "cbbLop";
             this.cbbLop.Size = new System.Drawing.Size(127, 24);
-            this.cbbLop.TabIndex = 13;
+            this.cbbLop.TabIndex = 6;
             // 
             // AddStudentUserControl
             // 

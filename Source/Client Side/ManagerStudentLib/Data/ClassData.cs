@@ -60,7 +60,7 @@ namespace ManagerStudentLib.Data
             return null;
         }
 
-        public static bool CreateStudentInClass(CreateStudentInClass student)
+        public static bool CreateStudentInClass(CreateStudentInClass student, ref int error)
         {
             string url = DataHelper.DATA_SOURCE + "/StudentInClass/CreateStudentInClass";
             string jsonData = JsonConvert.SerializeObject(student);
@@ -68,6 +68,10 @@ namespace ManagerStudentLib.Data
             if (responseData.Status == Response.Success)
             {
                 return true;
+            }
+            else if (responseData.Status == Response.EmailIsExist)
+            {
+                error = 1;
             }
             return false;
         }

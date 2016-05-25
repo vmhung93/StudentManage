@@ -142,11 +142,18 @@ namespace ManagerStudentApp.GUI.UserControls
                             RoleId = roleId,
                             Password = pass
                         },
-                        ClassId = listClassInfo[cbbLop.SelectedIndex - 1].Id
+                        ClassId = listClassInfo[cbbLop.SelectedIndex].Id
                     };
-                    if (ClassData.CreateStudentInClass(stu))
+                    int error = 0;
+                    bool result = ClassData.CreateStudentInClass(stu, ref error);
+                    if (result == true && error == 0)
                     {
                         MessageBox.Show(this, "Thêm học sinh thành công", "Thành công", MessageBoxButtons.OK);
+                        Reset();
+                    }
+                    else if (result == false && error == 1)
+                    {
+                        MessageBox.Show(this, "Email bị trùng", "Thất bại", MessageBoxButtons.OK);
                     }
                     else
                     {
@@ -169,11 +176,32 @@ namespace ManagerStudentApp.GUI.UserControls
         {
             listClassInfo = ClassData.GetListClasses();
             roles = AuthenticationData.GetAllRoles();
-            cbbLop.Items.Add("Chưa chọn");
-            cbbLop.SelectedIndex = 0;
             foreach (var c in listClassInfo)
             {
                 cbbLop.Items.Add(c.Name);
+            }
+            cbbLop.SelectedIndex = 0;
+            LoadData();
+        }
+
+        void Reset()
+        {
+            dtpNgaySinh.Value = DateTime.Now;
+            txtHoTen.Text = string.Empty;
+            raBtnNam.Checked = true;
+            txtDiaChi.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            cbbLop.SelectedIndex = 0;
+            LoadData();
+        }
+
+        void LoadData()
+        {
+            lvLop.Items.Clear();
+            foreach (var cl in listClassInfo)
+            {
+                var students = ClassData.GetInfoClassWithStudents(cl.Id);
+                lvLop.Items.Add(new ListViewItem(new string[] { students.Class.Name, students.Students.Count.ToString() }));
             }
         }
 
@@ -189,6 +217,11 @@ namespace ManagerStudentApp.GUI.UserControls
             if (now < dtpNgaySinh.Value.AddYears(age)) age--;
             currentAge = age;
             txtTuoi.Text = currentAge.ToString();
+        }
+
+        private void btnHoanTac_Click(object sender, EventArgs e)
+        {
+            Reset();
         }
     }
 }

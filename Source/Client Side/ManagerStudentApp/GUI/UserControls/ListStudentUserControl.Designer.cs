@@ -28,41 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.lvwDanhSach = new System.Windows.Forms.ListView();
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button10 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listView4
+            // lvwDanhSach
             // 
-            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvwDanhSach.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader13,
             this.columnHeader14,
             this.columnHeader15});
-            this.listView4.GridLines = true;
-            this.listView4.Location = new System.Drawing.Point(25, 131);
-            this.listView4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(761, 387);
-            this.listView4.TabIndex = 26;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.Details;
+            this.lvwDanhSach.GridLines = true;
+            this.lvwDanhSach.Location = new System.Drawing.Point(25, 131);
+            this.lvwDanhSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvwDanhSach.Name = "lvwDanhSach";
+            this.lvwDanhSach.Size = new System.Drawing.Size(761, 387);
+            this.lvwDanhSach.TabIndex = 26;
+            this.lvwDanhSach.UseCompatibleStateImageBehavior = false;
+            this.lvwDanhSach.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Mã học sinh";
+            this.columnHeader10.Text = "STT";
             this.columnHeader10.Width = 128;
             // 
             // columnHeader11
@@ -85,24 +83,16 @@
             this.columnHeader15.Text = "TB Học kỳ 2";
             this.columnHeader15.Width = 181;
             // 
-            // button10
+            // btnTimKiem
             // 
-            this.button10.Location = new System.Drawing.Point(611, 66);
-            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(175, 39);
-            this.button10.TabIndex = 25;
-            this.button10.Text = "Tìm kiếm";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(449, 74);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 24);
-            this.comboBox1.TabIndex = 24;
+            this.btnTimKiem.Location = new System.Drawing.Point(611, 66);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(175, 39);
+            this.btnTimKiem.TabIndex = 25;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // label14
             // 
@@ -113,22 +103,13 @@
             this.label14.TabIndex = 23;
             this.label14.Text = "Danh sách học sinh";
             // 
-            // label15
+            // txtHoTen
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(378, 78);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 17);
-            this.label15.TabIndex = 20;
-            this.label15.Text = "Chọn lớp";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(89, 74);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(261, 22);
-            this.textBox10.TabIndex = 22;
+            this.txtHoTen.Location = new System.Drawing.Point(89, 74);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(261, 22);
+            this.txtHoTen.TabIndex = 22;
             // 
             // label16
             // 
@@ -153,17 +134,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listView4);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lvwDanhSach);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ListStudentUserControl";
             this.Size = new System.Drawing.Size(819, 545);
+            this.Load += new System.EventHandler(this.ListStudentUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,17 +151,15 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ListView lvwDanhSach;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
     }

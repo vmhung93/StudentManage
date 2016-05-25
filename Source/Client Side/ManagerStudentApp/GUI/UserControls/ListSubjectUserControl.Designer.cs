@@ -40,6 +40,7 @@
             this.lvSubjects.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader10,
             this.columnHeader11});
+            this.lvSubjects.FullRowSelect = true;
             this.lvSubjects.GridLines = true;
             this.lvSubjects.Location = new System.Drawing.Point(41, 98);
             this.lvSubjects.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -62,7 +63,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(38, 79);
+            this.label14.Location = new System.Drawing.Point(38, 77);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(134, 17);
             this.label14.TabIndex = 31;

@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.btnLapBaoCao = new System.Windows.Forms.Button();
             this.lvTongKet = new System.Windows.Forms.ListView();
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,33 +40,13 @@
             this.label25 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(444, 556);
-            this.button15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(175, 39);
-            this.button15.TabIndex = 51;
-            this.button15.Text = "Huỷ";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(623, 556);
-            this.button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(175, 39);
-            this.button14.TabIndex = 52;
-            this.button14.Text = "Lưu báo cáo";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
             // btnLapBaoCao
             // 
-            this.btnLapBaoCao.Location = new System.Drawing.Point(603, 70);
+            this.btnLapBaoCao.Location = new System.Drawing.Point(660, 96);
             this.btnLapBaoCao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLapBaoCao.Name = "btnLapBaoCao";
-            this.btnLapBaoCao.Size = new System.Drawing.Size(175, 39);
-            this.btnLapBaoCao.TabIndex = 53;
+            this.btnLapBaoCao.Size = new System.Drawing.Size(114, 31);
+            this.btnLapBaoCao.TabIndex = 1;
             this.btnLapBaoCao.Text = "Lập báo cáo";
             this.btnLapBaoCao.UseVisualStyleBackColor = true;
             this.btnLapBaoCao.Click += new System.EventHandler(this.btnLapBaoCao_Click);
@@ -81,12 +59,13 @@
             this.columnHeader22,
             this.columnHeader23,
             this.columnHeader24});
+            this.lvTongKet.FullRowSelect = true;
             this.lvTongKet.GridLines = true;
-            this.lvTongKet.Location = new System.Drawing.Point(36, 139);
+            this.lvTongKet.Location = new System.Drawing.Point(29, 139);
             this.lvTongKet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvTongKet.Name = "lvTongKet";
-            this.lvTongKet.Size = new System.Drawing.Size(761, 398);
-            this.lvTongKet.TabIndex = 50;
+            this.lvTongKet.Size = new System.Drawing.Size(745, 432);
+            this.lvTongKet.TabIndex = 2;
             this.lvTongKet.UseCompatibleStateImageBehavior = false;
             this.lvTongKet.View = System.Windows.Forms.View.Details;
             // 
@@ -117,17 +96,18 @@
             // 
             // cbbHocKi
             // 
+            this.cbbHocKi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbHocKi.FormattingEnabled = true;
-            this.cbbHocKi.Location = new System.Drawing.Point(99, 75);
+            this.cbbHocKi.Location = new System.Drawing.Point(86, 96);
             this.cbbHocKi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbHocKi.Name = "cbbHocKi";
             this.cbbHocKi.Size = new System.Drawing.Size(135, 24);
-            this.cbbHocKi.TabIndex = 49;
+            this.cbbHocKi.TabIndex = 0;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(43, 79);
+            this.label24.Location = new System.Drawing.Point(30, 100);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(47, 17);
             this.label24.TabIndex = 47;
@@ -137,7 +117,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label25.Location = new System.Drawing.Point(193, 15);
+            this.label25.Location = new System.Drawing.Point(217, 15);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(378, 39);
             this.label25.TabIndex = 45;
@@ -147,8 +127,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
             this.Controls.Add(this.btnLapBaoCao);
             this.Controls.Add(this.lvTongKet);
             this.Controls.Add(this.cbbHocKi);
@@ -156,7 +134,7 @@
             this.Controls.Add(this.label25);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddReportSemsterUserControl";
-            this.Size = new System.Drawing.Size(839, 610);
+            this.Size = new System.Drawing.Size(806, 610);
             this.Load += new System.EventHandler(this.AddReportSemsterUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,8 +143,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnLapBaoCao;
         private System.Windows.Forms.ListView lvTongKet;
         private System.Windows.Forms.ColumnHeader columnHeader20;

@@ -16,7 +16,8 @@ namespace ManagerStudentApp.GUI.UserControls
     {
         private List<SubjectInfo> listSubjectInfo;
         private List<SemesterInfo> listSemesterInfo;
-        
+        private List<ScoreType> listScoreType;
+
         public AddReportSubjectUserControl()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace ManagerStudentApp.GUI.UserControls
         {
             listSubjectInfo = SubjectData.GetListSubject();
             listSemesterInfo = SemesterData.GetListSemester();
+            listScoreType = ScoreData.GetScoreTypes();
             cbbMon.Items.Add("Chưa chọn");
             cbbHocKi.Items.Add("Chưa chọn");
             foreach (var c in listSubjectInfo)
@@ -55,6 +57,11 @@ namespace ManagerStudentApp.GUI.UserControls
                     CourseId = listSubjectInfo[cbbMon.SelectedIndex - 1].Id,
                     SemesterId = listSemesterInfo[cbbHocKi.SelectedIndex - 1].Id
                 };
+                double sumCofficient = 0;
+                foreach (var sct in listScoreType)
+                {
+                    sumCofficient += sct.Coefficient;
+                }
                 List<SummarySubject> summary = SubjectData.GetSummarySubject(summarySubject);
                 int i = 1;
                 foreach (var s in summary)
@@ -64,11 +71,9 @@ namespace ManagerStudentApp.GUI.UserControls
                     foreach(var st in s.StudentScore)
                     {
                         double sum = 0;
-                        double sumCofficient = 0;
                         foreach(var sc in st.ListScore)
                         {
                             sum += Convert.ToDouble(sc.Score) * sc.ScoreType.Coefficient;
-                            sumCofficient += sc.ScoreType.Coefficient;
                         }
                         sum = sum / sumCofficient;
                         if (sum >= 5.0)

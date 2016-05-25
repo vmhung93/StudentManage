@@ -62,6 +62,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxKhoiLop = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.txtSiSoToiDa = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +81,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(466, 74);
+            this.label9.Location = new System.Drawing.Point(431, 108);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 17);
             this.label9.TabIndex = 45;
@@ -87,7 +89,7 @@
             // 
             // txtTenLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(589, 71);
+            this.txtTenLop.Location = new System.Drawing.Point(589, 105);
             this.txtTenLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenLop.Name = "txtTenLop";
             this.txtTenLop.Size = new System.Drawing.Size(185, 22);
@@ -96,7 +98,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(466, 159);
+            this.label12.Location = new System.Drawing.Point(431, 224);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 17);
             this.label12.TabIndex = 44;
@@ -104,11 +106,12 @@
             // 
             // txtSiSo
             // 
-            this.txtSiSo.Location = new System.Drawing.Point(670, 159);
+            this.txtSiSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiSo.Location = new System.Drawing.Point(694, 224);
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiSo.Name = "txtSiSo";
             this.txtSiSo.ReadOnly = true;
-            this.txtSiSo.Size = new System.Drawing.Size(104, 22);
+            this.txtSiSo.Size = new System.Drawing.Size(80, 22);
             this.txtSiSo.TabIndex = 47;
             this.txtSiSo.Text = "1";
             this.txtSiSo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -157,7 +160,7 @@
             // 
             this.groupBox1.Controls.Add(this.lvLop);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox1.Location = new System.Drawing.Point(20, 189);
+            this.groupBox1.Location = new System.Drawing.Point(20, 256);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -169,7 +172,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(466, 131);
+            this.label10.Location = new System.Drawing.Point(431, 165);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 17);
             this.label10.TabIndex = 46;
@@ -210,7 +213,7 @@
             // 
             this.groupBox2.Controls.Add(this.lvLopSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(431, 189);
+            this.groupBox2.Location = new System.Drawing.Point(431, 256);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -221,7 +224,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(370, 236);
+            this.btnAdd.Location = new System.Drawing.Point(370, 303);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(56, 68);
@@ -232,7 +235,7 @@
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(370, 308);
+            this.btnAddAll.Location = new System.Drawing.Point(370, 375);
             this.btnAddAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(56, 68);
@@ -243,7 +246,7 @@
             // 
             // btnSubstract
             // 
-            this.btnSubstract.Location = new System.Drawing.Point(370, 382);
+            this.btnSubstract.Location = new System.Drawing.Point(370, 449);
             this.btnSubstract.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubstract.Name = "btnSubstract";
             this.btnSubstract.Size = new System.Drawing.Size(56, 68);
@@ -254,7 +257,7 @@
             // 
             // btnSubstractAll
             // 
-            this.btnSubstractAll.Location = new System.Drawing.Point(370, 456);
+            this.btnSubstractAll.Location = new System.Drawing.Point(370, 523);
             this.btnSubstractAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubstractAll.Name = "btnSubstractAll";
             this.btnSubstractAll.Size = new System.Drawing.Size(56, 68);
@@ -265,7 +268,7 @@
             // 
             // btnHoanTac
             // 
-            this.btnHoanTac.Location = new System.Drawing.Point(469, 533);
+            this.btnHoanTac.Location = new System.Drawing.Point(469, 600);
             this.btnHoanTac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHoanTac.Name = "btnHoanTac";
             this.btnHoanTac.Size = new System.Drawing.Size(112, 39);
@@ -276,7 +279,7 @@
             // 
             // btnCapNhatLop
             // 
-            this.btnCapNhatLop.Location = new System.Drawing.Point(596, 533);
+            this.btnCapNhatLop.Location = new System.Drawing.Point(596, 600);
             this.btnCapNhatLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapNhatLop.Name = "btnCapNhatLop";
             this.btnCapNhatLop.Size = new System.Drawing.Size(175, 39);
@@ -300,7 +303,7 @@
             // 
             this.comboBoxGVCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGVCN.FormattingEnabled = true;
-            this.comboBoxGVCN.Location = new System.Drawing.Point(589, 128);
+            this.comboBoxGVCN.Location = new System.Drawing.Point(589, 162);
             this.comboBoxGVCN.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxGVCN.Name = "comboBoxGVCN";
             this.comboBoxGVCN.Size = new System.Drawing.Size(185, 24);
@@ -309,7 +312,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 131);
+            this.label3.Location = new System.Drawing.Point(23, 138);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 17);
             this.label3.TabIndex = 46;
@@ -318,7 +321,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 160);
+            this.label4.Location = new System.Drawing.Point(21, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 17);
             this.label4.TabIndex = 45;
@@ -326,7 +329,7 @@
             // 
             // txtTenLopHienTai
             // 
-            this.txtTenLopHienTai.Location = new System.Drawing.Point(185, 159);
+            this.txtTenLopHienTai.Location = new System.Drawing.Point(185, 166);
             this.txtTenLopHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenLopHienTai.Name = "txtTenLopHienTai";
             this.txtTenLopHienTai.ReadOnly = true;
@@ -335,7 +338,7 @@
             // 
             // txtTenGVHienTai
             // 
-            this.txtTenGVHienTai.Location = new System.Drawing.Point(185, 130);
+            this.txtTenGVHienTai.Location = new System.Drawing.Point(185, 137);
             this.txtTenGVHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenGVHienTai.Name = "txtTenGVHienTai";
             this.txtTenGVHienTai.ReadOnly = true;
@@ -345,7 +348,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 103);
+            this.label5.Location = new System.Drawing.Point(23, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 17);
             this.label5.TabIndex = 46;
@@ -353,7 +356,7 @@
             // 
             // txtKhoiLopHienTai
             // 
-            this.txtKhoiLopHienTai.Location = new System.Drawing.Point(185, 102);
+            this.txtKhoiLopHienTai.Location = new System.Drawing.Point(185, 109);
             this.txtKhoiLopHienTai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKhoiLopHienTai.Name = "txtKhoiLopHienTai";
             this.txtKhoiLopHienTai.ReadOnly = true;
@@ -363,7 +366,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(466, 103);
+            this.label6.Location = new System.Drawing.Point(431, 137);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 17);
             this.label6.TabIndex = 46;
@@ -373,7 +376,7 @@
             // 
             this.comboBoxKhoiLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxKhoiLop.FormattingEnabled = true;
-            this.comboBoxKhoiLop.Location = new System.Drawing.Point(589, 99);
+            this.comboBoxKhoiLop.Location = new System.Drawing.Point(589, 133);
             this.comboBoxKhoiLop.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxKhoiLop.Name = "comboBoxKhoiLop";
             this.comboBoxKhoiLop.Size = new System.Drawing.Size(185, 24);
@@ -383,7 +386,7 @@
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Firebrick;
-            this.btnDelete.Location = new System.Drawing.Point(20, 533);
+            this.btnDelete.Location = new System.Drawing.Point(20, 600);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(112, 39);
@@ -392,10 +395,33 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // txtSiSoToiDa
+            // 
+            this.txtSiSoToiDa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiSoToiDa.Location = new System.Drawing.Point(694, 197);
+            this.txtSiSoToiDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSiSoToiDa.Name = "txtSiSoToiDa";
+            this.txtSiSoToiDa.ReadOnly = true;
+            this.txtSiSoToiDa.Size = new System.Drawing.Size(80, 22);
+            this.txtSiSoToiDa.TabIndex = 62;
+            this.txtSiSoToiDa.Text = "1";
+            this.txtSiSoToiDa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(431, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 17);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "Sỉ số tối đa";
+            // 
             // ChangeClassUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtSiSoToiDa);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxKhoiLop);
             this.Controls.Add(this.txtKhoiLopHienTai);
             this.Controls.Add(this.txtTenGVHienTai);
@@ -424,7 +450,7 @@
             this.Controls.Add(this.label2);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChangeClassUserControl";
-            this.Size = new System.Drawing.Size(804, 611);
+            this.Size = new System.Drawing.Size(804, 680);
             this.Load += new System.EventHandler(this.ChangeClassUserControl_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -469,6 +495,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxKhoiLop;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtSiSoToiDa;
+        private System.Windows.Forms.Label label7;
 
     }
 }

@@ -71,7 +71,7 @@ namespace ManagerStudentApp.GUI.TreeControls
 
         public void BuildTreeNodeControls(TreeView treeView, ImageList imageList)
         {
-            var userRole = AuthenticationService.GetInstance().GetCurrentUser().Role;
+            var userRole = AuthenticationService.GetInstance().GetCurrentUser().Role.Level;
             this.treeView = treeView;
             InitImages(imageList);
             treeView.ImageList = imageList;

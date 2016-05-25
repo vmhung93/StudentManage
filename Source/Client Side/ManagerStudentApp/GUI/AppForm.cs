@@ -63,7 +63,10 @@ namespace ManagerStudentApp
         {
             //Load data
             //SystemConfigService.GetInstance();
-            lbName.Text += ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser().FullName;
+            string textMessage = "Xin chào, " ;
+            textMessage += ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser().FullName;
+            textMessage += string.Format(" (Quyền hạn : {0})", ManagerStudentLib.Authentication.AuthenticationService.GetInstance().GetCurrentUser().Role.Level.ToString());
+            lbName.Text = textMessage;
         }
 
     }

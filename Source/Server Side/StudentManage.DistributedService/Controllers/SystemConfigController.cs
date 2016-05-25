@@ -1,5 +1,4 @@
 ﻿using StudentManage.Common;
-using StudentManage.DistributedService.Authorization;
 using StudentManage.Services.AppicationContract;
 using StudentManage.Services.Services;
 using System;
@@ -9,24 +8,23 @@ using System.Web.Http;
 
 namespace StudentManage.DistributedService.Controllers
 {
-    [CustomAuthorize]
-    public class ScoresController : BaseApiController
+    public class SystemConfigController : BaseApiController
     {
-        private IScoresService ScoresService;
+        private ISystemConfigService SystemConfigService;
 
-        public ScoresController(IScoresService scoresService)
+        public SystemConfigController(ISystemConfigService systemConfigService)
         {
-            this.ScoresService = scoresService;
+            this.SystemConfigService = systemConfigService;
         }
-
+        
         /// <summary>
-        /// Create new scores
+        /// Create new grade
         /// </summary>
-        /// <param name="scoresDto"></param>
+        /// <param name="systemConfigDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Scores")]
-        public IHttpActionResult Create(ScoresDto scoresDto)
+        [Route("api/SystemConfig")]
+        public IHttpActionResult Create(SystemConfigDto systemConfigDto)
         {
             try
             {
@@ -35,7 +33,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = ScoresService.Create(scoresDto);
+                bool result = SystemConfigService.Create(systemConfigDto);
 
                 if (result)
                 {
@@ -64,13 +62,13 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Update scores info
+        /// Update grade info
         /// </summary>
-        /// <param name="scoresDto"></param>
+        /// <param name="systemConfigDto"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/Scores")]
-        public IHttpActionResult Update(ScoresDto scoresDto)
+        [Route("api/SystemConfig")]
+        public IHttpActionResult Update(SystemConfigDto systemConfigDto)
         {
             try
             {
@@ -79,7 +77,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = ScoresService.Update(scoresDto);
+                bool result = SystemConfigService.Update(systemConfigDto);
 
                 if (result)
                 {
@@ -108,22 +106,22 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// Delete scores info
+        /// Delete grade by id
         /// </summary>
-        /// <param name="scoresDto"></param>
+        /// <param name="systemConfigDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/DeleteScores")]
-        public IHttpActionResult Delete(BaseDto scoresDto)
+        [Route("api/DeleteSystemConfig")]
+        public IHttpActionResult Delete(BaseDto systemConfigDto)
         {
             try
             {
-                if (scoresDto == null || scoresDto.Id == null || scoresDto.Id == Guid.Empty)
+                if (systemConfigDto == null || systemConfigDto.Id == null || systemConfigDto.Id == Guid.Empty)
                 {
                     return BadRequest();
                 }
 
-                bool result = ScoresService.Delete(scoresDto.Id);
+                bool result = SystemConfigService.Delete(systemConfigDto.Id);
 
                 if (result)
                 {
@@ -152,37 +150,31 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// GetAll scores info
+        /// Get all grade, don't filter by status
         /// </summary>
-        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Scores")]
+        [Route("api/SystemConfig")]
         public IHttpActionResult GetAll()
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
+                var result = SystemConfigService.GetAll();
 
-                List<ScoresDto> result = ScoresService.GetAll();
-
-                if (result.Count != 0)
+                if (result.Count > 0)
                 {
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.GetDataSuccessful,
+                        Message = ResponseMessages.CreateDataSuccessfully,
                         Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.GetDataUnsuccessful
+                    Status = HttpStatusCode.OK,
+                    Message = ResponseMessages.NoRecord
                 });
             }
             catch (Exception ex)
@@ -197,22 +189,16 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// GetById scores info
+        /// Get grade by id
         /// </summary>
-        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Scores/{scoresId}")]
-        public IHttpActionResult GetById(Guid scoresId)
+        [Route("api/SystemConfig/{systemConfigId}")]
+        public IHttpActionResult Get(Guid systemConfigId)
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
-
-                ScoresDto result = ScoresService.GetById(scoresId);
+                var result = SystemConfigService.GetById(systemConfigId);
 
                 if (result != null)
                 {
@@ -226,8 +212,8 @@ namespace StudentManage.DistributedService.Controllers
 
                 return Json(new
                 {
-                    Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.GetDataUnsuccessful
+                    Status = HttpStatusCode.OK,
+                    Message = ResponseMessages.NoRecord
                 });
             }
             catch (Exception ex)
@@ -242,74 +228,24 @@ namespace StudentManage.DistributedService.Controllers
         }
 
         /// <summary>
-        /// GetById scores info
+        /// Get grade by id
         /// </summary>
-        /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/Scores/GetScoreByClassCourseSemester")]
-        public IHttpActionResult GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto)
+        [Route("api/SystemConfig/UpdateAll")]
+        public IHttpActionResult UpdateAll(List<SystemConfigDto> systemConfigs)
         {
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
-
-                List<StudentWithScoreDto> result = ScoresService.GetScoreByClassCourseSemester(scoreDto);
-
-                if (result != null)
-                {
-                    return Json(new
-                    {
-                        Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.GetDataSuccessful,
-                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
-                    });
-                }
-
-                return Json(new
-                {
-                    Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.GetDataUnsuccessful
-                });
-            }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    Status = HttpStatusCode.InternalServerError,
-                    Message = ResponseMessages.InternalServerError,
-                    Error = ex.ToString()
-                });
-            }
-        }
-
-        /// <summary>
-        /// GetById scores info
-        /// </summary>
-        /// <param name="scoresDto"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("api/Scores/UpdateWithCreateScore")]
-        public IHttpActionResult UpdateWithCreateScore(ScoreUpdateDto scoreDto)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
-
-                bool result = ScoresService.UpdateWithCreateScore(scoreDto);
+                var result = SystemConfigService.UpdateAll(systemConfigs);
 
                 if (result == true)
                 {
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.UpdateSuccessful
+                        Message = ResponseMessages.UpdateSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -317,51 +253,6 @@ namespace StudentManage.DistributedService.Controllers
                 {
                     Status = HttpStatusCode.BadRequest,
                     Message = ResponseMessages.UpdateUnsuccessful
-                });
-            }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    Status = HttpStatusCode.InternalServerError,
-                    Message = ResponseMessages.InternalServerError,
-                    Error = ex.ToString()
-                });
-            }
-        }
-
-        /// <summary>
-        /// GetById scores info
-        /// </summary>
-        /// <param name="studentName"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("api/Scores/GetStudentCourseScore")]
-        public IHttpActionResult GetStudentCourseScore(PostNameDto studentName)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest();
-                }
-
-                List<StudentClassCourseScoreDto> result = ScoresService.GetStudentCourseScore(studentName);
-
-                if (result.Count > 0)
-                {
-                    return Json(new
-                    {
-                        Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.GetDataSuccessful,
-                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
-                    });
-                }
-
-                return Json(new
-                {
-                    Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.NoRecord
                 });
             }
             catch (Exception ex)

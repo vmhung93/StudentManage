@@ -156,7 +156,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/Grade")]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAll()
         {
             try
             {

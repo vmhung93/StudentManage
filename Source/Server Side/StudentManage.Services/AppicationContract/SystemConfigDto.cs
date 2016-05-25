@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StudentManage.Services.AppicationContract
 {
-    public class CoefficientDto : BaseDto
+    public class SystemConfigDto : BaseDto
     {
-        public int Code { get; set; }
-        
         public string Name { get; set; }
+
+        public string Value { get; set; }
     }
 }

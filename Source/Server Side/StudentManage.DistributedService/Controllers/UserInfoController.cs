@@ -175,7 +175,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -202,7 +202,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="userInfoDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/UserInfo")]
+        [Route("api/UserInfo/{userInfoId}")]
         public IHttpActionResult GetById(Guid userInfoId)
         {
             try
@@ -220,7 +220,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.DeleteSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 

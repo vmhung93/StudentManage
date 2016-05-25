@@ -7,8 +7,6 @@ namespace StudentManage.Services.AppicationContract
     {
         public string Name { get; set; }
 
-        public Guid CoefficientId { get; set; }
-        
-        public CoefficientDto Coefficient { get; set; }
+        public double Coefficient { get; set; }
     }
 }

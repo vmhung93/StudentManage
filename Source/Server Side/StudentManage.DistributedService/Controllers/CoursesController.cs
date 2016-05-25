@@ -180,7 +180,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)
@@ -197,10 +197,10 @@ namespace StudentManage.DistributedService.Controllers
         /// <summary>
         /// GetById courses info
         /// </summary>
-        /// <param name="coursesDto"></param>
+        /// <param name="coursesId"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Courses")]
+        [Route("api/Courses/{coursesId}")]
         public IHttpActionResult GetById(Guid coursesId)
         {
             try
@@ -226,6 +226,51 @@ namespace StudentManage.DistributedService.Controllers
                 {
                     Status = HttpStatusCode.BadRequest,
                     Message = ResponseMessages.DeleteUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// GetById courses info
+        /// </summary>
+        /// <param name="coursesDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Courses/SummaryCourse")]
+        public IHttpActionResult SummaryCourse(GetSummaryCourseDto coursesDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                List<SummaryCourseDto> result = CoursesService.SummaryCourse(coursesDto);
+
+                if (result != null)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

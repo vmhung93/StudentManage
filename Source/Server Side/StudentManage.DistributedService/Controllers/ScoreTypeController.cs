@@ -175,7 +175,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -202,7 +202,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="scoreTypeDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/ScoreType")]
+        [Route("api/ScoreType/{scoreTypeId}")]
         public IHttpActionResult GetById(Guid scoreTypeId)
         {
             try
@@ -220,7 +220,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 

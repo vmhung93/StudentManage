@@ -123,17 +123,18 @@
             #region USER INFO
 
             // SA user info
+            var saEmailAddress = AppSettings.SuperAdminEmailAddress;
             var saUserInfo = new UserInfo()
             {
                 Adress = "Address",
                 DateOfBirth = new DateTime(1993, 1, 1),
-                Email = "sa@studentmanage.com",
+                Email = saEmailAddress,
                 Gender = Gender.Male,
                 Name = "Super Admin",
                 Status = Status.Active
             };
 
-            var saUserInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains("sa@studentmanage.com"));
+            var saUserInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains(saEmailAddress));
             if (saUserInfoEntity == null)
             {
                 context.UserInfo.Add(saUserInfo);

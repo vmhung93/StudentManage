@@ -722,6 +722,67 @@
             context.SaveChanges();
 
             #endregion COURSES
+
+            #region SCORE TYPE
+
+            // Score 15p
+            var score15 = new ScoreType()
+            {
+                Name = @"Điểm 15 phút",
+                Coefficient = 1,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
+            };
+
+            var score15Entity = context.ScoreType.FirstOrDefault(u => u.Name == @"Điểm 15 phút");
+            if (score15Entity == null)
+            {
+                context.ScoreType.Add(score15);
+            }
+            else
+            {
+                score15 = score15Entity;
+            }
+
+            // Score 45p
+            var score45 = new ScoreType()
+            {
+                Name = @"Điểm 1 tiết",
+                Coefficient = 2,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
+            };
+
+            var score45Entity = context.ScoreType.FirstOrDefault(u => u.Name == @"Điểm 1 tiết");
+            if (score45Entity == null)
+            {
+                context.ScoreType.Add(score45);
+            }
+            else
+            {
+                score45 = score45Entity;
+            }
+
+            // Score semester
+            var scoreSemester = new ScoreType()
+            {
+                Name = @"Điểm học kỳ",
+                Coefficient = 3,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
+            };
+
+            var scoreSemesterEntity = context.ScoreType.FirstOrDefault(u => u.Name == @"Điểm học kỳ");
+            if (scoreSemesterEntity == null)
+            {
+                context.ScoreType.Add(scoreSemester);
+            }
+            else
+            {
+                scoreSemester = scoreSemesterEntity;
+            }
+
+            #endregion SCORE TYPE
         }
     }
 }

@@ -86,7 +86,7 @@ namespace ManagerStudentApp.GUI.UserControls
 
             foreach (StudentWithScore st in listStudentWithScores)
             {
-                var row = new string[] { st.Student.UserCode.ToString(), st.Student.UserInfo.Name, "", "", "" };
+                var row = new string[] { st.Student.BadgeId.ToString(), st.Student.UserInfo.Name, "", "", "" };
                 var scores = new string[] { "", "", "" };
                 var scoreObs = new ScoreInfo[3];
                 foreach (ScoreInfo score in st.ListScore)

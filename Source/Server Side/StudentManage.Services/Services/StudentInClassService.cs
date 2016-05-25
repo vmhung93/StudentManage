@@ -210,24 +210,21 @@ namespace StudentManage.Services.Services
         {
             using (var dbContext = new StudentManageDbContext())
             {
-                var classEntity = dbContext.StudentInClass.Where(s => s.ClassId == classId).ToList();
-
+                var classEntity = dbContext.Class.FirstOrDefault(c => c.Id == classId);
+                
                 if (classEntity == null)
                 {
                     return null;
                 }
 
+                var studentEntity = dbContext.StudentInClass.Where(s => s.ClassId == classId).Select(s => s.Student).ToList();
+                
                 var classDto = new ClassStudentInfoDto()
                 {
-                    Class = Mapper.Map<ClassDto>(classEntity.First().Class),
-                    Students = new List<UserDto>()
+                    Class = Mapper.Map<ClassDto>(classEntity),
+                    Students = Mapper.Map<List<UserDto>>(studentEntity)
                 };
-
-                foreach (var item in classEntity)
-                {
-                    classDto.Students.Add(Mapper.Map<UserDto>(item.Student));
-                }
-
+                
                 return classDto;
             }
         }

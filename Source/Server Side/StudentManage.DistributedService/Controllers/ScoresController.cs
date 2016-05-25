@@ -173,7 +173,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -200,7 +200,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="scoresDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/Scores")]
+        [Route("api/Scores/{scoresId}")]
         public IHttpActionResult GetById(Guid scoresId)
         {
             try
@@ -218,7 +218,7 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         Status = HttpStatusCode.OK,
                         Message = ResponseMessages.GetDataSuccessful,
-                        Data = result
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
 
@@ -226,6 +226,140 @@ namespace StudentManage.DistributedService.Controllers
                 {
                     Status = HttpStatusCode.BadRequest,
                     Message = ResponseMessages.GetDataUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// GetById scores info
+        /// </summary>
+        /// <param name="scoresDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Scores/GetScoreByClassCourseSemester")]
+        public IHttpActionResult GetScoreByClassCourseSemester(GetScoreByClassCourseSemesterDto scoreDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                List<StudentWithScoreDto> result = ScoresService.GetScoreByClassCourseSemester(scoreDto);
+
+                if (result != null)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.GetDataUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// GetById scores info
+        /// </summary>
+        /// <param name="scoresDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Scores/UpdateWithCreateScore")]
+        public IHttpActionResult UpdateWithCreateScore(ScoreUpdateDto scoreDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                bool result = ScoresService.UpdateWithCreateScore(scoreDto);
+
+                if (result == true)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.UpdateSuccessful
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.UpdateUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
+
+        /// <summary>
+        /// GetById scores info
+        /// </summary>
+        /// <param name="studentName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/Scores/GetStudentCourseScore")]
+        public IHttpActionResult GetStudentCourseScore(PostNameDto studentName)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                List<StudentClassCourseScoreDto> result = ScoresService.GetStudentCourseScore(studentName);
+
+                if (result.Count > 0)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.GetDataSuccessful,
+                        Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.NoRecord
                 });
             }
             catch (Exception ex)

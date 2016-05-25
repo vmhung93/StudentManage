@@ -200,7 +200,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <param name="studentInClassDto"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/StudentInClass")]
+        [Route("api/StudentInClass/{studentInClassId}")]
         public IHttpActionResult GetById(Guid studentInClassId)
         {
             try
@@ -324,14 +324,48 @@ namespace StudentManage.DistributedService.Controllers
             }
         }
 
-        ///// <summary>
-        ///// GetById class info
-        ///// </summary>
-        ///// <param name="classId"></param>
-        ///// <returns></returns>
-        //[HttpPost]
-        //[Route("api/StudentInClass/UpdateClassWithStudents")]
-        //public IHttpActionResult UpdateClassWithStudents(Guid classId)
-        //{ }
+        /// <summary>
+        /// GetById class info
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/StudentInClass/UpdateClassWithStudents")]
+        public IHttpActionResult UpdateClassWithStudents(UpdateClassWithStudentsDto classWithStudentsDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                var result = StudentInClassService.UpdateClassWithStudents(classWithStudentsDto);
+
+                if (result == true)
+                {
+                    return Json(new
+                    {
+                        Status = HttpStatusCode.OK,
+                        Message = ResponseMessages.UpdateSuccessful
+                    });
+                }
+
+                return Json(new
+                {
+                    Status = HttpStatusCode.BadRequest,
+                    Message = ResponseMessages.UpdateUnsuccessful
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = HttpStatusCode.InternalServerError,
+                    Message = ResponseMessages.InternalServerError,
+                    Error = ex.ToString()
+                });
+            }
+        }
     }
 }

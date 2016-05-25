@@ -232,7 +232,7 @@ namespace ManagerStudentApp.GUI.UserControls
             {
                 Class = updateClass,
                 AddStudentIds = newStudentIds,
-                SubstractStudentIds = substractStudentIds
+                SubtractStudentIds = substractStudentIds
             };
 
             try

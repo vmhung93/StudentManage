@@ -26,5 +26,16 @@ namespace ManagerStudentLib.Data
             }
             return null;
         }
+
+        public static List<User> GetAllUser(bool active)
+        {
+            string url = DataHelper.DATA_SOURCE + "/User/GetAll/"+active.ToString();
+            ResponseData responseData = DataHelper.Get(url);
+            if (responseData.Status == Response.Success)
+            {
+                return JsonConvert.DeserializeObject<List<User>>(responseData.JsonData);
+            }
+            return new List<User>();
+        }
     }
 }

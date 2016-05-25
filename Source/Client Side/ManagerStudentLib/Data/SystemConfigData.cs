@@ -28,5 +28,12 @@ namespace ManagerStudentLib.Data
             ResponseData response = DataHelper.Post(url, jsonData);
             return response.Message;
         }
+
+        public static string InitData()
+        {
+            string url = DataHelper.DATA_SOURCE + "/InitiateDatabase";
+            ResponseData response = DataHelper.Get(url);
+            return JsonConvert.DeserializeObject<string>(response.JsonData);
+        }
     }
 }

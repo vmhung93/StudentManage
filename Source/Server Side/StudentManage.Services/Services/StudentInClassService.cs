@@ -255,7 +255,7 @@ namespace StudentManage.Services.Services
 
                 foreach (var student in classWithStudentsDto.AddStudentIds)
                 {
-                    var studentEntity = dbContext.StudentInClass.SingleOrDefault(c => c.ClassId == classWithStudentsDto.Class.Id && c.StudentId == student);
+                    var studentEntity = dbContext.StudentInClass.SingleOrDefault(c => c.Status== Status.Active&& c.ClassId == classWithStudentsDto.Class.Id && c.StudentId == student);
                     if (studentEntity != null)
                     {
                         studentEntity.Status = Common.Status.Active;
@@ -273,7 +273,7 @@ namespace StudentManage.Services.Services
                 }
                 foreach (var student in classWithStudentsDto.SubtractStudentIds)
                 {
-                    var studentEntity = dbContext.StudentInClass.SingleOrDefault(c => c.ClassId == classWithStudentsDto.Class.Id && c.StudentId == student && c.Status == Common.Status.Active);
+                    var studentEntity = dbContext.StudentInClass.SingleOrDefault(c => c.Status == Status.Active && c.ClassId == classWithStudentsDto.Class.Id && c.StudentId == student && c.Status == Common.Status.Active);
                     if (studentEntity != null)
                     {
                         studentEntity.Status = Common.Status.Deleted;

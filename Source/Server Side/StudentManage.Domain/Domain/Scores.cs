@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentManage.Domain.Domain
 {
-    public class Scores : DomainBase, ITraceable
+    public class Scores : DomainBase
     {
         public Guid StudentId { get; set; }
 
@@ -26,19 +26,5 @@ namespace StudentManage.Domain.Domain
         public virtual ScoreType ScoreType { get; set; }
 
         public decimal Score { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        public DateTime ModifiedDate { get; set; }
-
-        public Guid? CreatedBy { get; set; }
-
-        [ForeignKey("CreatedBy")]
-        public virtual User CreatedByUser { get; set; }
-
-        public Guid? ModifiedBy { get; set; }
-
-        [ForeignKey("ModifiedBy")]
-        public virtual User ModifiedByUser { get; set; }
     }
 }

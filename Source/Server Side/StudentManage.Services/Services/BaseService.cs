@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using StudentManage.Common;
 using StudentManage.Domain.Domain;
 using StudentManage.Services.AppicationContract;
+using System;
 
 namespace StudentManage.Services.Services
 {
@@ -9,54 +11,116 @@ namespace StudentManage.Services.Services
         public BaseService()
         {
             // Register auto mapper
+            Mapper.Initialize(cfg =>
+            {
+                // Class
+                cfg.CreateMap<Class, ClassDto>();
+                cfg.CreateMap<ClassDto, Class>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // Class
-            Mapper.CreateMap<Class, ClassDto>();
-            Mapper.CreateMap<ClassDto, Class>();
+                // Courses
+                cfg.CreateMap<Courses, CoursesDto>();
+                cfg.CreateMap<CoursesDto, Courses>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // Courses
-            Mapper.CreateMap<Courses, CoursesDto>();
-            Mapper.CreateMap<CoursesDto, Courses>();
+                // Grade
+                cfg.CreateMap<Grade, GradeDto>();
+                cfg.CreateMap<GradeDto, Grade>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // Grade
-            Mapper.CreateMap<Grade, GradeDto>();
-            Mapper.CreateMap<GradeDto, Grade>();
+                // Position in class
+                cfg.CreateMap<PositionInClass, PositionInClassDto>();
+                cfg.CreateMap<PositionInClassDto, PositionInClass>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // PositionInClass
-            Mapper.CreateMap<PositionInClass, PositionInClassDto>();
-            Mapper.CreateMap<PositionInClassDto, PositionInClass>();
+                // Role
+                cfg.CreateMap<Role, RoleDto>();
+                cfg.CreateMap<RoleDto, Role>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // Role
-            Mapper.CreateMap<Role, RoleDto>();
-            Mapper.CreateMap<RoleDto, Role>();
+                // Score
+                cfg.CreateMap<Scores, ScoresDto>();
+                cfg.CreateMap<ScoresDto, Scores>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // Scores
-            Mapper.CreateMap<Scores, ScoresDto>();
-            Mapper.CreateMap<ScoresDto, Scores>();
+                // Score type
+                cfg.CreateMap<ScoreType, ScoreTypeDto>();
+                cfg.CreateMap<ScoreTypeDto, ScoreType>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // ScoreType
-            Mapper.CreateMap<ScoreType, ScoreTypeDto>();
-            Mapper.CreateMap<ScoreTypeDto, ScoreType>();
+                // Semester
+                cfg.CreateMap<Semester, SemesterDto>();
+                cfg.CreateMap<SemesterDto, Semester>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // Semester
-            Mapper.CreateMap<Semester, SemesterDto>();
-            Mapper.CreateMap<SemesterDto, Semester>();
+                // Student in class
+                cfg.CreateMap<StudentInClass, StudentInClassDto>();
+                cfg.CreateMap<StudentInClassDto, StudentInClass>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // StudentInClass
-            Mapper.CreateMap<StudentInClass, StudentInClassDto>();
-            Mapper.CreateMap<StudentInClassDto, StudentInClass>();
+                // System configuration
+                cfg.CreateMap<SystemConfig, SystemConfigDto>();
+                cfg.CreateMap<SystemConfigDto, SystemConfig>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // SystemConfig
-            Mapper.CreateMap<SystemConfig, SystemConfigDto>();
-            Mapper.CreateMap<SystemConfigDto, SystemConfig>();
+                // User
+                cfg.CreateMap<User, UserDto>();
+                cfg.CreateMap<UserDto, User>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
 
-            // User
-            Mapper.CreateMap<UserDto, User>();
-            Mapper.CreateMap<User, UserDto>();
+                // User info
+                cfg.CreateMap<UserInfo, UserInfoDto>();
+                cfg.CreateMap<UserInfoDto, UserInfo>()
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => GetCurrentUserId().Value))
+                .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+                .ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(src => DateTime.Now));
+            });
+        }
 
-            // UserInfo
-            Mapper.CreateMap<UserInfoDto, UserInfo>();
-            Mapper.CreateMap<UserInfo, UserInfoDto>();
+        private Guid? GetCurrentUserId()
+        {
+            var currentUser = (UserDto)CacheManage.Get("current_user");
+
+            if (currentUser != null)
+            {
+                return currentUser.Id;
+            }
+
+            return null;
         }
     }
 }

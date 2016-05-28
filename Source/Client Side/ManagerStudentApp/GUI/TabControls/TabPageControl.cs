@@ -10,9 +10,11 @@ namespace ManagerStudentApp.GUI.TabControls
     public class TabPageControl : TabPage
     {
         public TreeNodeControl TreeNodeControl { get; set; }
+        public int TabImageIndex { get; set; }
         public TabPageControl(TreeNodeControl treeNodeControl)
         {
             this.TreeNodeControl = treeNodeControl;
+            this.TabImageIndex = this.TreeNodeControl.ImageIndex;
             this.Name = TreeNodeControl.GetAction().ToString();
             this.Text = TreeControlsHelper.GetActionValue(TreeNodeControl.GetAction());
             this.Controls.Add(UserControls.UserControlFactory.GetUserControl(TreeNodeControl.GetAction()));

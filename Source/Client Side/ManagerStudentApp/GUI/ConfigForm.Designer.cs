@@ -45,8 +45,8 @@
             this.buttonChange.Location = new System.Drawing.Point(273, 186);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(110, 44);
-            this.buttonChange.TabIndex = 2;
+            this.buttonChange.Size = new System.Drawing.Size(110, 32);
+            this.buttonChange.TabIndex = 3;
             this.buttonChange.Text = "Thay đổi";
             this.buttonChange.UseVisualStyleBackColor = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
@@ -107,7 +107,7 @@
             0});
             this.numericUpDownTimeout.Name = "numericUpDownTimeout";
             this.numericUpDownTimeout.Size = new System.Drawing.Size(177, 28);
-            this.numericUpDownTimeout.TabIndex = 3;
+            this.numericUpDownTimeout.TabIndex = 2;
             this.numericUpDownTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -121,10 +121,10 @@
             // 
             // btnInitDb
             // 
-            this.btnInitDb.Location = new System.Drawing.Point(13, 186);
+            this.btnInitDb.Location = new System.Drawing.Point(32, 186);
             this.btnInitDb.Margin = new System.Windows.Forms.Padding(4);
             this.btnInitDb.Name = "btnInitDb";
-            this.btnInitDb.Size = new System.Drawing.Size(169, 44);
+            this.btnInitDb.Size = new System.Drawing.Size(158, 32);
             this.btnInitDb.TabIndex = 4;
             this.btnInitDb.Text = "Initiate database";
             this.btnInitDb.UseVisualStyleBackColor = true;

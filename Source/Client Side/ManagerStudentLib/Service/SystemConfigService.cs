@@ -26,7 +26,6 @@ namespace ManagerStudentLib.Service
 
         private SystemConfigService()
         {
-            ReLoadConfigs();
         }
 
         public void ReLoadConfigs()

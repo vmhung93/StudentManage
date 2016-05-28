@@ -40,8 +40,8 @@
             this.btnThem.Location = new System.Drawing.Point(352, 130);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(175, 39);
-            this.btnThem.TabIndex = 39;
+            this.btnThem.Size = new System.Drawing.Size(175, 36);
+            this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm môn học";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -51,8 +51,8 @@
             this.btnHuy.Location = new System.Drawing.Point(225, 130);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(112, 39);
-            this.btnHuy.TabIndex = 40;
+            this.btnHuy.Size = new System.Drawing.Size(112, 36);
+            this.btnHuy.TabIndex = 2;
             this.btnHuy.Text = "Huỷ";
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -63,7 +63,7 @@
             this.txtSubjectName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSubjectName.Name = "txtSubjectName";
             this.txtSubjectName.Size = new System.Drawing.Size(383, 22);
-            this.txtSubjectName.TabIndex = 35;
+            this.txtSubjectName.TabIndex = 0;
             // 
             // label3
             // 
@@ -96,6 +96,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddSubjectUserControl";
             this.Size = new System.Drawing.Size(573, 199);
+            this.Load += new System.EventHandler(this.AddSubjectUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

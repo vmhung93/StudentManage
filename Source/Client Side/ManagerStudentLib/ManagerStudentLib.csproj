@@ -58,13 +58,10 @@
     <Compile Include="Models\ClassModels.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\ResponseData.cs" />
-    <Compile Include="Models\AuthencatedInfo.cs" />
-    <Compile Include="Models\GradeInfo.cs" />
     <Compile Include="Models\RoleModels.cs" />
     <Compile Include="Models\SemesterInfo.cs" />
-    <Compile Include="Models\Score.cs" />
-    <Compile Include="Models\StudentNotInClass.cs" />
-    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\ScoreModels.cs" />
+    <Compile Include="Models\SubjectModels.cs" />
     <Compile Include="Models\SystemConfigModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

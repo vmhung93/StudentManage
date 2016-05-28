@@ -1,4 +1,5 @@
-﻿using ManagerStudentLib.Models;
+﻿using ManagerStudentApp.Exceptions;
+using ManagerStudentLib.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,29 @@ namespace ManagerStudentLib.Data
                 return JsonConvert.DeserializeObject<List<User>>(responseData.JsonData);
             }
             return new List<User>();
+        }
+
+        public static string UpdateUserInfo(UserInfo userInfo)
+        {
+            string url = DataHelper.DATA_SOURCE + "/UserInfo";
+            string jsonData = JsonConvert.SerializeObject(userInfo);
+            ResponseData responseData = DataHelper.Put(url, jsonData);
+            return responseData.Message;
+        }
+
+        public static UserInfo ReLoadUserInfo(string userInfoId)
+        {
+            string url = DataHelper.DATA_SOURCE + "/UserInfo/" + userInfoId;
+            ResponseData responseData = DataHelper.Get(url);
+            return JsonConvert.DeserializeObject<UserInfo>(responseData.JsonData);
+        }
+
+        public static string UpdatePassword(PasswordInfo newPass) 
+        {
+            string url = DataHelper.DATA_SOURCE + "/User/ChangePassword";
+            string jsonData = JsonConvert.SerializeObject(newPass);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            return responseData.Message;
         }
     }
 }

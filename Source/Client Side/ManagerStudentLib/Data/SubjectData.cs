@@ -10,16 +10,25 @@ namespace ManagerStudentLib.Data
 {
     public class SubjectData
     {
-        public static Diem GetDiem()
-        {
-            var stringJson = "{\"Danh sach\":[{\"Ten mon hoc\":\"ly\",\"Diem so\":9},{\"Ten mon hoc\":\"toan\",\"Diem so\":10}]}";
-            var diem = JsonConvert.DeserializeObject<Diem>(stringJson);
-            return diem;
-        }
-
-        public static string AddSubject(Subject subject)
+        public static string AddSubject(CreateSubject subject)
         {
             string url = DataHelper.DATA_SOURCE + "/Courses";
+            string jsonData = JsonConvert.SerializeObject(subject);
+            ResponseData responseData = DataHelper.Post(url, jsonData);
+            return responseData.Message;
+        }
+
+        public static string UpdateSubject(SubjectInfo subject)
+        {
+            string url = DataHelper.DATA_SOURCE + "/Courses";
+            string jsonData = JsonConvert.SerializeObject(subject);
+            ResponseData responseData = DataHelper.Put(url, jsonData);
+            return responseData.Message;
+        }
+
+        public static string DeleteSubject(SubjectInfo subject)
+        {
+            string url = DataHelper.DATA_SOURCE + "/DeleteCourses";
             string jsonData = JsonConvert.SerializeObject(subject);
             ResponseData responseData = DataHelper.Post(url, jsonData);
             return responseData.Message;
@@ -47,14 +56,6 @@ namespace ManagerStudentLib.Data
             }
             return new List<SummarySubject>();
         }
-    }
-
-    public class Diem {
-        public MonHoc[] danhsach {get;set;}
-    }
-    public class MonHoc {
-        public string TenMonHoc;
-        public int diem;
     }
 
 }

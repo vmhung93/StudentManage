@@ -101,6 +101,12 @@
     <Compile Include="GUI\UserControls\ChangeScoreUserControl.Designer.cs">
       <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UserControls\ChangeSubjectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControls\ChangeSubjectUserControl.Designer.cs">
+      <DependentUpon>ChangeSubjectUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UserControls\ManageStudentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,11 +191,11 @@
     <Compile Include="GUI\UserControls\AddAccountUserControl.Designer.cs">
       <DependentUpon>AddAccountUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\UserControls\ChangeMailUserControl.cs">
+    <Compile Include="GUI\UserControls\ChangeProfileUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\UserControls\ChangeMailUserControl.Designer.cs">
-      <DependentUpon>ChangeMailUserControl.cs</DependentUpon>
+    <Compile Include="GUI\UserControls\ChangeProfileUserControl.Designer.cs">
+      <DependentUpon>ChangeProfileUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\UserControls\DetailStudentUserControl.cs">
       <SubType>UserControl</SubType>
@@ -236,8 +242,17 @@
     <EmbeddedResource Include="GUI\UserControls\ChangeClassUserControl.resx">
       <DependentUpon>ChangeClassUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangePasswordUserControl.resx">
+      <DependentUpon>ChangePasswordUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangeProfileUserControl.resx">
+      <DependentUpon>ChangeProfileUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ChangeScoreUserControl.resx">
       <DependentUpon>ChangeScoreUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControls\ChangeSubjectUserControl.resx">
+      <DependentUpon>ChangeSubjectUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControls\ListAccountUserControl.resx">
       <DependentUpon>ListAccountUserControl.cs</DependentUpon>
@@ -302,6 +317,7 @@
   <ItemGroup>
     <Content Include="Resources\Icons\app.ico" />
     <Content Include="Resources\Icons\logout.png" />
+    <Content Include="Resources\Icons\profile.png" />
     <Content Include="Resources\Icons\score.png" />
     <Content Include="Resources\Icons\class.png" />
     <Content Include="Resources\Icons\account.png" />

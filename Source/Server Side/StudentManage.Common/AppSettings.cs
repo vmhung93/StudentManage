@@ -32,5 +32,14 @@ namespace StudentManage.Common
                 return webConfig;
             }
         }
+
+        public static string LinkDownloadWinApp
+        {
+            get
+            {
+                string link = ConfigurationManager.AppSettings["LinkDownloadWinApp"];
+                return link;
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,5 +78,18 @@ namespace ManagerStudentApp
             lbName.Text = textMessage;
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, Directory.GetCurrentDirectory() + "\\Manual.chm");
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F1)
+            {
+                Help.ShowHelp(this, Directory.GetCurrentDirectory() + "\\Manual.chm");
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

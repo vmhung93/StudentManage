@@ -83,10 +83,10 @@
             // 
             // btnSubtractAll
             // 
-            this.btnSubtractAll.Location = new System.Drawing.Point(370, 448);
+            this.btnSubtractAll.Location = new System.Drawing.Point(368, 448);
             this.btnSubtractAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubtractAll.Name = "btnSubtractAll";
-            this.btnSubtractAll.Size = new System.Drawing.Size(56, 68);
+            this.btnSubtractAll.Size = new System.Drawing.Size(40, 68);
             this.btnSubtractAll.TabIndex = 6;
             this.btnSubtractAll.Text = "<<";
             this.btnSubtractAll.UseVisualStyleBackColor = true;
@@ -94,10 +94,10 @@
             // 
             // btnSubtract
             // 
-            this.btnSubtract.Location = new System.Drawing.Point(370, 374);
+            this.btnSubtract.Location = new System.Drawing.Point(368, 374);
             this.btnSubtract.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubtract.Name = "btnSubtract";
-            this.btnSubtract.Size = new System.Drawing.Size(56, 68);
+            this.btnSubtract.Size = new System.Drawing.Size(40, 68);
             this.btnSubtract.TabIndex = 5;
             this.btnSubtract.Text = "<";
             this.btnSubtract.UseVisualStyleBackColor = true;
@@ -105,10 +105,10 @@
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(370, 300);
+            this.btnAddAll.Location = new System.Drawing.Point(368, 300);
             this.btnAddAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAll.Name = "btnAddAll";
-            this.btnAddAll.Size = new System.Drawing.Size(56, 68);
+            this.btnAddAll.Size = new System.Drawing.Size(40, 68);
             this.btnAddAll.TabIndex = 4;
             this.btnAddAll.Text = ">>";
             this.btnAddAll.UseVisualStyleBackColor = true;
@@ -116,10 +116,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(369, 226);
+            this.btnAdd.Location = new System.Drawing.Point(367, 226);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(56, 68);
+            this.btnAdd.Size = new System.Drawing.Size(40, 68);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = ">";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -129,11 +129,11 @@
             // 
             this.groupBox2.Controls.Add(this.lvLopSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(431, 181);
+            this.groupBox2.Location = new System.Drawing.Point(416, 181);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(343, 340);
+            this.groupBox2.Size = new System.Drawing.Size(358, 340);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách đã chọn";
@@ -150,7 +150,7 @@
             this.lvLopSelect.Location = new System.Drawing.Point(3, 19);
             this.lvLopSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvLopSelect.Name = "lvLopSelect";
-            this.lvLopSelect.Size = new System.Drawing.Size(337, 319);
+            this.lvLopSelect.Size = new System.Drawing.Size(352, 319);
             this.lvLopSelect.TabIndex = 0;
             this.lvLopSelect.UseCompatibleStateImageBehavior = false;
             this.lvLopSelect.View = System.Windows.Forms.View.Details;
@@ -178,7 +178,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(343, 340);
+            this.groupBox1.Size = new System.Drawing.Size(337, 340);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách chưa có lớp";
@@ -195,7 +195,7 @@
             this.lvLop.Location = new System.Drawing.Point(3, 19);
             this.lvLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvLop.Name = "lvLop";
-            this.lvLop.Size = new System.Drawing.Size(337, 319);
+            this.lvLop.Size = new System.Drawing.Size(331, 319);
             this.lvLop.TabIndex = 0;
             this.lvLop.UseCompatibleStateImageBehavior = false;
             this.lvLop.View = System.Windows.Forms.View.Details;

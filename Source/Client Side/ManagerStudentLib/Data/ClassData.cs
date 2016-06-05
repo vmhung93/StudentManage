@@ -64,6 +64,7 @@ namespace ManagerStudentLib.Data
         {
             string url = DataHelper.DATA_SOURCE + "/StudentInClass/CreateStudentInClass";
             string jsonData = JsonConvert.SerializeObject(student);
+
             ResponseData responseData = DataHelper.Post(url, jsonData);
             if (responseData.Status == Response.Success)
             {

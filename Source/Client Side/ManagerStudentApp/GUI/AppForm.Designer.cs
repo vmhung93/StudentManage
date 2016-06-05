@@ -54,7 +54,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.imageTreeList = new System.Windows.Forms.ImageList(this.components);
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -171,6 +171,7 @@
             // tabControl1
             // 
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -313,11 +314,11 @@
             this.label31.TabIndex = 5;
             this.label31.Text = "Quy định";
             // 
-            // imageTreeList
+            // imageList
             // 
-            this.imageTreeList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageTreeList.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageTreeList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(24, 24);
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // AppForm
             // 
@@ -379,6 +380,6 @@
         private System.Windows.Forms.Button button17;
 
 
-        public System.Windows.Forms.ImageList imageTreeList;
+        public System.Windows.Forms.ImageList imageList;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManagerStudentLib.Models
 {
-    public class Subject
+    public class CreateSubject
     {
         public string Name { get; set; }
     }

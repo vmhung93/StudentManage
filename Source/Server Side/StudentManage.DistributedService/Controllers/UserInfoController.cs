@@ -114,7 +114,7 @@ namespace StudentManage.DistributedService.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/UserInfo")]
-        public IHttpActionResult Delete(Guid userInfoId)
+        public IHttpActionResult Delete(BaseDto userInfo)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace StudentManage.DistributedService.Controllers
                     return BadRequest();
                 }
 
-                bool result = UserInfoService.Delete(userInfoId);
+                bool result = UserInfoService.Delete(userInfo.Id);
 
                 if (result)
                 {
@@ -156,7 +156,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="userInfoDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/UserInfo")]
         public IHttpActionResult GetAll()
         {
@@ -201,7 +201,7 @@ namespace StudentManage.DistributedService.Controllers
         /// </summary>
         /// <param name="userInfoDto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("api/UserInfo/{userInfoId}")]
         public IHttpActionResult GetById(Guid userInfoId)
         {
@@ -219,7 +219,7 @@ namespace StudentManage.DistributedService.Controllers
                     return Json(new
                     {
                         Status = HttpStatusCode.OK,
-                        Message = ResponseMessages.DeleteSuccessful,
+                        Message = ResponseMessages.GetDataSuccessful,
                         Data = Newtonsoft.Json.JsonConvert.SerializeObject(result)
                     });
                 }
@@ -227,7 +227,7 @@ namespace StudentManage.DistributedService.Controllers
                 return Json(new
                 {
                     Status = HttpStatusCode.BadRequest,
-                    Message = ResponseMessages.DeleteUnsuccessful
+                    Message = ResponseMessages.GetDataUnsuccessful
                 });
             }
             catch (Exception ex)

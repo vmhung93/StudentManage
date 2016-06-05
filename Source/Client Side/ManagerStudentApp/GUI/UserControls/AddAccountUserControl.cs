@@ -37,7 +37,7 @@ namespace ManagerStudentApp.GUI.UserControls
 
             user.RoleId = roles[cbbQuyen.SelectedIndex].Id;
             user.Password = txtMatKhau.Text;
-            user.UserInfo = new UserInfo()
+            user.UserInfo = new CreateUserInfo()
             {
                 Email = txtEmail.Text,
                 DateOfBirth = dateTimePicker1.Value,

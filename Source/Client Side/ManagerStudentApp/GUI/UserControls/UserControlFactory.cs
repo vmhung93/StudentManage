@@ -15,8 +15,8 @@ namespace ManagerStudentApp.GUI.UserControls
             UserControl userControl = null;
             switch (action)
             {
-                case ControlAction.CHANGE_MAIL:
-                    userControl = new ChangeMailUserControl();
+                case ControlAction.CHANGE_PROFILE:
+                    userControl = new ChangeProfileUserControl();
                     break;
                 case ControlAction.CHANGE_PASSWORD:
                     userControl = new ChangePasswordUserControl();
@@ -44,6 +44,9 @@ namespace ManagerStudentApp.GUI.UserControls
                     break;
                 case ControlAction.ADD_SUBJECT:
                     userControl = new AddSubjectUserControl();
+                    break;
+                case ControlAction.CHANGE_SUBJECT:
+                    userControl = new ChangeSubjectUserControl();
                     break;
                 case ControlAction.LIST_SUBJECT:
                     userControl = new ListSubjectUserControl();

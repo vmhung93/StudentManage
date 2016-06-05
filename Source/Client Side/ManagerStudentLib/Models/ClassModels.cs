@@ -49,4 +49,10 @@ namespace ManagerStudentLib.Models
         public List<string> AddStudentIds { get; set; }
         public List<string> SubtractStudentIds { get; set; }
     }
+
+    public class GradeInfo
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
 }

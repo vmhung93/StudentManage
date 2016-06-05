@@ -81,7 +81,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(431, 108);
+            this.label9.Location = new System.Drawing.Point(413, 106);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 17);
             this.label9.TabIndex = 45;
@@ -89,16 +89,16 @@
             // 
             // txtTenLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(589, 105);
+            this.txtTenLop.Location = new System.Drawing.Point(596, 107);
             this.txtTenLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.Size = new System.Drawing.Size(185, 22);
+            this.txtTenLop.Size = new System.Drawing.Size(178, 22);
             this.txtTenLop.TabIndex = 4;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(431, 224);
+            this.label12.Location = new System.Drawing.Point(413, 222);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 17);
             this.label12.TabIndex = 44;
@@ -173,7 +173,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(431, 165);
+            this.label10.Location = new System.Drawing.Point(413, 163);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 17);
             this.label10.TabIndex = 46;
@@ -190,7 +190,7 @@
             this.lvLopSelect.Location = new System.Drawing.Point(3, 19);
             this.lvLopSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvLopSelect.Name = "lvLopSelect";
-            this.lvLopSelect.Size = new System.Drawing.Size(337, 319);
+            this.lvLopSelect.Size = new System.Drawing.Size(352, 319);
             this.lvLopSelect.TabIndex = 0;
             this.lvLopSelect.UseCompatibleStateImageBehavior = false;
             this.lvLopSelect.View = System.Windows.Forms.View.Details;
@@ -214,11 +214,11 @@
             // 
             this.groupBox2.Controls.Add(this.lvLopSelect);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(431, 256);
+            this.groupBox2.Location = new System.Drawing.Point(416, 256);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(343, 340);
+            this.groupBox2.Size = new System.Drawing.Size(358, 340);
             this.groupBox2.TabIndex = 50;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách đã chọn";
@@ -228,7 +228,7 @@
             this.btnAdd.Location = new System.Drawing.Point(370, 303);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(56, 68);
+            this.btnAdd.Size = new System.Drawing.Size(40, 68);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = ">";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -239,7 +239,7 @@
             this.btnAddAll.Location = new System.Drawing.Point(370, 375);
             this.btnAddAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAll.Name = "btnAddAll";
-            this.btnAddAll.Size = new System.Drawing.Size(56, 68);
+            this.btnAddAll.Size = new System.Drawing.Size(40, 68);
             this.btnAddAll.TabIndex = 8;
             this.btnAddAll.Text = ">>";
             this.btnAddAll.UseVisualStyleBackColor = true;
@@ -250,7 +250,7 @@
             this.btnSubstract.Location = new System.Drawing.Point(370, 449);
             this.btnSubstract.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubstract.Name = "btnSubstract";
-            this.btnSubstract.Size = new System.Drawing.Size(56, 68);
+            this.btnSubstract.Size = new System.Drawing.Size(40, 68);
             this.btnSubstract.TabIndex = 9;
             this.btnSubstract.Text = "<";
             this.btnSubstract.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             this.btnSubstractAll.Location = new System.Drawing.Point(370, 523);
             this.btnSubstractAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubstractAll.Name = "btnSubstractAll";
-            this.btnSubstractAll.Size = new System.Drawing.Size(56, 68);
+            this.btnSubstractAll.Size = new System.Drawing.Size(40, 68);
             this.btnSubstractAll.TabIndex = 10;
             this.btnSubstractAll.Text = "<<";
             this.btnSubstractAll.UseVisualStyleBackColor = true;
@@ -304,10 +304,10 @@
             // 
             this.comboBoxGVCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGVCN.FormattingEnabled = true;
-            this.comboBoxGVCN.Location = new System.Drawing.Point(589, 162);
+            this.comboBoxGVCN.Location = new System.Drawing.Point(596, 164);
             this.comboBoxGVCN.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxGVCN.Name = "comboBoxGVCN";
-            this.comboBoxGVCN.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxGVCN.Size = new System.Drawing.Size(178, 24);
             this.comboBoxGVCN.TabIndex = 6;
             // 
             // label3
@@ -367,7 +367,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(431, 137);
+            this.label6.Location = new System.Drawing.Point(413, 135);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 17);
             this.label6.TabIndex = 46;
@@ -377,10 +377,10 @@
             // 
             this.comboBoxKhoiLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxKhoiLop.FormattingEnabled = true;
-            this.comboBoxKhoiLop.Location = new System.Drawing.Point(589, 133);
+            this.comboBoxKhoiLop.Location = new System.Drawing.Point(596, 135);
             this.comboBoxKhoiLop.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxKhoiLop.Name = "comboBoxKhoiLop";
-            this.comboBoxKhoiLop.Size = new System.Drawing.Size(185, 24);
+            this.comboBoxKhoiLop.Size = new System.Drawing.Size(178, 24);
             this.comboBoxKhoiLop.TabIndex = 5;
             // 
             // btnDelete
@@ -411,7 +411,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(431, 199);
+            this.label7.Location = new System.Drawing.Point(413, 197);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 17);
             this.label7.TabIndex = 61;

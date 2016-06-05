@@ -29,6 +29,8 @@ namespace ManagerStudentApp.GUI.UserControls
         private List<ClassInfo> listClassInfo;
         private List<RoleInfo> roles;
 
+        private Dictionary<string, int> dicClassNum = new Dictionary<string,int>();
+
         private void raBtnNam_CheckedChanged(object sender, EventArgs e)
         {
             GioiTinh = "Nam";
@@ -133,7 +135,7 @@ namespace ManagerStudentApp.GUI.UserControls
                     {
                         var stu = new CreateUser()
                         {
-                            UserInfo = new UserInfo()
+                            UserInfo = new CreateUserInfo()
                             {
                                 Name = txtHoTen.Text,
                                 Address = txtDiaChi.Text,
@@ -152,11 +154,20 @@ namespace ManagerStudentApp.GUI.UserControls
                     }
                     else
                     {
+                        int currentNumClass = 0;
+                        dicClassNum.TryGetValue(listClassInfo[cbbLop.SelectedIndex - 1].Id, out currentNumClass);
+                        if (currentNumClass >= (int)SystemConfigService.GetInstance().GetValue(SystemConfigEnum.MaxNumberInClass))
+                        {
+                            MessageBox.Show(this, "Lớp hiện tại chọn đã đủ sỉ số", "Lỗi", MessageBoxButtons.OK);
+                            return;
+                        }
+
+
                         var stu = new CreateStudentInClass()
                         {
                             Student = new CreateUser()
                             {
-                                UserInfo = new UserInfo()
+                                UserInfo = new CreateUserInfo()
                                 {
                                     Name = txtHoTen.Text,
                                     Address = txtDiaChi.Text,
@@ -187,7 +198,7 @@ namespace ManagerStudentApp.GUI.UserControls
                 }
                 catch (DataGetException ex)
                 {
-                    MessageBox.Show(ex.Status + "\n" + ex.DataGetMessage);
+                    MessageBox.Show(this, ex.Status + "\n" + ex.DataGetMessage, "Thất bại", MessageBoxButtons.OK);
                 }
                 
             }
@@ -224,10 +235,13 @@ namespace ManagerStudentApp.GUI.UserControls
         void LoadData()
         {
             lvLop.Items.Clear();
+            dicClassNum.Clear();
             foreach (var cl in listClassInfo)
             {
                 var students = ClassData.GetInfoClassWithStudents(cl.Id);
-                lvLop.Items.Add(new ListViewItem(new string[] { students.Class.Name, students.Students.Count.ToString() }));
+                int count = students.Students.Count;
+                dicClassNum.Add(cl.Id, count);
+                lvLop.Items.Add(new ListViewItem(new string[] { students.Class.Name, count.ToString() }));
             }
         }
 

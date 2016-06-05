@@ -85,10 +85,10 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(611, 66);
+            this.btnTimKiem.Location = new System.Drawing.Point(611, 74);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(175, 39);
+            this.btnTimKiem.Size = new System.Drawing.Size(175, 31);
             this.btnTimKiem.TabIndex = 25;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(89, 74);
+            this.txtHoTen.Location = new System.Drawing.Point(83, 83);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(261, 22);
@@ -114,7 +114,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(31, 78);
+            this.label16.Location = new System.Drawing.Point(25, 87);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 17);
             this.label16.TabIndex = 21;

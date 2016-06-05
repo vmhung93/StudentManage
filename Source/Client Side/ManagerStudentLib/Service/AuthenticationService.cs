@@ -13,7 +13,7 @@ namespace ManagerStudentLib.Authentication
 {
     public class AuthenticationService
     {
-        private AuthencatedInfo currentUser;
+        private User currentUser;
         private Dictionary<UserRole, RoleInfo> roles;
         private static AuthenticationService instance;
         //singleton
@@ -86,9 +86,20 @@ namespace ManagerStudentLib.Authentication
             currentUser = null;
         }
 
-        public AuthencatedInfo GetCurrentUser()
+        public User GetCurrentUser()
         {
             return currentUser;
+        }
+
+        public string UpdateUserInfo()
+        {
+            return UserData.UpdateUserInfo(currentUser.UserInfo);
+           
+        }
+
+        public void ReloadUserInfo()
+        {
+            currentUser.UserInfo = UserData.ReLoadUserInfo(currentUser.UserInfo.Id);
         }
     }
 }

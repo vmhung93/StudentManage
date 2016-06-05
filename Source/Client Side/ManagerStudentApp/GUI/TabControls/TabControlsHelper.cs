@@ -29,12 +29,17 @@ namespace ManagerStudentApp.GUI.TabControls
             dicTabs = new Dictionary<TreeControls.ControlAction, TabPageControl>();
         }
 
+        public void SetImageList(ImageList imageList) 
+        {
+            this.tabControl.ImageList = imageList;
+        }
+
         public void SetTabControl(TabControl tabControl)
         {
             this.tabControl = tabControl;
             this.tabControl.TabPages.Clear();
             this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            tabControl.Padding = new System.Drawing.Point(22, 3);
+            tabControl.Padding = new System.Drawing.Point(30, 3);
             this.tabControl.DrawItem += this.TabControlDrawItem;
             this.tabControl.MouseUp += this.TabControlMouseUp;
         }
@@ -42,10 +47,18 @@ namespace ManagerStudentApp.GUI.TabControls
         private void TabControlDrawItem(object sender, DrawItemEventArgs e)
         {
             var f = new Font(e.Font.FontFamily, 10f);
-            
-            e.Graphics.DrawString("x", f, Brushes.Black, e.Bounds.Right - 20, e.Bounds.Top + 5);
-           // e.Graphics.DrawString("x", e.Font, Brushes.Black, e.Bounds.Right - 15, e.Bounds.Top + 5);
-            e.Graphics.DrawString(this.tabControl.TabPages[e.Index].Text, e.Font, Brushes.Black, e.Bounds.Left + 13, e.Bounds.Top + 4);
+            // values
+            TabControl tabCtrl = (TabControl)sender;
+            e.Graphics.DrawString("x", f, Brushes.Black, e.Bounds.Right - 18, e.Bounds.Top + 5);
+           //// e.Graphics.DrawString("x", e.Font, Brushes.Black, e.Bounds.Right - 15, e.Bounds.Top + 5);
+            e.Graphics.DrawString(this.tabControl.TabPages[e.Index].Text, e.Font, Brushes.Black, e.Bounds.Left + 30, e.Bounds.Top + 4);
+
+            // draw image if available
+            if (tabCtrl.TabPages[e.Index] is TabPageControl)
+            {
+                Image img = tabCtrl.ImageList.Images[((TabPageControl)tabCtrl.TabPages[e.Index]).TabImageIndex];
+                e.Graphics.DrawImage(img, e.Bounds.Left + 3, e.Bounds.Top + 5);
+            }
             e.DrawFocusRectangle();
         }
 

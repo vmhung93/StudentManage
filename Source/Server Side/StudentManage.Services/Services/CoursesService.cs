@@ -97,7 +97,7 @@ namespace StudentManage.Services.Services
             {
                 // Get all grade
                 var courses = new List<CoursesDto>();
-                var coursesEntity = dbContext.Courses.ToList();
+                var coursesEntity = dbContext.Courses.Where(c => c.Status != Common.Status.Deleted).ToList();
 
                 if (!coursesEntity.Any())
                 {
@@ -121,7 +121,7 @@ namespace StudentManage.Services.Services
             using (var dbContext = new StudentManageDbContext())
             {
                 // Get grade by id
-                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == coursesId);
+                var coursesEntity = dbContext.Courses.FirstOrDefault(g => g.Id == coursesId && g.Status != Common.Status.Deleted);
 
                 if (coursesEntity == null)
                 {
@@ -176,7 +176,7 @@ namespace StudentManage.Services.Services
                 // Get grade by id
                 var classEntity = dbContext.Class.Where(c => c.Status == Common.Status.Active).ToList();
 
-                foreach(var c in classEntity)
+                foreach (var c in classEntity)
                 {
                     var summary = new SummaryCourseDto() { Class = Mapper.Map<ClassDto>(c) };
 

@@ -131,7 +131,9 @@
                 Email = saEmailAddress,
                 Gender = Gender.Male,
                 Name = "Super Admin",
-                Status = Status.Active
+                Status = Status.Active,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
             };
 
             var saUserInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains(saEmailAddress));
@@ -152,7 +154,9 @@
                 Email = "teacher@studentmanage.com",
                 Gender = Gender.Male,
                 Name = "Teacher",
-                Status = Status.Active
+                Status = Status.Active,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now
             };
 
             var teacherUserInfoEntity = context.UserInfo.FirstOrDefault(r => r.Email.Contains("teacher@studentmanage.com"));

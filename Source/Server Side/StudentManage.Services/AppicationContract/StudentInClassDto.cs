@@ -7,17 +7,17 @@ namespace StudentManage.Services.AppicationContract
     public class StudentInClassDto : BaseDto
     {
         public Guid StudentId { get; set; }
-        
+
         public UserDto Student { get; set; }
 
         public int OrderNumber { get; set; }
 
         public Guid ClassId { get; set; }
-        
+
         public ClassDto Class { get; set; }
 
         public Guid PositionId { get; set; }
-        
+
         public PositionInClassDto Position { get; set; }
     }
 
@@ -38,7 +38,9 @@ namespace StudentManage.Services.AppicationContract
     public class UpdateClassWithStudentsDto
     {
         public ClassDto Class { get; set; }
+
         public List<Guid> AddStudentIds { get; set; }
+
         public List<Guid> SubtractStudentIds { get; set; }
     }
 

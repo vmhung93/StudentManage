@@ -35,6 +35,11 @@ namespace StudentManage.DistributedService.Controllers
                     {
                         return;
                     }
+                    else
+                    {
+                        // Store to cache
+                        Common.CacheManage.Set("current_user", CurrentUser);
+                    }
                 }
                 catch
                 {
